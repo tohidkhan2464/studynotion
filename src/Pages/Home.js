@@ -8,7 +8,6 @@ import CodeBlocks from "../components/core/HomePage/CodeBlocks";
 import TImeLineSection from "../components/core/HomePage/TImeLineSection";
 import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection";
 
-
 const Home = () => {
   return (
     // TODO: MAtch the syling with original page
@@ -171,7 +170,7 @@ const Home = () => {
               Get the Skills you need for a
               <HighlightText text={"job that is in Demand"} />
             </div>
-            <div className="flex flex-col gap-10 w-40%] items-start">
+            <div className="flex flex-col gap-10 w-[40%] items-start">
               <div className="text-[16px]">
                 The modern StudyNotion is the dictates its own terms. Today, to
                 be a competitive specialist requires more than professional
@@ -182,11 +181,11 @@ const Home = () => {
               </CTAButton>
             </div>
           </div>
+
+          <TImeLineSection />
+
+          <LearningLanguageSection />
         </div>
-
-        <TImeLineSection/>
-
-        <LearningLanguageSection/>
       </div>
 
       {/* Section 3 */}
