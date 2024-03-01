@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import HighlightText from "../components/core/HomePage/HighlightText";
 import CTAButton from "../components/core/HomePage/Button";
-import banner from "../assets/video.mp4";
+import banner from "../assets/Home_items/video.mp4";
 import CodeBlocks from "../components/core/HomePage/CodeBlocks";
 import TImeLineSection from "../components/core/HomePage/TImeLineSection";
 import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection";
+import InstructorSection from "../components/core/HomePage/InstructorSection";
+import Footer from "../components/common/Footer";
+import ExploreMore from '../components/core/HomePage/ExploreMore';
 
 const Home = () => {
   return (
@@ -83,8 +86,7 @@ const Home = () => {
             }}
             codeBlock={`<!DOCTYPE html>
                 <html>
-                <head>
-                <title>Example</title>
+                <head> <title>Example</title>
                 <link rel="stylesheet"href="styles.css">
                 <head>
                 <body>
@@ -142,6 +144,8 @@ const Home = () => {
             }
           />
         </div>
+
+        <ExploreMore/>
       </div>
 
       {/* Section 2 */}
@@ -189,22 +193,14 @@ const Home = () => {
       </div>
 
       {/* Section 3 */}
+      <div className="w-11/12 mx-auto max-w-maxContent flex flex-col items-center justify-between gap-8 bg-richblack-900 text-white first-letter">
+            <InstructorSection/>
+
+            <h2 className="text-center text-4xl font-semibold mt-10">Review from other Learners</h2>
+      </div>
 
       {/* Footer */}
-      {/* <div  className="mx-auto flex flex-col max-w-maxContent w-11/12 items-center justify-between text-white">
-        <div className=" flex flex-row items-center justify-between">
-          <div>
-            <div>
-              <img src=""></img>
-            </div>
-          </div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-          <div></div>
-        </div>
-      </div> */}
+      <Footer/>
     </div>
   );
 };

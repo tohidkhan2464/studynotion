@@ -17,7 +17,7 @@ const CodeBlocks = ({
   return (
     <div className={`flex ${position} my-20 justify-between gap-10`}>
       {/* section1 */}
-      <div className="flex flex-col w-[50%] gap-8">
+      <div className="flex flex-col w-[50%] gap-8 justify-center">
         {heading}
 
         <div className=" text-richblack-300 font-bold">{subheading}</div>
@@ -51,9 +51,7 @@ const CodeBlocks = ({
             <p>9</p>
             <p>10</p>
             <p>11</p>
-            <p>12</p>
-            <p>13</p>
-            
+            <p>12</p>            
         </div>
         <div className={`min-w-[90%] flex flex-col gap-2 font-bold text-nowrap font-mono ${codeColor} pr-2`}>
             <TypeAnimation 
