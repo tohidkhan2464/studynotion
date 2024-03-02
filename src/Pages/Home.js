@@ -9,7 +9,7 @@ import TImeLineSection from "../components/core/HomePage/TImeLineSection";
 import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection";
 import InstructorSection from "../components/core/HomePage/InstructorSection";
 import Footer from "../components/common/Footer";
-import ExploreMore from '../components/core/HomePage/ExploreMore';
+import ExploreMore from "../components/core/HomePage/ExploreMore";
 
 const Home = () => {
   return (
@@ -50,15 +50,22 @@ const Home = () => {
           </CTAButton>
         </div>
 
-        <div className="mx-3 my-7 shadow-blue-200 shadow-[10px_-5px_50px_-5px]">
-          <video
-            muted
-            loop
-            autoPlay
-            className="shadow-[20px_20px_rgba(255,255,255)]"
-          >
-            <source src={banner} type="video/mp4" />
-          </video>
+        <div className="mx-3 my-7 ">
+          <div className=" relative z-20">
+          <div className=" absolute top-5 left-0 -z-[2] blur-3xl h-[300px] w-[992px] bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4]"></div>
+
+            <div>
+
+            <video
+              muted
+              loop
+              autoPlay
+              className="   shadow-[20px_20px_rgba(255,255,255)]"
+              >
+              <source src={banner} type="video/mp4" />
+            </video>
+              </div>
+          </div>
         </div>
 
         {/* Code Section 1 */}
@@ -145,11 +152,11 @@ const Home = () => {
           />
         </div>
 
-        <ExploreMore/>
+        <ExploreMore />
       </div>
 
       {/* Section 2 */}
-      <div className=" bg-pure-greys-5 text-richblack-700">
+      <div className=" bg-pure-greys-5 text-richblack-700 mt-10">
         <div className="homepage_bg h-[333px]">
           <div className="w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-5 mx-auto">
             <div className="h-[150px]"></div>
@@ -194,13 +201,15 @@ const Home = () => {
 
       {/* Section 3 */}
       <div className="w-11/12 mx-auto max-w-maxContent flex flex-col items-center justify-between gap-8 bg-richblack-900 text-white first-letter">
-            <InstructorSection/>
+        <InstructorSection />
 
-            <h2 className="text-center text-4xl font-semibold mt-10">Review from other Learners</h2>
+        <h2 className="text-center text-4xl font-semibold mt-10">
+          Review from other Learners
+        </h2>
       </div>
 
       {/* Footer */}
-      <Footer/>
+      <Footer />
     </div>
   );
 };

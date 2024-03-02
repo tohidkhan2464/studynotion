@@ -52,7 +52,7 @@ const ExploreMore = () => {
             }
         </div>
         
-        <div className="h-[200px] "></div>
+        <div className="h-[240px] "></div>
 
         <div className="absolute left-0  top-[50%]   flex flex-row gap-5 items-start justify-between w-full">
             {

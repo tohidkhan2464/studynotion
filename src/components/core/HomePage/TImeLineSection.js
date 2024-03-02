@@ -51,14 +51,21 @@ const TImeLineSection = () => {
         </div>
 
         <div className="relative shadow-blue-100">
-          {/* <div className="h-[280px] w-[200px] "></div> */}
-          <img
-            src={timelineImage}
-            alt="timeLine"
-            className="shadow-white object-cover h-fit"
-          />
-          <div className=" absolute bg-caribeangreen-700 flex flex-row text-white uppercase py-7
-           left-[50%] translate-x-[-50%] translate-y-[-50%]">
+          <div className=" relative z-20">
+            <div className=" absolute top-32 left-0 -z-[2] blur-3xl h-[250px] w-[630px] bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4]"></div>
+
+            <div>
+              <img
+                src={timelineImage}
+                alt="timeLine"
+                className=" object-cover h-fit shadow-[20px_20px_rgba(255,255,255)]"
+              />
+            </div>
+          </div>
+          <div
+            className=" absolute z-30 bg-caribeangreen-700 flex flex-row text-white uppercase py-7
+           left-[50%] translate-x-[-50%] translate-y-[-50%]"
+          >
             <div className="flex flex-row gap-5 items-center border-r border-caribeangreen-300 px-7">
               <p className="text-3xl font-bold">10</p>
               <p className=" text-caribeangreen-300 text-sm">
