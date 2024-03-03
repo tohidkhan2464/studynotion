@@ -42,7 +42,7 @@ const Footer = () => {
               <div className="flex flex-col gap-1 mt-2">
                 {company.map((ele, index) => {
                   return (
-                    <div className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-200 hover:underline">
+                    <div key={index} className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline">
                       {ele}
                     </div>
                   );
@@ -50,10 +50,10 @@ const Footer = () => {
               </div>
 
               <div className="flex flex-row gap-3 text-2xl mt-3 ">
-                <PiFacebookLogoFill className="hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-200" />
-                <PiTwitterLogoFill className="hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-200" />
-                <PiGoogleLogoFill className="hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-200" />
-                <PiYoutubeLogoFill className="hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-200" />
+                <PiFacebookLogoFill className="hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500" />
+                <PiTwitterLogoFill className="hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500" />
+                <PiGoogleLogoFill className="hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500" />
+                <PiYoutubeLogoFill className="hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500" />
               </div>
             </div>
 
@@ -65,7 +65,7 @@ const Footer = () => {
                 <div className="flex flex-col gap-1 mt-2">
                   {Resources.map((ele, index) => {
                     return (
-                      <div className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-200 hover:underline">
+                      <div key={index} className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline">
                         {ele}
                       </div>
                     );
@@ -78,7 +78,7 @@ const Footer = () => {
                   Support
                 </p>
                 <div className="flex flex-col gap-1 mt-2">
-                  <div className="text-[14px] hover:text-richblack-50 cursor-pointer mt-1 hover:-translate-y-1 transition-all duration-200 hover:underline">
+                  <div className="text-[14px] hover:text-richblack-50 cursor-pointer mt-1 hover:-translate-y-1 transition-all duration-500 hover:underline">
                     Help Center
                   </div>
                 </div>
@@ -93,7 +93,7 @@ const Footer = () => {
                 <div className="flex flex-col gap-1 mt-2">
                   {Plans.map((ele, index) => {
                     return (
-                      <div className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-200 hover:underline">
+                      <div key={index} className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline">
                         {ele}
                       </div>
                     );
@@ -108,7 +108,7 @@ const Footer = () => {
                 <div className="flex flex-col gap-1 mt-2">
                   {Community.map((ele, index) => {
                     return (
-                      <div className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-200 hover:underline">
+                      <div key={index} className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline">
                         {ele}
                       </div>
                     );
@@ -122,14 +122,14 @@ const Footer = () => {
             <div className="flex flex-row gap-3">
               {FooterLink2.map((element, index) => {
                 return (
-                  <div className="flex flex-col gap-3 mr-20">
+                  <div  key={index} className="flex flex-col gap-3 mr-20">
                     <p className="text-[16px] text-richblack-50 font-semibold mt-2">
                       {element.title}
                     </p>
                     <div className="flex flex-col gap-1 mt-2">
                       {element.links.map((link, index) => {
                         return (
-                          <div className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-200 hover:underline">
+                          <div  key={index} className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline">
                             {link.title}
                           </div>
                         );
@@ -146,8 +146,8 @@ const Footer = () => {
           <div className="flex flex-row gap-1">
             {BottomFooter.map((ele, index) => {
               return (
-                <div
-                  className={`text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-200 hover:underline font-medium px-4 ${
+                <div  key={index}
+                  className={`text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline font-medium px-4 ${
                     index === 0
                       ? "border-none"
                       : "border-l-2 border-richblack-700"

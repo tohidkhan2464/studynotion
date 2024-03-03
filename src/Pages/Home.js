@@ -19,11 +19,11 @@ const Home = () => {
       <div className=" relative mx-auto flex flex-col max-w-maxContent w-11/12 items-center justify-between text-white">
         <Link to={"/signup"}>
           <div
-            className="mx-auto group rounded-full bg-richblack-800 font-bold text-richblack-200 transition-all duration-200 hover:scale-95 w-fit
+            className="mx-auto group rounded-full bg-richblack-800 font-bold text-richblack-200 transition-all duration-500 hover:scale-95 w-fit
           mt-16 p-1 drop-shadow-[0_1.5px_rgba(255,255,255,0.25)]
           "
           >
-            <div className="flex flex-row items-center gap-2 rounded-full px-10 py-[5px]  transition-all duration-200 group-hover:bg-richblack-900 ">
+            <div className="flex flex-row items-center gap-2 rounded-full px-10 py-[5px]  transition-all duration-500 group-hover:bg-richblack-900 ">
               <p className="">Become an Instructor</p>
               <FaArrowRight />
             </div>
@@ -98,11 +98,11 @@ const Home = () => {
                 <head>
                 <body>
                 <h1> <a href="/">Header</a> </h1>
-                <nav>
-                <a href="one/">One</a>
+                <nav> <a href="one/">One</a> 
                 <a href="two/">Two</a>
                 <a href="three/">Three</a>
-                </nav>`}
+                </nav> 
+                </body>`}
             codeColor={"text-yellow-25"}
             backgroundGradient={
               "bg-gradient-to-l  from-[#8A2BE2] from[-6.46%] via-[#FFA500] via-[59.04%] to-[#F8F8FF] to-[124.53%]"
@@ -133,18 +133,18 @@ const Home = () => {
               linkto: "/login",
               active: false,
             }}
-            codeBlock={`<!DOCTYPE html>
-                <html>
-                <head> <title>Example</title>
-                <link rel="stylesheet"href="styles.css">
-                <head>
-                <body>
-                <h1> <a href="/">Header</a> </h1>
-                <nav>
-                <a href="one/">One</a>
-                <a href="two/">Two</a>
-                <a href="three/">Three</a>
-                </nav>`}
+            codeBlock={`import React from "react";
+            import CTAButton from "./Button";
+            import TypeAnimation from "react-type";
+            import { FaArrowRight } from "react-icons/fa";
+
+            const Home = () => {
+              return (
+                <div>Home</div>
+                )
+              }
+
+              export default Home;`}
             codeColor={"text-[#C5C7D4]"}
             backgroundGradient={
               "bg-gradient-to-l  from-[#1FA2FF] from[-3.62%] via-[#12D8FA] via-[50.44%] to-[#A6FFCB] to-[104.51%]"

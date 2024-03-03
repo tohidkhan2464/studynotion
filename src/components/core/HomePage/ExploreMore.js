@@ -43,7 +43,7 @@ const ExploreMore = () => {
                         className={`text-[16px] flex flex-row items-center gap-2 m-1
                          ${currentTab === element 
                             ? "bg-richblack-900 text-richblack-5 font-medium" 
-                            : "text-richblack-200"} rounded-full transition-all duration-200 cursor-pointer hover:bg-richblack-900 hover:text-richblack-5 px-7 py-2`}
+                            : "text-richblack-200"} rounded-full transition-all duration-500 cursor-pointer hover:bg-richblack-900 hover:text-richblack-5 px-7 py-2`}
                         key={index} onClick={() => setMyCards(element)} >
                             {element}
                         </div>

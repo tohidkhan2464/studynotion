@@ -41,13 +41,15 @@ exports.showAllCategories = async (req, res) => {
     try {
 
         // fetch all categories data
-        const allCategories = await Category.find({}, { name: true, description: true });
+        // console.log("ALl categories")
 
+        const allCategories = await Category.find({}, { name: true, description: true });
+        // console.log("ALl categories", allCategories)
         // return all categories in respoonse
         return res.status(200).json({
             success: true,
             message: "All categories returned successfully.",
-            allCategories,
+            data: allCategories,
         });
 
     } catch (err) {

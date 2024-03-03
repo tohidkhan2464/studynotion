@@ -14,14 +14,7 @@ const signUpDetails = {
   desc2: "Education to future-proof your career.",
 };
 
-const SignupForm = ({
-  title,
-  desc1,
-  desc2,
-  image,
-  formType,
-  setIsLoggedIn,
-}) => {
+const SignupForm = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -68,7 +61,7 @@ const SignupForm = ({
   }
 
   return (
-    <div className=" flex w-11/12 max-w-maxContent h-full  py-12 mx-auto gap-x-12 justify-between gap-y-0 ">
+    <div className=" flex w-11/12 max-w-maxContent h-full  py-12 mx-auto gap-x-12 items-center justify-between gap-y-0 ">
       <div className=" w-11/12 max-w-[450px]">
         <h1 className="text-richblack-5 font-semibold text-[1.75rem] leading-[2.75rem]">
           {signUpDetails.title}
@@ -88,7 +81,7 @@ const SignupForm = ({
                 accountType === "student"
                   ? " bg-richblack-900 text-richblack-5"
                   : " bg-transparent text-richblack-200"
-              } py-2 px-5 rounded-full transition-all duration-200`}
+              } py-2 px-5 rounded-full transition-all duration-500`}
               onClick={() => {
                 setAccountType("student");
               }}
@@ -101,7 +94,7 @@ const SignupForm = ({
                 accountType === "instructor"
                   ? " bg-richblack-900 text-richblack-5"
                   : " bg-transparent text-richblack-200"
-              } py-2 px-5 rounded-full transition-all duration-200`}
+              } py-2 px-5 rounded-full transition-all duration-500`}
               onClick={() => {
                 setAccountType("instructor");
               }}
@@ -174,8 +167,9 @@ const SignupForm = ({
                   <sup className=" text-pink-200">*</sup>
                 </p>
                 <div className="flex flex-row gap-4">
-                  <div className="w-[25%] flex flex-row gap-2 relative">
-                    <select className="bg-richblack-800 rounded-[0.5rem] w-full  text-richblack-5 p-[12px] drop-shadow-[0px_2px_0px_rgba(255,255,255,0.18)]">
+                  <div className="w-[30%] flex  justify-center">
+                    <select className="bg-richblack-800 rounded-[0.5rem] w-full  text-richblack-5 p-[12px] drop-shadow-[0px_2px_0px_rgba(255,255,255,0.18)]
+                      ">
                       {countryCodes.map((element, index) => {
                         return (
                           <option className="h-8 w-8">
@@ -262,7 +256,7 @@ const SignupForm = ({
           </form>
         </div>
       </div>
-      <div className="relative w-11/12 max-w-[450px]">
+      <div className="relative w-11/12 max-w-[450px] ">
         <img
           src={frameImage}
           alt="Frame"

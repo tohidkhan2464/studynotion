@@ -9,7 +9,7 @@ const CourseCard = ({ cardData, currentCard, setCurrentCard }) => {
   return (
     <div
       onClick={() => setCurrentCard(heading)}
-      className={`group flex flex-col justify-between items-start  pt-10 transition-all duration-200 cursor-pointer 
+      className={`group flex flex-col justify-between items-start  pt-10 transition-all duration-500 cursor-pointer 
       ${
         currentCard === heading
           ? "bg-white shadow-[10px_10px_#FFD60A]"
