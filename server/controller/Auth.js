@@ -30,9 +30,9 @@ exports.sendOTP = async (req, res) => {
         // generate OTP
         // var otp = "123423";
         var otp = otpGenerator.generate(6, {
-            upperCaseAlphabet: false,
+            upperCaseAlphabets: false, specialChars: false,
             lowerCaseAlphabets: false,
-            specialChars: false,
+            digits:true
         });
         console.log("OTP generated : ", otp);
 

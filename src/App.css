@@ -13,3 +13,17 @@
 .homepage_bg{
     background: url("./assets/Home_items/bgHome.svg");
 }
+
+.spinner {
+   width: 17.6px;
+   height: 17.6px;
+   border-radius: 17.6px;
+   box-shadow: 44px 0px 0 0 rgba(207,197,197,0.2), 35.6px 26px 0 0 rgba(207,197,197,0.4), 13.64px 41.8px 0 0 rgba(207,197,197,0.6), -13.64px 41.8px 0 0 rgba(207,197,197,0.8), -35.6px 26px 0 0 #cfc5c5;
+   animation: spinner-b87k6z 1s infinite linear;
+}
+
+@keyframes spinner-b87k6z {
+   to {
+      transform: rotate(360deg);
+   }
+}

@@ -6,11 +6,12 @@ import { useSelector } from "react-redux";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
 import ProfileDropDown from "../core/Auth/ProfileDropDown";
 import { categories } from "../../services/api";
-import axios from 'axios'
+// import axios from 'axios'
+import { apiConnector } from "../../services/apiConnector";
 import { IoIosArrowDropdown } from "react-icons/io";
 
 const Navbar = () => {
-
+  
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
   const { totalItems } = useSelector((state) => state.cart);
@@ -21,9 +22,6 @@ const Navbar = () => {
 
   const fetchSubLinks = async () => {
     try {
-
-      const result = await axios.get(categories.CATEGORIES_API)
-
       // const url = "http://localhost:4000/api/v1/course/showAllCategories";
       // const result = await fetch(url)
       // .then((response) =>{
@@ -31,23 +29,24 @@ const Navbar = () => {
       // }).then((data) => {
       //   console.log("data", data);
       // })
-
-
+      const result = await apiConnector({
+        method: "GET",
+        url: categories.CATEGORIES_API,
+      });
+      
       console.log("Printing sublinks result", result);
-      setSubLinks(result.data.data)
+      setSubLinks(result.data.data);
+
       console.log("SubLinks ", subLinks);
     } catch (error) {
       console.log("Error ", error);
       console.log("Could not fetch the category list");
-      
     }
-  }
+  };
 
-  useEffect( () => {
-    fetchSubLinks(); 
-    console.log("SubLinks useeffect ", subLinks);
-
-  }, [])
+  useEffect(() => {
+    fetchSubLinks();
+  }, []);
 
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname);
@@ -69,29 +68,26 @@ const Navbar = () => {
                 <li key={index}>
                   {links.title === "Catalog" ? (
                     <div className="flex gap-1  items-center relative group">
-                      <p>
-                        {links.title}
-                      </p>
+                      <p>{links.title}</p>
                       <IoIosArrowDropdown />
 
-                      <div className=" invisible absolute left-[50%] top-0 flex flex-col rounded-md bg-richblack-5 p-2
+                      <div
+                        className=" invisible absolute left-[50%] top-0 flex flex-col rounded-md bg-richblack-5 p-2
                       text-richblack-900 opacity-0 transition-all duration-500 z-10
-                       group-hover:visible group-hover:opacity-100 lg:w-[300px] translate-x-[-50%] translate-y-[30%]" >
-                        <div className=" absolute left-[50%] translate-x-[60%] -top-2 h-6 w-6 rotate-45 rounded bg-richblack-5 -z-10" >
-                        </div>
-                        {
-                          subLinks.length 
-                          ? ( 
-                            subLinks.map((sublink, index) => (
-                              <Link to={`${sublink.name}`} key={index}  >
-                                <div className=" hover:bg-richblack-100 px-4 rounded-lg py-2" >
-                                <p >{sublink.name}</p> 
-                                </div>
-                              </Link>
-                            ))
-                          ) 
-                          : (<div></div>)
-                        }
+                       group-hover:visible group-hover:opacity-100 lg:w-[300px] translate-x-[-50%] translate-y-[30%]"
+                      >
+                        <div className=" absolute left-[50%] translate-x-[60%] -top-2 h-6 w-6 rotate-45 rounded bg-richblack-5 -z-10"></div>
+                        {subLinks.length ? (
+                          subLinks.map((sublink, index) => (
+                            <Link to={`${sublink.name}`} key={index}>
+                              <div className=" hover:bg-richblack-100 px-4 rounded-lg py-2">
+                                <p>{sublink.name}</p>
+                              </div>
+                            </Link>
+                          ))
+                        ) : (
+                          <div></div>
+                        )}
                       </div>
                     </div>
                   ) : (
@@ -115,48 +111,41 @@ const Navbar = () => {
 
         {/* Login - SignUp - Dashboard */}
         <div className="flex gap-x-4 items-center">
-
-          {
-            user && user.accountType !== "Instructor" && 
-            (
-              <Link to="/dashboard/cart" className="relative text-richblack-5 bg-richblack-700 py-1 px-2 rounded-xl border 
-              border-richblack-400 hover:bg-richblack-5 hover:text-richblack-700 hover:translate-y-1 transition-all duration-500">
-                <PiShoppingCartSimpleLight className=" h-7 w-7"  />
-                {
-                  totalItems > 0 && (
-                    <span className="absolute text-sm -top-0 right-1 rounded-full bg-pink-300 text-richblack-900 px-1">
-                      {totalItems}
-                    </span>
-                  )
-                }
-              </Link>
-            )
-          }
-          {
-            token === null && (
-              <Link to="/login">
-                <button className="border-2 bg-richblack-800 px-3 py-1 rounded-lg text-richblack-5 hover:scale-105 transition-all duration-500 border-richblack-700
-                 hover:bg-richblack-5 hover:text-richblack-700 hover:translate-y-1 ">
-                  Log In
-                </button>
-              </Link>
-            )
-          }
-          {
-            token === null && (
-              <Link to="/signup">
-                <button className="border-2 bg-richblack-800 px-3 py-1 rounded-lg text-richblack-5 hover:scale-105 transition-all duration-500 border-richblack-700
-                 hover:bg-richblack-5 hover:text-richblack-700 hover:translate-y-1">
-
+          {user && user.accountType !== "Instructor" && (
+            <Link
+              to="/dashboard/cart"
+              className="relative text-richblack-5 bg-richblack-700 py-1 px-2 rounded-xl border 
+              border-richblack-400 hover:bg-richblack-5 hover:text-richblack-700 hover:translate-y-1 transition-all duration-500"
+            >
+              <PiShoppingCartSimpleLight className=" h-6 w-6" />
+              {totalItems > 0 && (
+                <span className="absolute text-sm font-extrabold -top-0 right-1 rounded-full bg-pink-200 text-black px-[2px]">
+                  {totalItems}
+                </span>
+              )} 
+            </Link>
+          )}
+          {token === null && (
+            <Link to="/login">
+              <button
+                className="border-2 bg-richblack-800 px-3 py-1 rounded-lg text-richblack-5 hover:scale-105 transition-all duration-500 border-richblack-700
+                 hover:bg-richblack-5 hover:text-richblack-700 hover:translate-y-1 "
+              >
+                Log In
+              </button>
+            </Link>
+          )}
+          {token === null && (
+            <Link to="/signup">
+              <button
+                className="border-2 bg-richblack-800 px-3 py-1 rounded-lg text-richblack-5 hover:scale-105 transition-all duration-500 border-richblack-700
+                 hover:bg-richblack-5 hover:text-richblack-700 hover:translate-y-1"
+              >
                 Sign Up
-                </button>
-              </Link>
-            )
-          }
-          {
-            token !== null && <ProfileDropDown/>
-          }
-
+              </button>
+            </Link>
+          )}
+          {user && user.accountType !== "Instructor" && <ProfileDropDown />}
         </div>
       </div>
     </div>

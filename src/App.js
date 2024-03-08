@@ -1,18 +1,55 @@
 import "./App.css";
 import Home from "./Pages/Home";
+import OpenRoute from "./components/core/Auth/OpenRoute";
 import { Routes, Route } from "react-router-dom";
-import LoginForm from "./Pages/LoginPage";
-import SignupForm from "./Pages/SignUpPage";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
 import Navbar from "./components/common/Navbar";
+import ForgotPassword from "./Pages/ForgotPassword";
+import UpdatePassword from "./Pages/UpdatePassword";
 
 function App() {
   return (
-    <div className=" w-screen  bg-richblack-900 flex flex-col font-inter">
-      <Navbar/>
+    <div className=" w-screen bg-richblack-900 flex flex-col font-inter">
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/login" element={<LoginForm/>}/>
-        <Route path="/signup" element={<SignupForm/>}/>
+        <Route path="/" element={<Home />} />
+
+        <Route
+          path="/login"
+          element={
+            <OpenRoute>
+              <Login />
+            </OpenRoute>
+          }
+        />
+
+        <Route
+          path="/signup"
+          element={
+            <OpenRoute>
+              <Signup />
+            </OpenRoute>
+          }
+        />
+
+        <Route
+          path="/forgot-password"
+          element={
+            <OpenRoute>
+              <ForgotPassword />
+            </OpenRoute>
+          }
+        />
+
+        <Route
+          path="/update-password/:id"
+          element={
+            <OpenRoute>
+              <UpdatePassword />
+            </OpenRoute>
+          }
+        />
       </Routes>
     </div>
   );
