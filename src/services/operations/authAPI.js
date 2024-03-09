@@ -13,6 +13,38 @@ const {
   RESETPASSWORD_API,
 } = endpoints;
 
+export function sendOtp(email, navigate) {
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading...");
+    dispatch(setLoading(true));
+    try {
+      const response = await apiConnector({
+        method: "POST",
+        url: SENDOTP_API,
+        bodyData: {
+          email,
+          checkUserPresent: true,
+        },
+      });
+      // console.log("SENDOTP API RESPONSE............", response);
+
+      // console.log(response.data.success);
+
+      if (!response.data.success) {
+        throw new Error(response.data.message);
+      }
+
+      toast.success("OTP Sent Successfully");
+      navigate("/verify-email");
+    } catch (error) {
+      console.log("SENDOTP API ERROR............", error);
+      toast.error(error?.response?.data?.message || "Check Your mail");
+    }
+    dispatch(setLoading(false));
+    toast.dismiss(toastId);
+  };
+}
+
 export function login(email, password, navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...");
@@ -51,6 +83,48 @@ export function login(email, password, navigate) {
   };
 }
 
+export function signUp(
+  firstName, lastName, email, password, confirmPassword, contactNumber, accountType, otp, navigate
+) {
+  console.log("firstName", firstName)
+  console.log("lastName", lastName)
+  console.log("email", email)
+  console.log("contactNumber", contactNumber)
+  console.log("password", password)
+  console.log("confirmPassword", confirmPassword)
+  console.log("accountType", accountType)
+  console.log("otp", otp)
+  
+
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading...");
+    dispatch(setLoading(true));
+    try {
+      const response = await apiConnector({
+        method: "POST",
+        url: SIGNUP_API,
+        bodyData: {
+          firstName, lastName, email, password, confirmPassword, contactNumber, accountType, otp,
+        },
+      });
+
+      console.log("SIGNUP API RESPONSE............", response);
+
+      if (!response.data.success) {
+        throw new Error(response.data.message);
+      }
+      toast.success("Signup Successful");
+      navigate("/login");
+    } catch (error) {
+      console.log("SIGNUP API ERROR............", error);
+      toast.error(error?.response?.data?.message || "Failed");
+      navigate("/signup");
+    }
+    dispatch(setLoading(false));
+    toast.dismiss(toastId);
+  };
+}
+
 export function logout(navigate) {
   return (dispatch) => {
     dispatch(setToken(null));
@@ -64,14 +138,18 @@ export function logout(navigate) {
 }
 
 export function getPasswordResetToken(email, setEmailSent) {
-  return async(dispatch) => {
+  return async (dispatch) => {
     dispatch(setLoading(true));
     try {
-      const response = await apiConnector({method:"POST", url:RESETPASSTOKEN_API, bodyData:{email}});
+      const response = await apiConnector({
+        method: "POST",
+        url: RESETPASSTOKEN_API,
+        bodyData: { email },
+      });
 
       console.log("REset password token response", response);
 
-      if(!response.data.success){
+      if (!response.data.success) {
         throw new Error(response.data.message);
       }
 
@@ -82,18 +160,22 @@ export function getPasswordResetToken(email, setEmailSent) {
     }
 
     dispatch(setLoading(false));
-  }
+  };
 }
 
 export function resetPassword(password, confirmPassword, token) {
-  return async(dispatch) => {
+  return async (dispatch) => {
     dispatch(setLoading(true));
     try {
-      const response = await apiConnector({method:"POST", url:RESETPASSWORD_API, bodyData:{password, confirmPassword, token}});
+      const response = await apiConnector({
+        method: "POST",
+        url: RESETPASSWORD_API,
+        bodyData: { password, confirmPassword, token },
+      });
 
       console.log("RESET PASSWORD RESPONSE", response);
 
-      if(!response.data.success) {
+      if (!response.data.success) {
         throw new Error(response.data.message);
       }
 
@@ -102,5 +184,5 @@ export function resetPassword(password, confirmPassword, token) {
       console.log("RESET PASSWORD TOKEN ERROR ", error);
     }
     dispatch(setLoading(false));
-  }
+  };
 }

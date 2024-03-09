@@ -7,6 +7,7 @@ import Signup from "./Pages/Signup";
 import Navbar from "./components/common/Navbar";
 import ForgotPassword from "./Pages/ForgotPassword";
 import UpdatePassword from "./Pages/UpdatePassword";
+import VerifyEmail from "./Pages/VerifyEmail";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             </OpenRoute>
           }
         />
+        <Route path="/verify-email" element={<VerifyEmail />} />
 
         <Route
           path="/forgot-password"

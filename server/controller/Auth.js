@@ -37,7 +37,7 @@ exports.sendOTP = async (req, res) => {
         console.log("OTP generated : ", otp);
 
         // is otp unique
-        const result = await OTP.findOne({ otp: otp });
+        let result = await OTP.findOne({ otp: otp });
 
         while (result) {
             otp = otpGenerator.generate(6, { upperCaseAlphabets: false, specialChars: false });
@@ -83,18 +83,19 @@ exports.signUp = async (req, res) => {
         } = req.body;
 
         // data validation
-        if (!firstName || !lastName || !email || !password || !confirmPassword || !otp) {
+        if (!firstName || !lastName || !email || !password || !confirmPassword || !contactNumber || !otp) {
             return res.status(403).json({
                 success: false,
                 message: "All fields are required",
             });
         }
-
+        console.log("Password", password);
+        console.log("Confirm Password", confirmPassword);
         // match password with confirm password
         if (password !== confirmPassword) {
             return res.status(403).json({
                 success: false,
-                message: "Password and COnfirm Password doesn't match. Please try again."
+                message: "Password and Confirm Password doesn't match. Please try again."
             });
         }
 
@@ -108,13 +109,13 @@ exports.signUp = async (req, res) => {
         }
 
         // find most recent otp stored for user
-        const recentOtp = await OTP.find({ email }).sort({ createdAt: -1 }).limit(1);
+        const recentOtp = await OTP.find({ email }).sort({ createdAt: -1 });
         console.log("Recent OTP -> ", recentOtp);
 
         console.log("otp -> ", otp);
         console.log("recentOtp.otp -> ", recentOtp[0].otp);
         // validation of otp
-        if (recentOtp.length == 0) {
+        if (recentOtp.length === 0) {
             // OTP not found
             return res.status(400).json({
                 success: false,
@@ -134,7 +135,7 @@ exports.signUp = async (req, res) => {
             gender: null,
             dateOfBirth: null,
             about: null,
-            contactNumber: null,
+            contactNumber: contactNumber,
         });
         const user = await User.create({
             firstName,
@@ -142,7 +143,6 @@ exports.signUp = async (req, res) => {
             email,
             password: hashedPassword,
             accountType,
-            contactNumber,
             additionalDetails: profileDetails._id,
             image: `https://api.dicebear.com/7.x/initials/svg?seed=${firstName} ${lastName}`,
         });

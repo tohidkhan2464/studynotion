@@ -1,53 +1,102 @@
 import React, { useState } from "react";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { AiOutlineEye, AiFillCheckCircle, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import countryCodes from "../../../data/countrycode.json";
-import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux";
+
+import { sendOtp } from "../../../services/operations/authAPI";
+import { setSignupData } from "../../../slices/authSlice";
+import { ACCOUNT_TYPE } from "../../../utils/constants";
+// import { MdDoNotDisturbOn } from "react-icons/md";
 
 const SignupForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  // student or instructor
+  const [accountType, setAccountType] = useState(ACCOUNT_TYPE.STUDENT);
+  // const [validation, setValidation] = useState(false);
   const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
-    phoneNumber: "",
+    contactNumber: "",
   });
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [accountType, setAccountType] = useState("student");
 
   function changeHandler(event) {
     setFormData((prevData) => ({
       ...prevData,
       [event.target.name]: event.target.value,
     }));
+
+    // if(event.target.value.length === 0 ){
+    //   setValidation(false)
+    // }else{
+    //   setValidation(true)
+    // }
   }
+  const { firstName, lastName, email, password, contactNumber, confirmPassword } = formData;
+
+  // const uppercaseRegExp = /(?=.*?[A-Z])/;
+  // const lowercaseRegExp = /(?=.*?[a-z])/;
+  // const digitsRegExp = /(?=.*?[0-9])/;
+  // const specialCharRegExp = /(?=.*?[#?!@$%^&*-])/;
+  // const minLengthRegExp = /.{6,}/;
 
   function submitHandler(event) {
     event.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      toast.error("Password do not match.");
+
+    if (password !== confirmPassword) {
+      toast.error("Passwords Do Not Match");
+      // setFormData({
+      //   password: "",
+      //   confirmPassword: "",
+      // });
       return;
     }
-    // setIsLoggedIn(true);
-    toast.success("Account Created.");
-    const accountData = {
-      ...formData,
-    };
 
-    const finalData = {
-      ...accountData,
+    // const uppercasePassword = uppercaseRegExp.test(password);
+    // const lowercasePassword = lowercaseRegExp.test(password);
+    // const digitsPassword = digitsRegExp.test(password);
+    // const specialCharPassword = specialCharRegExp.test(password);
+    // const minLengthPassword = minLengthRegExp.test(password);
+    // setIsLoggedIn(true);
+    // toast.success("Account Created.");
+    // const accountData = {
+    //   ...formData,
+    // };
+
+    const data = {
+      ...formData,
       accountType,
     };
-    console.log("Printing final account Data.");
-    console.log(finalData);
-    navigate("/dashboard");
+
+    // Setting signup data to state
+    // To be used after otp verification
+    console.log("DATA ", data)
+    dispatch(setSignupData(data));
+    // Send OTP to user for verification
+    dispatch(sendOtp(formData.email, navigate));
+
+    // Reset
+    // setFormData({
+    //   firstName: "",
+    //   lastName: "",
+    //   email: "",
+    //   password: "",
+    //   confirmPassword: "",
+    //   contactNumber:"",
+    // });
+    // setAccountType("student");
   }
+
+  
 
   return (
     <div>
@@ -55,12 +104,12 @@ const SignupForm = () => {
       <div className="flex  bg-richblack-800 p-1 gap-x-1 my-6 rounded-full max-w-max">
         <button
           className={`${
-            accountType === "student"
+            accountType === "Student"
               ? " bg-richblack-900 text-richblack-5"
               : " bg-transparent text-richblack-200"
           } py-2 px-5 rounded-full transition-all duration-500`}
           onClick={() => {
-            setAccountType("student");
+            setAccountType(ACCOUNT_TYPE.STUDENT);
           }}
         >
           Student
@@ -68,12 +117,12 @@ const SignupForm = () => {
 
         <button
           className={`${
-            accountType === "instructor"
+            accountType === "Instructor"
               ? " bg-richblack-900 text-richblack-5"
               : " bg-transparent text-richblack-200"
           } py-2 px-5 rounded-full transition-all duration-500`}
           onClick={() => {
-            setAccountType("instructor");
+            setAccountType(ACCOUNT_TYPE.INSTRUCTOR);
           }}
         >
           Instructor
@@ -91,10 +140,10 @@ const SignupForm = () => {
             <input
               required
               type="text"
-              name="firstname"
+              name="firstName"
               onChange={changeHandler}
               placeholder="Enter First Name"
-              value={formData.firstname}
+              value={formData.firstName}
               className=" bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] drop-shadow-[0px_2px_0px_rgba(255,255,255,0.18)]"
             />
           </label>
@@ -107,10 +156,10 @@ const SignupForm = () => {
             <input
               required
               type="text"
-              name="lastname"
+              name="lastName"
               onChange={changeHandler}
               placeholder="Enter Last Name"
-              value={formData.lastname}
+              value={formData.lastName}
               className=" bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] drop-shadow-[0px_2px_0px_rgba(255,255,255,0.18)]"
             />
           </label>
@@ -159,10 +208,10 @@ const SignupForm = () => {
               <input
                 required
                 type="number"
-                name="phoneNumber"
+                name="contactNumber"
                 onChange={changeHandler}
                 placeholder="Enter your Phone Number"
-                value={formData.phoneNumber}
+                value={formData.contactNumber}
                 className=" bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] drop-shadow-[0px_2px_0px_rgba(255,255,255,0.18)]"
               />
             </div>
