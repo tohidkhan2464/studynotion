@@ -50,7 +50,7 @@
         "code": "AQ"
     },
     {
-        "name": "Antigua and Barbuda",
+        "name": "Antigua & Barbuda",
         "dial_code": "+1268",
         "code": "AG"
     },
@@ -135,12 +135,12 @@
         "code": "BT"
     },
     {
-        "name": "Bolivia, Plurinational State of",
+        "name": "Bolivia",
         "dial_code": "+591",
         "code": "BO"
     },
     {
-        "name": "Bosnia and Herzegovina",
+        "name": "Bosnia & Herzegovina",
         "dial_code": "+387",
         "code": "BA"
     },
@@ -154,11 +154,7 @@
         "dial_code": "+55",
         "code": "BR"
     },
-    {
-        "name": "British Indian Ocean Territory",
-        "dial_code": "+246",
-        "code": "IO"
-    },
+    
     {
         "name": "Brunei Darussalam",
         "dial_code": "+673",
@@ -230,7 +226,7 @@
         "code": "CX"
     },
     {
-        "name": "Cocos (Keeling) Islands",
+        "name": "Cocos Islands",
         "dial_code": "+61",
         "code": "CC"
     },
@@ -250,7 +246,7 @@
         "code": "CG"
     },
     {
-        "name": "Congo, The Democratic Republic of the Congo",
+        "name": "Congo",
         "dial_code": "+243",
         "code": "CD"
     },
@@ -345,7 +341,7 @@
         "code": "ET"
     },
     {
-        "name": "Falkland Islands (Malvinas)",
+        "name": "Falkland Islands",
         "dial_code": "+500",
         "code": "FK"
     },
@@ -465,7 +461,7 @@
         "code": "HT"
     },
     {
-        "name": "Holy See (Vatican City State)",
+        "name": "Holy See",
         "dial_code": "+379",
         "code": "VA"
     },
@@ -495,7 +491,7 @@
         "code": "ID"
     },
     {
-        "name": "Iran, Islamic Republic of Persian Gulf",
+        "name": "Iran",
         "dial_code": "+98",
         "code": "IR"
     },
@@ -560,12 +556,12 @@
         "code": "KI"
     },
     {
-        "name": "Korea, Democratic People's Republic of Korea",
+        "name": "North Korea",
         "dial_code": "+850",
         "code": "KP"
     },
     {
-        "name": "Korea, Republic of South Korea",
+        "name": "Sounth Korea",
         "dial_code": "+82",
         "code": "KR"
     },
@@ -695,7 +691,7 @@
         "code": "MX"
     },
     {
-        "name": "Micronesia, Federated States of Micronesia",
+        "name": "Micronesia",
         "dial_code": "+691",
         "code": "FM"
     },
@@ -825,7 +821,7 @@
         "code": "PW"
     },
     {
-        "name": "Palestinian Territory, Occupied",
+        "name": "Palestinian Territory",
         "dial_code": "+970",
         "code": "PS"
     },
@@ -905,12 +901,12 @@
         "code": "BL"
     },
     {
-        "name": "Saint Helena, Ascension and Tristan Da Cunha",
+        "name": "Saint Helena",
         "dial_code": "+290",
         "code": "SH"
     },
     {
-        "name": "Saint Kitts and Nevis",
+        "name": "Saint Kitts & Nevis",
         "dial_code": "+1869",
         "code": "KN"
     },
@@ -925,12 +921,12 @@
         "code": "MF"
     },
     {
-        "name": "Saint Pierre and Miquelon",
+        "name": "Saint Pierre & Miquelon",
         "dial_code": "+508",
         "code": "PM"
     },
     {
-        "name": "Saint Vincent and the Grenadines",
+        "name": "Saint Vincent & the Grenadines",
         "dial_code": "+1784",
         "code": "VC"
     },
@@ -945,7 +941,7 @@
         "code": "SM"
     },
     {
-        "name": "Sao Tome and Principe",
+        "name": "Sao Tome & Principe",
         "dial_code": "+239",
         "code": "ST"
     },
@@ -1010,7 +1006,7 @@
         "code": "SS"
     },
     {
-        "name": "South Georgia and the South Sandwich Islands",
+        "name": "South Georgia",
         "dial_code": "+500",
         "code": "GS"
     },
@@ -1035,7 +1031,7 @@
         "code": "SR"
     },
     {
-        "name": "Svalbard and Jan Mayen",
+        "name": "Svalbard",
         "dial_code": "+47",
         "code": "SJ"
     },
@@ -1070,7 +1066,7 @@
         "code": "TJ"
     },
     {
-        "name": "Tanzania, United Republic of Tanzania",
+        "name": "Tanzania",
         "dial_code": "+255",
         "code": "TZ"
     },
@@ -1100,7 +1096,7 @@
         "code": "TO"
     },
     {
-        "name": "Trinidad and Tobago",
+        "name": "Trinidad & Tobago",
         "dial_code": "+1868",
         "code": "TT"
     },
@@ -1120,7 +1116,7 @@
         "code": "TM"
     },
     {
-        "name": "Turks and Caicos Islands",
+        "name": "Turks & Caicos Islands",
         "dial_code": "+1649",
         "code": "TC"
     },
@@ -1170,7 +1166,7 @@
         "code": "VU"
     },
     {
-        "name": "Venezuela, Bolivarian Republic of Venezuela",
+        "name": "Venezuela",
         "dial_code": "+58",
         "code": "VE"
     },
@@ -1190,7 +1186,7 @@
         "code": "VI"
     },
     {
-        "name": "Wallis and Futuna",
+        "name": "Wallis & Futuna",
         "dial_code": "+681",
         "code": "WF"
     },

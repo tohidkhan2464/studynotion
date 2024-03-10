@@ -77,7 +77,8 @@ export const settingsEndpoints = {
 
 // *CONTACT-US API (Maine Kiya hh ye)
 export const contactusEndpoint = {
-//   TODO   CONTACT_US_API: BASE_URL + "/reach/contact",
+  // TODO   
+  CONTACT_US_API: BASE_URL + "/reach/contact",
 };
 
 //* Search APIs
