@@ -86,15 +86,6 @@ export function login(email, password, navigate) {
 export function signUp(
   firstName, lastName, email, password, confirmPassword, contactNumber, accountType, otp, navigate
 ) {
-  console.log("firstName", firstName)
-  console.log("lastName", lastName)
-  console.log("email", email)
-  console.log("contactNumber", contactNumber)
-  console.log("password", password)
-  console.log("confirmPassword", confirmPassword)
-  console.log("accountType", accountType)
-  console.log("otp", otp)
-  
 
   return async (dispatch) => {
     const toastId = toast.loading("Loading...");

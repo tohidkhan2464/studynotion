@@ -42,7 +42,10 @@ const Footer = () => {
               <div className="flex flex-col gap-1 mt-2">
                 {company.map((ele, index) => {
                   return (
-                    <div key={index} className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline">
+                    <div
+                      key={index}
+                      className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline"
+                    >
                       {ele}
                     </div>
                   );
@@ -65,7 +68,10 @@ const Footer = () => {
                 <div className="flex flex-col gap-1 mt-2">
                   {Resources.map((ele, index) => {
                     return (
-                      <div key={index} className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline">
+                      <div
+                        key={index}
+                        className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline"
+                      >
                         {ele}
                       </div>
                     );
@@ -93,7 +99,10 @@ const Footer = () => {
                 <div className="flex flex-col gap-1 mt-2">
                   {Plans.map((ele, index) => {
                     return (
-                      <div key={index} className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline">
+                      <div
+                        key={index}
+                        className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline"
+                      >
                         {ele}
                       </div>
                     );
@@ -108,7 +117,10 @@ const Footer = () => {
                 <div className="flex flex-col gap-1 mt-2">
                   {Community.map((ele, index) => {
                     return (
-                      <div key={index} className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline">
+                      <div
+                        key={index}
+                        className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline"
+                      >
                         {ele}
                       </div>
                     );
@@ -122,14 +134,17 @@ const Footer = () => {
             <div className="flex flex-row gap-3">
               {FooterLink2.map((element, index) => {
                 return (
-                  <div  key={index} className="flex flex-col gap-3 mr-20">
+                  <div key={index} className="flex flex-col gap-3 mr-20">
                     <p className="text-[16px] text-richblack-50 font-semibold mt-2">
                       {element.title}
                     </p>
                     <div className="flex flex-col gap-1 mt-2">
                       {element.links.map((link, index) => {
                         return (
-                          <div  key={index} className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline">
+                          <div
+                            key={index}
+                            className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline"
+                          >
                             {link.title}
                           </div>
                         );
@@ -146,7 +161,8 @@ const Footer = () => {
           <div className="flex flex-row gap-1">
             {BottomFooter.map((ele, index) => {
               return (
-                <div  key={index}
+                <div
+                  key={index}
                   className={`text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline font-medium px-4 ${
                     index === 0
                       ? "border-none"
@@ -159,7 +175,7 @@ const Footer = () => {
             })}
           </div>
 
-          <div className="flex flex-row items-center gap-2">
+          <div className="flex flex-row items-center gap-2 font-semibold">
             <p>Made with</p> <GoHeartFill className=" text-pink-200" />{" "}
             <p>Tohid Khan @2024 StudyNotion </p>
           </div>

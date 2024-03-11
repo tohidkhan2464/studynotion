@@ -9,6 +9,7 @@ import ForgotPassword from "./Pages/ForgotPassword";
 import UpdatePassword from "./Pages/UpdatePassword";
 import VerifyEmail from "./Pages/VerifyEmail";
 import About from "./Pages/About";
+import ContactUs from "./Pages/ContactUs";
 
 function App() {
   return (
@@ -54,14 +55,9 @@ function App() {
           }
         />
 
-        <Route
-          path="/about"
-          element={
-            <OpenRoute>
-              <About />
-            </OpenRoute>
-          }
-        />
+        <Route path="/about" element={<About />} />
+
+        <Route path="/contact" element={<ContactUs />} />
       </Routes>
     </div>
   );

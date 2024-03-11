@@ -119,7 +119,7 @@ const ContactUsForm = () => {
             Phone Number
             <sup className=" text-pink-200">*</sup>
           </label>
-          <div className="flex flex-row gap-5 text-black">
+          <div className="flex flex-row gap-5 ">
             {/* Drop Down */}
             <select
               name="dropdown"
@@ -183,7 +183,8 @@ const ContactUsForm = () => {
 
         <button
           type="submit"
-          className="mt-2 w-full rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-semibold text-richblack-900 transition-all duration-200 hover:-translate-y-1"
+          className="mt-2 w-full rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-semibold text-richblack-900 hover:scale-95 
+          transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-pure-greys-600"
         >
           Send Message
         </button>
