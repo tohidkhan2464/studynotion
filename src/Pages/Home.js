@@ -52,7 +52,7 @@ const Home = () => {
 
         <div className="mx-3 my-7 ">
           <div className=" relative z-20">
-          <div className=" absolute top-5 left-0 -z-[2] blur-3xl h-[300px] w-[992px] bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4]"></div>
+          <div className=" absolute top-5 left-0 -z-[2] blur-3xl xl:h-[300px] xl:w-[992px] bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4]"></div>
 
             <div>
 
@@ -60,7 +60,7 @@ const Home = () => {
               muted
               loop
               autoPlay
-              className="   shadow-[20px_20px_rgba(255,255,255)]"
+              className="shadow-[20px_20px_rgba(255,255,255)]"
               >
               <source src={banner} type="video/mp4" />
             </video>
@@ -71,7 +71,7 @@ const Home = () => {
         {/* Code Section 1 */}
         <div>
           <CodeBlocks
-            position={"lg:flex-row"}
+            position={`xl:flex-row md:flex-col sm:flex-col`}
             heading={
               <div className="text-4xl font-semibold">
                 Unlock Your <HighlightText text={"coding potential"} /> with our
@@ -113,7 +113,7 @@ const Home = () => {
         {/* Code Section 2 */}
         <div>
           <CodeBlocks
-            position={"lg:flex-row-reverse"}
+            position={"lg:flex-row-reverse xl:flex-row md:flex-col-reverse sm:flex-col-reverse"}
             heading={
               <div className="text-4xl font-semibold">
                 Unlock Your <HighlightText text={"coding potential"} /> with our

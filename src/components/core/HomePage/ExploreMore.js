@@ -54,7 +54,7 @@ const ExploreMore = () => {
         
         <div className="h-[240px] "></div>
 
-        <div className="absolute left-0  top-[50%]   flex flex-row gap-5 items-start justify-between w-full">
+        <div className="absolute left-0  top-[50%]   flex xl:flex-row md:flex-col xs:flex-col gap-5 items-start justify-between w-full">
             {
                 courses.map((element, index) => {
                     return (

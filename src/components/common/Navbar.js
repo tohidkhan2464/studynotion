@@ -3,7 +3,7 @@ import { Link, matchPath, useLocation } from "react-router-dom";
 import logo from "../../assets/Home_items/Logo.svg";
 import { NavbarLinks } from "../../data/navbar-links";
 import { useSelector } from "react-redux";
-import { PiShoppingCartSimpleLight } from "react-icons/pi";
+import  PiShoppingCartSimpleLight  from "../../assets/Home_items/fi-rr-shopping-cart.svg";
 import ProfileDropDown from "../core/Auth/ProfileDropDown";
 import { categories } from "../../services/api";
 // import axios from 'axios'
@@ -115,15 +115,14 @@ const Navbar = () => {
           {user && user.accountType !== "Instructor" && (
             <Link
               to="/dashboard/cart"
-              className="relative text-richblack-5 bg-richblack-700 py-1 px-2 rounded-xl border 
-              border-richblack-400 hover:bg-richblack-5 hover:text-richblack-700 hover:translate-y-1 transition-all duration-500"
+              className="relative text-richblack-5 py-1 px-2  hover:translate-y-1 transition-all duration-500"
             >
-              <PiShoppingCartSimpleLight className=" h-6 w-6" />
+              <img src={PiShoppingCartSimpleLight} alt="Shooping Cart Icon"  className="h-6 w-6"/>
               {totalItems > 0 && (
-                <span className="absolute text-sm font-extrabold -top-0 right-1 rounded-full bg-pink-200 text-black px-[2px]">
+                <span className="absolute text-md font-semibold -top-1 right-1 rounded-full bg-white px-[2px] py-0 text-red-500">
                   {totalItems}
                 </span>
-              )} 
+              )}  
             </Link>
           )}
           {token === null && (
