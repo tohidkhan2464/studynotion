@@ -8,21 +8,28 @@ exports.updateProfile = async (req, res) => {
     try {
 
         // fetch data
-        const { dateOfBirth = "", about = "", contactNumber, gender } = req.body;
+        const { firstName="", lastName="", dateOfBirth = "", about = "", contactNumber, gender } = req.body;
 
         // get userId
         const id = req.user.id;
 
         // validation
-        if (!contactNumber || !gender || !id) {
-            return res.status(400).json({
-                success: false,
-                message: "All fields are required.",
-            });
-        }
+        // if (!contactNumber || !gender || !id) {
+        //     return res.status(400).json({
+        //         success: false,
+        //         message: "All fields are required.",
+        //     });
+        // }
 
         // find profile
         const userDetails = await User.findById(id);
+        if(firstName || lastName){
+
+            userDetails.firstName = firstName;
+            userDetails.lasttName = lastName;
+            await userDetails.save();
+        }
+
         const profileId = userDetails.additionalDetails;
         const profileDetails = await Profile.findById(profileId);
 

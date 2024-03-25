@@ -196,7 +196,7 @@ exports.login = async (req, res) => {
             user.token = token;
             user.password = undefined;
             const options = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
-
+            console.log("Token in login controller", token)
             // create cookie and send respond
             res.cookie("token", token, options).status(200).json({
                 success: true,

@@ -80,6 +80,11 @@ const MyProfile = () => {
             <p className="text-sm text-richblack-300">First Name</p>
             <p className="text-sm font-medium">{user?.firstName}</p>
           </div>
+          { user?.lastName &&
+          <div className="flex flex-col gap-y-1">
+            <p className="text-sm text-richblack-300">Last Name</p>
+            <p className="text-sm font-medium">{user?.lastname ?? ""}</p>
+          </div>}
           <div className="flex flex-col gap-y-1">
             <p className="text-sm text-richblack-300">Email</p>
             <p className="text-sm font-medium">{user?.email}</p>

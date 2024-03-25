@@ -4,21 +4,21 @@
 @tailwind variants;
 
 .code-border {
-    background: linear-gradient(111.93deg, rgba(14, 26, 45, 0.355) -1.4%, rgba(17, 30, 50, .38) 104.96%);
-    border: 2px solid;
-    border-image-slice: 1;
-    border-image-source: linear-gradient(to right bottom, #ffffff38, #ffffff00);
+   background: linear-gradient(111.93deg, rgba(14, 26, 45, 0.355) -1.4%, rgba(17, 30, 50, .38) 104.96%);
+   border: 2px solid;
+   border-image-slice: 1;
+   border-image-source: linear-gradient(to right bottom, #ffffff38, #ffffff00);
 }
 
-.homepage_bg{
-    background: url("./assets/Home_items/bgHome.svg");
+.homepage_bg {
+   background: url("./assets/Home_items/bgHome.svg");
 }
 
 .spinner {
    width: 17.6px;
    height: 17.6px;
    border-radius: 17.6px;
-   box-shadow: 44px 0px 0 0 rgba(207,197,197,0.2), 35.6px 26px 0 0 rgba(207,197,197,0.4), 13.64px 41.8px 0 0 rgba(207,197,197,0.6), -13.64px 41.8px 0 0 rgba(207,197,197,0.8), -35.6px 26px 0 0 #cfc5c5;
+   box-shadow: 44px 0px 0 0 rgba(207, 197, 197, 0.2), 35.6px 26px 0 0 rgba(207, 197, 197, 0.4), 13.64px 41.8px 0 0 rgba(207, 197, 197, 0.6), -13.64px 41.8px 0 0 rgba(207, 197, 197, 0.8), -35.6px 26px 0 0 #cfc5c5;
    animation: spinner-b87k6z 1s infinite linear;
 }
 
@@ -30,6 +30,6 @@
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+   -webkit-appearance: none;
+   margin: 0;
 }
