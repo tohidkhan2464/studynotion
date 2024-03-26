@@ -7,9 +7,9 @@ import CTAButton from './Button'
 
 const LearningLanguageSection = () => {
   return (
-    <div className="mt-[130px] mb-32">
-      <div className="flex flex-col gap-5 items-center">
-        <div className="text-4xl font-semibold text-center">
+    <div className="mt-[130px] mb-32 mobile:mb-5">
+      <div className="flex flex-col gap-5 mobile:gap-0 items-center">
+        <div className="text-4xl mobile:text-2xl font-semibold text-center">
           Your Swiss Knife for <HighlightText text={"learning any Language"} />
         </div>
         <div className="text-center text-richblack-600 mx-auto text-base font-medium w-[70%]">
@@ -17,12 +17,12 @@ const LearningLanguageSection = () => {
           realistic voice-over, progress tracking, custom schedule and more.
         </div>
 
-        <div className="flex flex-row items-center justify-center mt-5">
-            <img src={know_your_progress} alt="know your progress" className=" object-contain -mr-32"/>
-            <img src={compare_with_others} alt="Compare with others" className=" object-contain"/>
-            <img src={plan_eith_lessons} alt="Plan your lessons" className=" object-contain -ml-[150px]"/>
+        <div className="flex flex-row items-center mobile:flex-col mobile:gap-0 justify-center mt-5 mobile:mt-5">
+            <img src={know_your_progress} alt="know your progress" className=" object-contain mobile:w-[350px]  mobile:m-0 -mr-32"/>
+            <img src={compare_with_others} alt="Compare with others" className=" object-contain mobile:w-[350px] mobile:mt-[-70px] mobile:m-0"/>
+            <img src={plan_eith_lessons} alt="Plan your lessons" className=" object-contain mobile:m-0 mobile:w-[350px] mobile:mt-[-90px] -ml-[150px]"/>
         </div>
-        <div className="w-fit">
+        <div className="w-fit mobile:w-fit">
           <CTAButton active={true} linkto={'/signup'}>
             Learn more
           </CTAButton>

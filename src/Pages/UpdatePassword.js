@@ -33,11 +33,11 @@ const UpdatePassword = () => {
   }
 
   return (
-    <div className="w-maxContent w-11/12 h-screen text-white flex justify-center items-center gap-2 ">
+    <div className="w-maxContent w-11/12 h-screen mobile:items-start mobile:pt-[10rem]   text-white flex justify-center items-center gap-2 ">
       {loading ? (
         <div className="spinner"></div>
       ) : (
-        <div className="flex flex-col justify-center max-w-[500px] px-8 gap-y-2">
+        <div className="flex flex-col justify-center mobile:mx-auto mobile:w-11/12 mobile:text-center max-w-[500px] px-8 gap-y-2">
           <h1 className="text-3xl font-bold">Choose new Password</h1>
           <p className=" text-richblack-300 mt-2">
             Almost done. Enter your new password and you are all set.

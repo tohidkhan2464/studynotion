@@ -42,9 +42,9 @@ const ContactUsForm = () => {
   return (
     <form onSubmit={handleSubmit(submitContactForm)}>
       <div className="flex flex-col gap-10 text-white">
-        <div className="flex flex-row gap-5">
+        <div className="flex flex-row gap-5 mobile:flex-col">
           {/* First Name */}
-          <div className="flex flex-col w-[50%]">
+          <div className="flex flex-col w-[50%] mobile:w-11/12 mobile:mx-auto">
             <label
               htmlFor="firstName"
               className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]"
@@ -68,7 +68,7 @@ const ContactUsForm = () => {
           </div>
 
           {/* Last Name */}
-          <div className="flex flex-col w-[50%]">
+          <div className="flex flex-col w-[50%] mobile:w-11/12 mobile:mx-auto">
             <label
               htmlFor="lastName"
               className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]"
@@ -87,7 +87,7 @@ const ContactUsForm = () => {
         </div>
 
         {/* Email */}
-        <div className="flex flex-col">
+        <div className="flex flex-col mobile:w-11/12 mobile:mx-auto">
           <label
             htmlFor="email"
             className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]"
@@ -111,7 +111,7 @@ const ContactUsForm = () => {
         </div>
 
         {/* Phone Number */}
-        <div className="flex flex-col">
+        <div className="flex flex-col mobile:w-11/12 mobile:mx-auto">
           <label
             htmlFor="phoneNo"
             className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]"
@@ -124,13 +124,13 @@ const ContactUsForm = () => {
             <select
               name="dropdown"
               id="dropdown"
-              className=" bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-[20%] p-[12px] drop-shadow-[0px_2px_0px_rgba(255,255,255,0.18)]"
+              className=" bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-[20%] mobile:w-[30%] p-[12px] drop-shadow-[0px_2px_0px_rgba(255,255,255,0.18)]"
               {...register("countryCode", { required: true })}
             >
               {countryCodes.map((element, index) => {
                 return (
                   <option key={index} value={element.dial_code}>
-                    {element.dial_code} - {element.name}
+                    {element.dial_code} {" "}
                   </option>
                 );
               })}
@@ -157,7 +157,7 @@ const ContactUsForm = () => {
         </div>
 
         {/* Message Box */}
-        <div className="flex flex-col">
+        <div className="flex flex-col mobile:w-11/12 mobile:mx-auto">
           <label
             htmlFor="message"
             className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]"

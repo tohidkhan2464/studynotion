@@ -27,20 +27,20 @@ const ExploreMore = () => {
 
 
   return (
-    <div className="relative w-full flex flex-col items-center">
-        <div className="text-4xl font-semibold text-center">
+    <div className="relative w-full mobile:max-w-[350px] flex flex-col items-center">
+        <div className="text-4xl mobile:text-2xl font-semibold text-center">
             Unlock the <HighlightText text={"Power of Code"}/>
         </div>
         <p className="text-center text-richblack-300 text-[16px] font-medium mt-3">
             Learn to build anything you can imagine
         </p>
 
-        <div className="flex flex-row rounded-full w-fit bg-richblack-800 mb-5 border-1 border-richblack-100 mt-5 p-1">
+        <div className="flex flex-row mobile:flex-col mobile:rounded-xl mobile:mb-0 rounded-full w-fit mobile:bg-richblack-700 bg-richblack-800 mb-5 border-1 border-richblack-100 mt-5 p-1">
             {
                 tabsName.map((element, index) => {
                     return (
                         <div 
-                        className={`text-[16px] flex flex-row items-center gap-2 m-1
+                        className={`text-[16px] flex flex-row items-center gap-2 m-1 
                          ${currentTab === element 
                             ? "bg-richblack-900 text-richblack-5 font-medium" 
                             : "text-richblack-200"} rounded-full transition-all duration-500 cursor-pointer hover:bg-richblack-900 hover:text-richblack-5 px-7 py-2`}
@@ -52,9 +52,9 @@ const ExploreMore = () => {
             }
         </div>
         
-        <div className="h-[240px] "></div>
+        <div className="h-[240px] mobile:h-[550px] "></div>
 
-        <div className="absolute left-0  top-[50%]   flex xl:flex-row md:flex-col xs:flex-col gap-5 items-start justify-between w-full">
+        <div className="absolute left-0  top-[50%] mobile:top-[42%]   flex flex-row mobile:flex-col  mobile:gap-y-5  gap-5 items-start justify-between w-full">
             {
                 courses.map((element, index) => {
                     return (

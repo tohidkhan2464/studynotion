@@ -2,7 +2,6 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    
     fontFamily: {
       inter: ["Inter", "sans-serif"],
       "edu-sa": ["Edu Sa Beginner", "cursive"],
@@ -27,18 +26,18 @@ module.exports = {
         900: "#000814",
       },
       red: {
-        
         50: "rgb(254 242 242)",
-        100: "rgb(254 226 226)",
-        200: "rgb(254 202 202)",
+        100: "#FFF1F1",
+        200: "#FBC7D1",
         300: "rgb(252 165 165)",
-        400: "rgb(248 113 113)",
+        400: "#D43D63",
         500: "rgb(239 68 68)",
         600: "rgb(220 38 38)",
         700: "rgb(185 28 28)",
         800: "rgb(153 27 27)",
         900: "rgb(127 29 29)",
         950: "rgb(69 10 10)",
+        990: "#340019",
       },
       richblue: {
         5: "#ECF5FF",
@@ -139,8 +138,13 @@ module.exports = {
         900: "#141414",
       },
     },
+    screens: {
+      mobile: { max: "480px" },
+      tablet: { min: "481px", max: "768px" },
+      laptop: { min: "769px", max: "1200px" },
+      desktop: { min: "1200px" },
+    },
     extend: {
-      
       maxWidth: {
         maxContent: "1260px",
         maxContentTab: "650px",
@@ -148,5 +152,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
-
+};

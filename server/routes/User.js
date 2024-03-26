@@ -18,7 +18,6 @@ router.post("/signup", signUp);
 router.post("/sendotp", sendOTP);
 
 // routes for changing the password
-// qwdefg
 router.post("/changepassword", auth, changePassword);
 
 // routes for generating a reset password token

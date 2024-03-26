@@ -71,7 +71,7 @@ export function login(email, password, navigate) {
         ? response.data.user.image
         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`;
       dispatch(setUser({ ...response.data.user, image: userImage }));
-      setToken(JSON.stringify(response.data.token));
+      localStorage.setItem("token", JSON.stringify(response.data.token));
       localStorage.setItem("user", JSON.stringify(response.data.user));
       navigate("/dashboard/my-profile");
     } catch (error) {
@@ -84,10 +84,18 @@ export function login(email, password, navigate) {
 }
 
 export function signUp(
-  firstName, lastName, email, password, confirmPassword, contactNumber, accountType, otp, navigate
+  firstName,
+  lastName,
+  email,
+  password,
+  confirmPassword,
+  contactNumber,
+  accountType,
+  otp,
+  navigate
 ) {
-
   return async (dispatch) => {
+    console.log("first", firstName, lastName, email, password, confirmPassword, contactNumber, accountType, otp)
     const toastId = toast.loading("Loading...");
     dispatch(setLoading(true));
     try {
@@ -95,7 +103,14 @@ export function signUp(
         method: "POST",
         url: SIGNUP_API,
         bodyData: {
-          firstName, lastName, email, password, confirmPassword, contactNumber, accountType, otp,
+          firstName,
+          lastName,
+          email,
+          password,
+          confirmPassword,
+          contactNumber,
+          accountType,
+          otp,
         },
       });
 

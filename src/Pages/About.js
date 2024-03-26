@@ -15,10 +15,10 @@ const About = () => {
     <div className=" ">
       {/* Section 1 */}
       <div className="bg-richblack-800 text-white">
-        <section className="pt-[100px] w-11/12 max-w-maxContent mx-auto">
-          <div className="relative pb-64">
+        <section className="pt-[100px] mobile:pt-[50px] w-11/12 max-w-maxContent mx-auto">
+          <div className="relative pb-64 mobile:pb-[55rem] mobile:mx-auto  ">
             <header className="flex flex-col items-center justify-center max-w-[800px] mx-auto text-center">
-              <h1 className=" text-4xl font-semibold flex flex-col items-center justify-center">
+              <h1 className=" text-4xl mobile:text-2xl font-semibold flex flex-col items-center justify-center">
                 Driving Innovation in Online Education for a
                 <HighlightText text={"Brighter Future"} />
               </h1>
@@ -29,7 +29,7 @@ const About = () => {
                 and nurturing a vibrant learning community.
               </p>
             </header>
-            <div className="flex flex-row mx-auto items-center justify-center gap-6 absolute mt-4">
+            <div className="flex flex-row mx-auto mobile:flex-col items-center mobile:mx-auto justify-center gap-6 absolute mt-4">
               <img src={image1} alt="about us 1" />
               <img src={image2} alt="about us 2" />
               <img src={image3} alt="about us 3" />
@@ -50,10 +50,10 @@ const About = () => {
       {/* section 3 */}
       <div className="bg-richblack-900 text-white mt-20 ">
         <section className=" font-semibold w-11/12 max-w-maxContent mx-auto">
-          <div className="flex flex-col gap-20">
-            <div className="flex flex-row gap-10 justify-between items-center">
-              <div className="w-[45%] flex flex-col gap-6 font-normal text-richblack-300">
-                <h1 className="text-4xl font-bold text-richblue-200 text-transparent bg-clip-text bg-gradient-to-b from-[#833AB4] via-[#FD1D1D] to-[#FCB045]">
+          <div className="flex flex-col mobile:items-center mobile:text-center gap-20">
+            <div className="flex flex-row gap-10 mobile:flex-col justify-between items-center">
+              <div className="w-[45%] mobile:w-11/12 flex flex-col gap-6 font-normal text-richblack-300">
+                <h1 className="text-4xl mobile:text-2xl font-bold text-richblue-200 text-transparent bg-clip-text bg-gradient-to-b from-[#833AB4] via-[#FD1D1D] to-[#FCB045]">
                   Our Founding Story
                 </h1>
                 <p>
@@ -74,14 +74,14 @@ const About = () => {
                 </p>
               </div>
 
-              <div className="w-[45%]">
+              <div className="w-[45%] mobile:w-[90%] mobile:mx-auto ">
                 <img src={image} alt="about us founding story" />
               </div>
             </div>
 
-            <div className="flex flex-row gap-10 justify-between items-center">
-              <div className="w-[45%] flex flex-col gap-6 font-normal text-richblack-300">
-                <h1 className="text-4xl font-bold text-richblue-200 text-transparent bg-clip-text bg-gradient-to-b from-[#E65C00] to-[#F9D423]">
+            <div className="flex flex-row mobile:flex-col gap-10 justify-between items-center">
+              <div className="w-[45%] mobile:w-[90%] flex flex-col gap-6 font-normal text-richblack-300">
+                <h1 className="text-4xl mobile:text-2xl font-bold text-richblue-200 text-transparent bg-clip-text bg-gradient-to-b from-[#E65C00] to-[#F9D423]">
                   Our Vision
                 </h1>
                 <p>
@@ -93,8 +93,8 @@ const About = () => {
                   dynamic and interactive learning experience.
                 </p>
               </div>
-              <div className="w-[45%] flex flex-col gap-6 font-normal text-richblack-300">
-                <h1 className="text-4xl font-bold text-richblue-200 text-transparent bg-clip-text bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB]">
+              <div className="w-[45%] mobile:w-[90%] flex flex-col gap-6 font-normal text-richblack-300">
+                <h1 className="text-4xl mobile:text-2xl font-bold text-richblue-200 text-transparent bg-clip-text bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB]">
                   Our Mission
                 </h1>
                 <p>
@@ -118,7 +118,7 @@ const About = () => {
       </div>
 
       {/* section 5 */}
-      <div className="bg-richblack-900 text-white mt-20">
+      <div className="bg-richblack-900 text-white mobile:mt-0 mt-20">
         <section className="flex flex-col gap-10 mx-auto items-center justify-between pt-[100px] w-11/12 max-w-maxContent">
           <LearningGrid />
           <ContactForm />
@@ -129,7 +129,7 @@ const About = () => {
       <div className="bg-richblack-900 text-white mt-20">
         <section className="text-center mx-auto w-11/12 max-w-maxContent">
           <div>
-            <h1 className="text-4xl text-white">Reveiws from other Learners</h1>
+            <h1 className="text-4xl mobile:text-2xl text-white">Reveiws from other Learners</h1>
             {/* <ReviewSlider/> */}
           </div>
         </section>

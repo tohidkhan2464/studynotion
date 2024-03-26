@@ -58,11 +58,11 @@ const Navbar = () => {
       <div className="flex w-11/12 max-w-maxContent items-center justify-between">
         {/* Logo Image */}
         <Link to="/">
-          <img src={logo} alt="logo" width={160} height={32} loading="lazy" />
+          <img src={logo} alt="logo" className="w-[160px] h-[32px] mobile:w-[120px] mobile:h-[28px]"  loading="lazy" />
         </Link>
 
         {/* Nav links */}
-        <nav>
+        <nav className=" mobile:hidden" >
           <ul className="flex gap-x-6 text-richblack-25">
             {NavbarLinks.map((links, index) => {
               return (
@@ -111,7 +111,7 @@ const Navbar = () => {
         </nav>
 
         {/* Login - SignUp - Dashboard */}
-        <div className="flex gap-x-4 items-center">
+        <div className="flex gap-x-4 mobile:gap-x-2 items-center">
           {user && user.accountType !== "Instructor" && (
             <Link
               to="/dashboard/cart"

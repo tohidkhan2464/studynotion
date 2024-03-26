@@ -44,12 +44,12 @@ const LearningGridArray = [
 
 const LearningGrid = () => {
   return (
-    <div className="grid mx-auto lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-1 mb-10 ">
+    <div className="grid mx-auto grid-cols-4 tablet:grid-cols-4  mobile:grid-cols-1 mb-10 ">
       {LearningGridArray.map((card, index) => {
         return (
           <div
             key={index}
-            className={`${index === 0 && "lg:col-span-2 h-[300px]  p-5"}
+            className={`${index === 0 && "col-span-2 h-[300px] mobile:col-span-1  p-5"}
                     ${
                       card.order % 2 === 1
                         ? "bg-richblack-700"
@@ -60,25 +60,25 @@ const LearningGrid = () => {
                     `}
           >
             {card.order < 0 ? (
-              <div className=" lg:w-[90%] flex flex-col gap-4 justify-center">
-                <div className="text-4xl font-semibold">
+              <div className=" w-[90%] mobile:w-full flex flex-col gap-4 justify-center">
+                <div className="text-4xl mobile:text-2xl font-semibold">
                   {card.heading}
-                  <span className="text-4xl font-bold text-richblue-200 text-transparent bg-clip-text bg-gradient-to-br from-[#5433FF] via-[#20BDFF] to-[#A5FECB]">
+                  <span className="text-4xl mobile:text-2xl font-bold text-richblue-200 text-transparent bg-clip-text bg-gradient-to-br from-[#5433FF] via-[#20BDFF] to-[#A5FECB]">
                     {" "}
                   {card.highlighText}
                   </span>
                   {/* <HighlightText text={card.highlighText} /> */}
                 </div>
                 <p className="font-medium text-richblack-300">{card.description}</p>
-                <div className="w-fit mt-6">
+                <div className="w-fit mt-6 mobile:mt-3 ">
                   <CTAButton active={true} linkto={card.btnLink}>
                     {card.btnText}
                   </CTAButton>
                 </div>
               </div>
             ) : (
-              <div className="p-9 h-[300px] flex flex-col justify-center gap-8">
-                <h1 className="text-2xl font-semibold">{card.heading}</h1>
+              <div className="p-9 h-[300px] mobile:h-[250px] flex flex-col justify-center gap-8">
+                <h1 className="text-2xl mobile:text-xl font-semibold">{card.heading}</h1>
                 <p className="text-richblack-300">{card.description}</p>
               </div>
             )}

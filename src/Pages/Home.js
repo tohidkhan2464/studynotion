@@ -14,27 +14,27 @@ import ExploreMore from "../components/core/HomePage/ExploreMore";
 const Home = () => {
   return (
     // TODO: MAtch the syling with original page
-    <div>
+    <div className=" mobile:w-full">
       {/* Section 1 */}
-      <div className=" relative mx-auto flex flex-col max-w-maxContent w-11/12 items-center justify-between text-white">
+      <div className=" relative mx-auto flex flex-col max-w-maxContent w-11/12  items-center justify-between text-white">
         <Link to={"/signup"}>
           <div
-            className="mx-auto group rounded-full bg-richblack-800 font-bold text-richblack-200 transition-all duration-500 hover:scale-95 w-fit
+            className="mx-auto group rounded-full bg-richblack-800 transition-all duration-500 hover:scale-95 w-fit
           mt-16 p-1 drop-shadow-[0_1.5px_rgba(255,255,255,0.25)]
           "
           >
             <div className="flex flex-row items-center gap-2 rounded-full px-10 py-[5px]  transition-all duration-500 group-hover:bg-richblack-900 ">
-              <p className="">Become an Instructor</p>
+              <p >Become an Instructor</p>
               <FaArrowRight />
             </div>
           </div>
         </Link>
 
-        <div className="text-center text-4xl font-semibold mt-8">
+        <div className="text-center text-4xl mobile:text-2xl font-semibold mt-8">
           Empower Your Future with <HighlightText text={"Coding Skills"} />
         </div>
 
-        <div className=" w-[90%] text-center text-lg font-bold text-richblack-300 mt-4">
+        <div className=" w-[90%] text-center text-lg mobile:text-sm font-bold text-richblack-300 mt-4">
           With our online coding courses, you can learn at your own pace, from
           anywhere in the world, and get access to a wealth of resources,
           including hands-on projects, quizzes, and personalized feedback from
@@ -50,30 +50,29 @@ const Home = () => {
           </CTAButton>
         </div>
 
-        <div className="mx-3 my-7 ">
+        <div className="mx-3 my-7 mobile:max-w-[350px] ">
           <div className=" relative z-20">
-          <div className=" absolute top-5 left-0 -z-[2] blur-3xl xl:h-[300px] xl:w-[992px] bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4]"></div>
+            <div className=" absolute top-5 left-0 -z-[2] blur-3xl h-[300px] w-[992px] mobile:w-[300px] mobile:h-[150px] bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4]"></div>
 
             <div>
-
-            <video
-              muted
-              loop
-              autoPlay
-              className="shadow-[20px_20px_rgba(255,255,255)]"
+              <video
+                muted
+                loop
+                autoPlay
+                className="shadow-[20px_20px_rgba(255,255,255)]"
               >
-              <source src={banner} type="video/mp4" />
-            </video>
-              </div>
+                <source src={banner} type="video/mp4" />
+              </video>
+            </div>
           </div>
         </div>
 
         {/* Code Section 1 */}
         <div>
           <CodeBlocks
-            position={`xl:flex-row md:flex-col sm:flex-col`}
+            position={`flex-row mobile:flex-col`}
             heading={
-              <div className="text-4xl font-semibold">
+              <div className="text-4xl mobile:text-2xl font-semibold">
                 Unlock Your <HighlightText text={"coding potential"} /> with our
                 online courses
               </div>
@@ -113,9 +112,11 @@ const Home = () => {
         {/* Code Section 2 */}
         <div>
           <CodeBlocks
-            position={"lg:flex-row-reverse xl:flex-row md:flex-col-reverse sm:flex-col-reverse"}
+            position={
+              "flex-row-reverse mobile:flex-col "
+            }
             heading={
-              <div className="text-4xl font-semibold">
+              <div className="text-4xl mobile:text-2xl font-semibold">
                 Unlock Your <HighlightText text={"coding potential"} /> with our
                 online courses
               </div>
@@ -158,7 +159,7 @@ const Home = () => {
       {/* Section 2 */}
       <div className=" bg-pure-greys-5 text-richblack-700 mt-10">
         <div className="homepage_bg h-[333px]">
-          <div className="w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-5 mx-auto">
+          <div className="w-11/12  max-w-maxContent flex flex-col items-center justify-between gap-5 mx-auto">
             <div className="h-[150px]"></div>
             <div className="flex flex-row gap-7 text-white">
               <CTAButton active={true} linkto={"/signup"}>
@@ -175,13 +176,13 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-7 mx-auto">
-          <div className="flex flex-row gap-[95px] my-10 ">
-            <div className=" text-4xl font-semibold w-[45%]">
+        <div className="w-11/12  max-w-maxContent flex flex-col items-center justify-between gap-7 mx-auto">
+          <div className="flex flex-row mobile:flex-col mobile:gap-5 gap-[95px] my-10 ">
+            <div className=" text-4xl mobile:text-2xl font-semibold w-[45%] mobile:w-full">
               Get the Skills you need for a
               <HighlightText text={"job that is in Demand"} />
             </div>
-            <div className="flex flex-col gap-10 w-[40%] items-start">
+            <div className="flex flex-col gap-10 mobile:w-full mobile:items-center w-[40%] items-start">
               <div className="text-[16px]">
                 The modern StudyNotion is the dictates its own terms. Today, to
                 be a competitive specialist requires more than professional
@@ -203,7 +204,7 @@ const Home = () => {
       <div className="w-11/12 mx-auto max-w-maxContent flex flex-col items-center justify-between gap-8 bg-richblack-900 text-white first-letter">
         <InstructorSection />
 
-        <h2 className="text-center text-4xl font-semibold mt-10">
+        <h2 className="text-center text-4xl mobile:text-2xl font-semibold mt-10">
           Review from other Learners
         </h2>
       </div>

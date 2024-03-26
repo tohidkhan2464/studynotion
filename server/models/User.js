@@ -5,12 +5,12 @@ const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
         require: true,
-        trim: true,
+        // trim: true,
     },
-    lasttName: {
+    lastName: {
         type: String,
         require: true,
-        trim: true,
+        // trim: true,
     },
     email: {
         type: String,

@@ -16,7 +16,7 @@ const ForgotPassword = () => {
   }
 
   return (
-    <div className="w-maxContent w-11/12 h-screen text-white flex justify-center items-center gap-4 ">
+    <div className="w-maxContent w-11/12 h-screen mobile:h-full mobile:items-start mobile:my-[10.5rem] text-white flex justify-center items-center gap-4 ">
       {loading ? (
         <div className="spinner"></div>
       ) : (

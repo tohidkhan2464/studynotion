@@ -12,7 +12,7 @@ const StatesComponent = () => {
   return (
     <section  className=" font-semibold w-11/12 max-w-maxContent mx-auto">
         <div className='flex items-center justify-center py-20'>
-            <div className='flex flex-row items-center justify-center gap-10'>
+            <div className='flex flex-row mobile:flex-col items-center justify-center gap-10'>
                 {
                     States.map( (data, index) => {
                         return (

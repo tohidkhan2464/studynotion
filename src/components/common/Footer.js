@@ -26,11 +26,11 @@ const Plans = ["Paid memberships", "For students", "Business solutions"];
 const Community = ["Forums", "Chapters", "Events"];
 const Footer = () => {
   return (
-    <div>
-      <div className="w-maxContent border-t-2 border-richblack-700 py-12 flex flex-col gap-8 bg-richblack-800 items-center mx-auto text-richblack-300">
-        <div className=" flex flex-row gap-6">
-          <div className="flex flex-row gap-3 border-r-2 border-richblack-700">
-            <div className="flex flex-col gap-3 mr-10">
+    <div >
+      <div className="w-maxContent mobile:w-full  border-t-2 border-richblack-700 py-12 flex flex-col gap-8 bg-richblack-800 items-center mx-auto text-richblack-300">
+        <div className=" flex flex-row mobile:grid mobile:grid-cols-2 gap-6 mobile:gap-0">
+          <div className="flex flex-row mobile:flex-col gap-3 mobile:border-none border-r-2 border-richblack-700">
+            <div className="flex flex-col gap-3 mr-10 mobile:mr-0">
               <div>
                 <img src={logo} alt="logo studynotion" className="h-[32px]" />
               </div>
@@ -61,7 +61,7 @@ const Footer = () => {
             </div>
 
             <div className="flex flex-col gap-9">
-              <div className="flex flex-col gap-3 mr-20">
+              <div className="flex flex-col gap-3 mobile:mr-0 mr-20">
                 <p className="text-[16px] text-richblack-50 font-semibold mt-2">
                   Resources
                 </p>
@@ -92,7 +92,7 @@ const Footer = () => {
             </div>
 
             <div className="flex flex-col gap-9">
-              <div className="flex flex-col gap-3 mr-20">
+              <div className="flex flex-col gap-3 mobile:mr-0 mr-20">
                 <p className="text-[16px] text-richblack-50 font-semibold mt-2">
                   Plans
                 </p>
@@ -130,11 +130,11 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-row gap-3">
-            <div className="flex flex-row gap-3">
+          <div className="flex flex-row mobile:flex-col mobile:gap-0 gap-3 mobile:ml-5">
+            <div className="flex flex-row mobile:flex-col gap-3">
               {FooterLink2.map((element, index) => {
                 return (
-                  <div key={index} className="flex flex-col gap-3 mr-20">
+                  <div key={index} className="flex flex-col gap-3 mobile:mr-0 mr-20">
                     <p className="text-[16px] text-richblack-50 font-semibold mt-2">
                       {element.title}
                     </p>
@@ -157,8 +157,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t-2 border-richblack-700 max-w-maxContent pt-10 flex flex-row items-center justify-between mx-auto w-full">
-          <div className="flex flex-row gap-1">
+        <div className="border-t-2 border-richblack-700  max-w-maxContent pt-10 flex flex-row mobile:flex-col items-center justify-between mx-auto w-full">
+          <div className="flex flex-row  gap-1">
             {BottomFooter.map((ele, index) => {
               return (
                 <div
@@ -166,7 +166,7 @@ const Footer = () => {
                   className={`text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline font-medium px-4 ${
                     index === 0
                       ? "border-none"
-                      : "border-l-2 border-richblack-700"
+                      : "border-l-2 border-richblack-700 "
                   } `}
                 >
                   {ele}
@@ -175,7 +175,7 @@ const Footer = () => {
             })}
           </div>
 
-          <div className="flex flex-row items-center gap-2 font-semibold">
+          <div className="flex flex-row mobile:flex-col items-center gap-2 mobile:mt-2 font-semibold">
             <p>Made with</p> <GoHeartFill className=" text-pink-200" />{" "}
             <p>Tohid Khan @2024 StudyNotion </p>
           </div>

@@ -8,7 +8,8 @@ exports.updateProfile = async (req, res) => {
     try {
 
         // fetch data
-        const { firstName="", lastName="", dateOfBirth = "", about = "", contactNumber, gender } = req.body;
+        console.log("Request body ", req.body.firstName);
+        const { firstName, lastName, dateOfBirth = "", about = "", contactNumber="", gender="" } = req.body.firstName;
 
         // get userId
         const id = req.user.id;
@@ -23,13 +24,11 @@ exports.updateProfile = async (req, res) => {
 
         // find profile
         const userDetails = await User.findById(id);
-        if(firstName || lastName){
 
-            userDetails.firstName = firstName;
-            userDetails.lasttName = lastName;
-            await userDetails.save();
-        }
-
+        userDetails.firstName = firstName;
+        userDetails.lastName = lastName;
+        await userDetails.save();        
+        
         const profileId = userDetails.additionalDetails;
         const profileDetails = await Profile.findById(profileId);
 
@@ -40,11 +39,13 @@ exports.updateProfile = async (req, res) => {
         profileDetails.about = about;
         await profileDetails.save();
 
+        const updatedUserDetails = await User.findById(id).populate("additionalDetails")
+
         // return response
         return res.status(200).json({
             success: true,
             message: "Profile updated successfully.",
-            profileDetails,
+            updatedUserDetails,
         });
 
     } catch (err) {
@@ -139,9 +140,10 @@ exports.getAllUserDetails = async (req, res) => {
 exports.updateDisplayPicture = async (req, res) => {
     try {
         const userId = req.user.id;
-        console.log("UserId -> ", userId);
-        console.log("Type of userId -> ", typeof (userId));
-        const profilePicture = req.files.profilePicture;
+        // console.log("UserId -> ", userId);
+        // console.log("Type of userId -> ", typeof (userId));
+        // console.log("Request ", req)
+        const profilePicture = req.files.displayPicture;
 
         const supportedTypes = ['jpg', 'jpeg', 'png'];
         const fileType = profilePicture.name.split(".")[1].toLowerCase();
@@ -152,6 +154,9 @@ exports.updateDisplayPicture = async (req, res) => {
                 message: "File type not Supperted",
             });
         }
+        console.log("Type of profile picture -> ", typeof (profilePicture));
+
+        console.log("Profile picture", profilePicture);
 
         const response = await uploadImageToCloudinary(profilePicture, "StudyNotion");
         console.log("response -> ", response);
@@ -159,12 +164,12 @@ exports.updateDisplayPicture = async (req, res) => {
         userDetails.image = response.secure_url;
         await userDetails.save();
         console.log("User Details -> ", userDetails);
-
+        const updatedUserDetails = await User.findById(userId).populate("additionalDetails")
         return res.json({
             success: true,
             image_url: response.secure_url,
             message: "Image Uploaded successfully",
-            userDetails,
+            updatedUserDetails:updatedUserDetails,
         });
     } catch (err) {
         console.error(err);
