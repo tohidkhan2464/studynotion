@@ -67,6 +67,7 @@ export function updateDisplayPicture(token, formData) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...");
     try {
+
       const response = await apiConnector({
         method: "PUT",
         url: UPDATE_DISPLAY_PICTURE_API,
@@ -76,7 +77,7 @@ export function updateDisplayPicture(token, formData) {
           Authorization: `Bearer ${token}`,
         },
       });
-
+      console.log("RESPONSE", response)
       if (!response.data.success) {
         throw new Error(response.data.message);
       }

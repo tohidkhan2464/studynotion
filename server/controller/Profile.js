@@ -8,7 +8,7 @@ exports.updateProfile = async (req, res) => {
     try {
 
         // fetch data
-        console.log("Request body ", req.body.firstName);
+        console.log("Request body ", req.body);
         const { firstName, lastName, dateOfBirth = "", about = "", contactNumber="", gender="" } = req.body.firstName;
 
         // get userId
@@ -144,9 +144,11 @@ exports.updateDisplayPicture = async (req, res) => {
         // console.log("Type of userId -> ", typeof (userId));
         // console.log("Request ", req)
         const profilePicture = req.files.displayPicture;
+        // console.log("Profile", profilePicture)
+        // console.log("Profile type", profilePicture.name)
 
         const supportedTypes = ['jpg', 'jpeg', 'png'];
-        const fileType = profilePicture.name.split(".")[1].toLowerCase();
+        const fileType = profilePicture.name.split(".")[-1];
 
         if (supportedTypes.includes(fileType)) {
             return res.status(400).json({
@@ -154,16 +156,16 @@ exports.updateDisplayPicture = async (req, res) => {
                 message: "File type not Supperted",
             });
         }
-        console.log("Type of profile picture -> ", typeof (profilePicture));
+        // console.log("Type of profile picture -> ", typeof (profilePicture));
 
-        console.log("Profile picture", profilePicture);
+        // console.log("Profile picture", profilePicture);
 
         const response = await uploadImageToCloudinary(profilePicture, "StudyNotion");
-        console.log("response -> ", response);
+        // console.log("response -> ", response);
         const userDetails = await User.findByIdAndUpdate(userId);
         userDetails.image = response.secure_url;
         await userDetails.save();
-        console.log("User Details -> ", userDetails);
+        // console.log("User Details -> ", userDetails);
         const updatedUserDetails = await User.findById(userId).populate("additionalDetails")
         return res.json({
             success: true,

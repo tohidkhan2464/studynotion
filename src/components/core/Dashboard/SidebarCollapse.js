@@ -46,7 +46,7 @@ const SidebarCollapse = () => {
         <div
           onClick={(e) => e.stopPropagation()}
           ref={ref}
-          className="transition-all duration-200 mobile:min-h-[calc(100vh-3rem)]"
+          className="transition-all duration-200  mobile:min-h-[calc(100vh-3rem)] min-h-[calc(100vh-3.5rem)]"
         >
           <div className="fixed flex min-w-[222px] flex-col border-r-[1px] border-richblack-700 transition-all duration-200 h-[calc(100vh-3.5rem)] bg-richblack-800 py-10">
             <button className="relative" onClick={() => setOpen(false)}>

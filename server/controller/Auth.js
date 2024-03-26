@@ -183,6 +183,7 @@ exports.login = async (req, res) => {
         message: "All fields are required, please try again.",
       });
     }
+
     // check user exists or not
     const user = await User.findOne({ email }).populate("additionalDetails");
     if (!user) {

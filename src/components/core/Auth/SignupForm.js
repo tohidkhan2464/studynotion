@@ -30,6 +30,7 @@ const SignupForm = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   function changeHandler(event) {
+
     setFormData((prevData) => ({
       ...prevData,
       [event.target.name]: event.target.value,

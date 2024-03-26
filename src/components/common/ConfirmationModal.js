@@ -17,13 +17,11 @@ const ConfirmationModal = ({ modalData }) => {
             text={modalData?.btn1Text}
           />
           <IconBtn
-            onClick={modalData?.btn2Handler}
+            onclick={modalData?.btn2Handler}
             text={modalData.btn2Text}
             bgColor={false}
             textColor={false}
             customclasess={"drop-shadow-[1px_1.5px_rgba(255,255,255,0.25)]"}
-            // className="text-center px-6 py-3 rounded-md font-bold
-            //     bg-richblack-600 hover:scale-95 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-pure-greys-700"
           ></IconBtn>
         </div>
       </div>

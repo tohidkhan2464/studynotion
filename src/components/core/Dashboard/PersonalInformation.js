@@ -40,7 +40,7 @@ const PersonalInformation = () => {
           {/* First Name - Last Name */}
           <div className="flex gap-x-10 mobile:flex-col mobile:gap-y-4 mt-4">
             {/* First Name */}
-            <div className="flex flex-col gap-2 lg:w-[48%]">
+            <div className="flex flex-col gap-2 w-[48%]">
               <label htmlFor="firstName" className="lable-style">
                 First Name
               </label>
@@ -61,7 +61,7 @@ const PersonalInformation = () => {
             </div>
 
             {/* Last Name */}
-            <div className="flex flex-col gap-2 lg:w-[48%]">
+            <div className="flex flex-col gap-2 w-[48%]">
               <label htmlFor="lastName" className="lable-style">
                 Last Name
               </label>
@@ -85,7 +85,7 @@ const PersonalInformation = () => {
           {/* Gender - About */}
           <div className="flex gap-x-10 mt-10 mobile:mt-4 mobile:flex-col mobile:gap-y-4">
             {/* Gender */}
-            <div className="flex flex-col gap-2 lg:w-[48%]">
+            <div className="flex flex-col gap-2 w-[48%]">
               <label htmlFor="gender" className="lable-style">
                 Gender
               </label>
@@ -113,7 +113,7 @@ const PersonalInformation = () => {
             </div>
 
             {/* About */}
-            <div className="flex flex-col gap-2 lg:w-[48%]">
+            <div className="flex flex-col gap-2 w-[48%]">
               <label htmlFor="about" className="lable-style">
                 About
               </label>
@@ -137,7 +137,7 @@ const PersonalInformation = () => {
           {/* Phone Number - Date of Birth */}
           <div className="flex gap-x-10 mt-10 mobile:mt-4 mobile:flex-col mobile:gap-y-4">
             {/* Phone Number */}
-            <div className="flex flex-col gap-2 lg:w-[48%]">
+            <div className="flex flex-col gap-2 w-[48%]">
               <label htmlFor="contactNumber" className="lable-style">
                 Contact Number
               </label>
@@ -147,14 +147,7 @@ const PersonalInformation = () => {
                 id="contactNumber"
                 placeholder="Enter Contact Number"
                 className=" bg-richblack-700 rounded-[0.5rem] text-richblack-5 w-full p-[12px] drop-shadow-[0px_2px_0px_rgba(255,255,255,0.18)]  "
-                {...register("contactNumber", {
-                  required: {
-                    value: true,
-                    message: "Please enter your Contact Number.",
-                  },
-                  maxLength: { value: 12, message: "Invalid Contact Number" },
-                  minLength: { value: 10, message: "Invalid Contact Number" },
-                })}
+                {...register("contactNumber")}
                 defaultValue={user?.additionalDetails?.contactNumber}
               />
               {errors.contactNumber && (
@@ -165,7 +158,7 @@ const PersonalInformation = () => {
             </div>
 
             {/* Date of Birth */}
-            <div className="flex flex-col gap-2 lg:w-[48%]">
+            <div className="flex flex-col gap-2 w-[48%]">
               <label htmlFor="dateOfBirth" className="lable-style">
                 Date of Birth
               </label>
@@ -174,16 +167,7 @@ const PersonalInformation = () => {
                 name="dateOfBirth"
                 id="dateOfBirth"
                 className=" bg-richblack-700 rounded-[0.5rem] text-richblack-5 w-full p-[12px] drop-shadow-[0px_2px_0px_rgba(255,255,255,0.18)]  "
-                {...register("dateOfBirth", {
-                  required: {
-                    value: true,
-                    message: "Please enter your Date of Birth.",
-                  },
-                  max: {
-                    value: new Date().toISOString().split("T")[0],
-                    message: "Date of Birth cannot be in the future.",
-                  },
-                })}
+                {...register("dateOfBirth")}
                 defaultValue={user?.additionalDetails?.dateOfBirth}
               />
               {errors.dateOfBirth && (
@@ -196,11 +180,10 @@ const PersonalInformation = () => {
         </div>
 
         <div className="flex flex-row gap-x-4 mobile:mt-5 justify-end items-center">
-        <IconBtn
+          <IconBtn
             onclick={navigate("/dashboard/my-profile")}
             bgColor={false}
             textColor={false}
-            type={"none"}
             text={"Cancel"}
           ></IconBtn>
           <IconBtn

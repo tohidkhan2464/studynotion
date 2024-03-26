@@ -23,7 +23,7 @@ const MyProfile = () => {
           <div className="flex flex-col mobile:items-center mobile:mt-5 items-start justify-center gap-y-4">
             <p className="text-xl font-semibold">
               {" "}
-              {user?.firstName + " " + user?.lastName}{" "}
+              {user?.firstName + " " +  user?.lastName }
             </p>
             <p className=" text-base text-richblack-300"> {user?.email} </p>
           </div>
