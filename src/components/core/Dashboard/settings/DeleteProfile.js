@@ -1,11 +1,9 @@
 import React from "react";
-import IconBtn from "../../common/IconBtn";
-import trash from "../../../assets/dashboard/fi-br-trash.svg";
-import { deleteProfile } from "../../../services/operations/settingsAPI";
+import trash from "../../../../assets/dashboard/fi-br-trash.svg";
+import { deleteProfile } from "../../../../services/operations/settingsAPI";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
 
 const DeleteProfile = () => {
   const { token } = useSelector((state) => state.auth);

@@ -145,7 +145,7 @@ const Navbar = () => {
               </button>
             </Link>
           )}
-          {user && user.accountType !== "Instructor" && <ProfileDropDown />}
+          {user  && <ProfileDropDown />}
         </div>
       </div>
     </div>

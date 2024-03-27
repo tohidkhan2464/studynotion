@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AiOutlineEye, AiFillCheckCircle, AiOutlineEyeInvisible } from "react-icons/ai";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import countryCodes from "../../../data/countrycode.json";
@@ -100,7 +100,7 @@ const SignupForm = () => {
   
 
   return (
-    <div>
+    <div className="text-richblack-5">
       {/* Student - Instructor Tab */}
       <div className="flex  bg-richblack-800 p-1 gap-x-1 my-6 rounded-full max-w-max">
         <button

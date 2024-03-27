@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { apiConnector } from "../../services/apiConnector";
-import { contactusEndpoint } from "../../services/api";
 import countryCodes from "../../data/countrycode.json";
 
 const ContactUsForm = () => {
@@ -130,7 +128,7 @@ const ContactUsForm = () => {
               {countryCodes.map((element, index) => {
                 return (
                   <option key={index} value={element.dial_code}>
-                    {element.dial_code} {" "}
+                    {element.dial_code}{" "}
                   </option>
                 );
               })}

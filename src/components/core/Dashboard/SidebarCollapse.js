@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import { VscDashboard, VscSignOut } from "react-icons/vsc";
+import { VscSignOut } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CiCircleChevRight } from "react-icons/ci";
 import useOnClickOutside from "../../../hooks/useOnClickOutside";
 import { logout } from "../../../services/operations/authAPI";

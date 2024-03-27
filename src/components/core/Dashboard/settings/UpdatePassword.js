@@ -2,12 +2,11 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { updatePassword } from "../../../services/operations/settingsAPI";
+import { updatePassword } from "../../../../services/operations/settingsAPI";
 import { useForm } from "react-hook-form";
-import IconBtn from "../../common/IconBtn";
+import IconBtn from "../../../common/IconBtn";
 
 const UpdatePassword = () => {
-  const { user } = useSelector((state) => state.profile);
   const { token } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
@@ -51,7 +50,7 @@ const UpdatePassword = () => {
               />
               {errors.currentPassword && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
-                  Please enter your first name.
+                  Please enter your current password.
                 </span>
               )}
             </div>
@@ -71,7 +70,7 @@ const UpdatePassword = () => {
               />
               {errors.newPassword && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
-                  Please enter your last name.
+                  Please enter your new password.
                 </span>
               )}
             </div>

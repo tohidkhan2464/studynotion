@@ -3,8 +3,8 @@ import IconBtn from "./IconBtn";
 
 const ConfirmationModal = ({ modalData }) => {
   return (
-    <div className="text-white  flex items-center top-[50%] justify-center h-[calc(100vh-3.5rem)] w-screen mobile:p-2 backdrop-blur-md py-4 ">
-      <div className=" bg-richblack-600 z-[1000] border-[1px] border-richblack-600 py-8 px-10 rounded-xl flex items-center justify-center flex-col  gap-10">
+    <div className="text-white  flex items-center justify-center h-screen -mt-14 w-screen mobile:p-2 backdrop-blur  ">
+      <div className=" bg-richblack-800 z-[1000] border-[1px] border-richblack-600 py-8 px-10 rounded-xl flex items-center justify-center flex-col  gap-10">
         <p className="text-4xl mobile:text-2xl font-semibold">
           {modalData.text1}
         </p>
@@ -15,6 +15,7 @@ const ConfirmationModal = ({ modalData }) => {
             bgColor={true}
             textColor={true}
             text={modalData?.btn1Text}
+            customclasess={"drop-shadow-[2px_1.5px_rgba(248,239,90, 1)]"}
           />
           <IconBtn
             onclick={modalData?.btn2Handler}
