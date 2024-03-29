@@ -24,7 +24,7 @@ const SidebarCollapse = () => {
   useOnClickOutside(ref, () => setOpen(false));
 
   if (profileLoading || authLoading) {
-    return <div className="spinner mt-10"></div>;
+    return <div className="spinner mt-[20rem] ml-[41rem]"></div>;
   }
 
   if (!user) return null;

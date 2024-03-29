@@ -58,12 +58,21 @@ exports.courseEnrollmentEmail = (courseName, name) =>{
             .highlight{
                 font-weight: bold;
             }
+            button{
+                background-color: #FFD60A;
+                border: 2px solid black;
+                padding: 10px 8px;
+                font-size: large;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+            
 
         </style>
     </head>
     <body>
         <div class="container">
-            <a href="" ><img class="logo" src="" alt="StudyNotion Logo" ></a>
+            <img class="logo" src="https://res.cloudinary.com/dnkp2gm1d/image/upload/v1711551777/StudyNotion/Studynotion_Logo_wanqnk.png" alt="StudyNotion Logo" >
             <div class="message">Course Registration Confirmation</div>
             <div class="body">
                 <p>Dear ${name},</p>
@@ -76,9 +85,11 @@ exports.courseEnrollmentEmail = (courseName, name) =>{
                 <p>
                     Please log in to your learning dashboard to access the course materials and start your learning journey. 
                 </p>
-                <a class="cta" href="">
-                    Go to Dashboard
-                </a>
+                <a  href="#">
+                <button >
+                    Reset Password
+                </button>
+            </a>
             </div>
             <div class="support">
                 If you have any questions or need futher assistance, please feel free to reach us at

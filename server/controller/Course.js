@@ -110,7 +110,7 @@ exports.getAllCourses = async (req, res) => {
     try {
 
         const allcourses = await Course.find({}, {
-            courseName: true, price: true, thumbnail: true, price: true, instructor: true,
+            courseName: true, price: true, thumbnail: true, instructor: true,
             ratingAndReviews: true, studentsEnrolled: true,
         }).populate("instructor").exec();
 

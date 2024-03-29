@@ -31,9 +31,10 @@ const UpdatePassword = () => {
     const token = location.pathname.split("/").at(-1);
     dispatch(resetPassword(password, confirmPassword, token));
   }
+  
 
   return (
-    <div className="w-maxContent w-11/12 h-screen mobile:items-start mobile:pt-[10rem]   text-white flex justify-center items-center gap-2 ">
+    <div className="w-maxContent w-11/12 h-[calc(100vh-3.5rem)] mobile:items-start mobile:pt-[10rem]   text-white flex justify-center items-center gap-2 ">
       {loading ? (
         <div className="spinner"></div>
       ) : (

@@ -1,5 +1,5 @@
 exports.resetPassword = (email, name, link) => {
-    return `
+  return `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -22,28 +22,28 @@ exports.resetPassword = (email, name, link) => {
                 padding: 20px;
                 text-align: center;
             }
-
+    
             .logo{
                 max-width: 200px;
                 margin-bottom: 20px;
             }
-
+    
             .message{
-                font-size: 18px;
-                font-weight: bold;
+                font-size: 20px;
+                font-weight:bolder;
                 margin-bottom: 20px;
             }
             .body{
                 font-size: 16px;
                 margin-bottom: 20px;
             }
-
+    
             .support{
                 font-size: 14px;
                 color: #999999;
                 margin-top: 20px;
             }
-
+    
             .highlight{
                 font-weight: bold;
             }
@@ -53,18 +53,37 @@ exports.resetPassword = (email, name, link) => {
                 font-size:20px;
                 color:black;
             }
-
+            a{
+    
+            }
+            button{
+                background-color: #FFD60A;
+                border: 2px solid black;
+                padding: 10px 8px;
+                font-size: large;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+            .name{
+                font-size: large;
+                font-weight: bold;
+            }
+    
         </style>
     </head>
     <body>
         <div class="container">
-            <a href="" ><img class="logo" src="" alt="StudyNotion Logo" ></a>
+            <img class="logo" src="https://res.cloudinary.com/dnkp2gm1d/image/upload/v1711551777/StudyNotion/Studynotion_Logo_wanqnk.png" alt="StudyNotion Logo" >
             <div class="message">Reset Password</div>
             <div class="body">
-                <p>Hey ${name},</p>
-                <p>We have received a reset password request from your email <span class="email">${email}</span>.</p>
-                <p>If you have request it then please the link provided below for the same.</p>
-                <p><a href="${link}">${link}</a></p>
+                <p>Hey <span class="name">${name},</span></p>
+                <P>We have received a reset password request from your email <span class="email">${email}</span>.
+                If you have request it then please use the link provided below for  the same.</p>
+                <a  href="${link}">
+                    <button >
+                        Reset Password
+                    </button>
+                </a>
                 <p>If you did not request this password change, please contact us immediately to secure your account.</p>
             </div>
             <div class="support">

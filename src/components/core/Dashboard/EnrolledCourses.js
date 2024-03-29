@@ -8,6 +8,8 @@ import { HiDotsVertical } from "react-icons/hi";
 const EnrolledCourses = () => {
   const { token } = useSelector((state) => state.auth);
   const [enrolledCourses, setEnrolledCourses] = useState(null);
+
+  // const [totalDuration, setTotalDuration] = useState(0);
   // const course = {
   //   courseName: "Web Dev",
   //   courseDescription: "A complete Web Dev course",
@@ -19,7 +21,7 @@ const EnrolledCourses = () => {
   //   totalDuration: "1hr 30 mins",
   //   progressPercentage: "",
   // };
-  // setEnrolledCourses(courseSample);
+
   const getEnrolledCourses = async () => {
     try {
       const response = await getUserEnrolledCourses(token);
@@ -35,16 +37,18 @@ const EnrolledCourses = () => {
 
   return (
     <div className="text-white w-11/12 max-w-maxContent flex flex-col  mx-auto my-5">
-      <div className="text-4xl mobile:text-2xl font-medium">Enrolled Courses</div>
+      <div className="text-4xl mobile:text-2xl font-medium">
+        Enrolled Courses
+      </div>
       {!enrolledCourses ? (
-        <div>Loading...</div>
+        <div className="mt-[20rem] ml-[41rem] spinner"></div>
       ) : !enrolledCourses.length ? (
         <p className="text-center mt-[20%] text-4xl mobile:2xl font-semibold">
           You have not enrolled in any course yet
         </p>
       ) : (
         <div>
-          <div className="flex flex-row items-center bg-richblack-500 p-4 text-sm font-medium border-[1px] rounded-t-xl mt-5 border-richblack-500">
+          <div className="flex flex-row items-center bg-richblack-500 p-4 text-richblack-300 text-sm font-medium border-[1px] rounded-t-xl mt-5 border-richblack-500">
             <p className="w-[50%] ">Course Name</p>
             <p className="w-[25%] ">Durations</p>
             <p className="w-[25%] ">Progress</p>
@@ -72,7 +76,7 @@ const EnrolledCourses = () => {
                 </div>
               </div>
               <div className="w-[25%] text-base font-medium ">
-                {course?.totalDuration}
+                {course?.timeDuration}
               </div>
 
               <div className=" w-[25%] flex flex-row gap-2 items-center">

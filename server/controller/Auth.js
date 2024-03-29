@@ -33,7 +33,7 @@ exports.sendOTP = async (req, res) => {
       lowerCaseAlphabets: false,
       digits: true,
     });
-    console.log("OTP generated : ", otp);
+    // console.log("OTP generated : ", otp);
 
     // is otp unique
     let result = await OTP.findOne({ otp: otp });
@@ -50,7 +50,7 @@ exports.sendOTP = async (req, res) => {
 
     // create an entry in DB for OTP
     const otpBody = await OTP.create(otpPayload);
-    console.log("otpbody -> ", otpBody);
+    // console.log("otpbody -> ", otpBody);
 
     // return success response
     res.status(200).json({
@@ -97,8 +97,8 @@ exports.signUp = async (req, res) => {
         message: "All fields are required",
       });
     }
-    console.log("Password", password);
-    console.log("Confirm Password", confirmPassword);
+    // console.log("Password", password);
+    // console.log("Confirm Password", confirmPassword);
     // match password with confirm password
     if (password !== confirmPassword) {
       return res.status(403).json({
@@ -119,10 +119,10 @@ exports.signUp = async (req, res) => {
 
     // find most recent otp stored for user
     const recentOtp = await OTP.find({ email }).sort({ createdAt: -1 });
-    console.log("Recent OTP -> ", recentOtp);
+    // console.log("Recent OTP -> ", recentOtp);
 
-    console.log("otp -> ", otp);
-    console.log("recentOtp.otp -> ", recentOtp[0].otp);
+    // console.log("otp -> ", otp);
+    // console.log("recentOtp.otp -> ", recentOtp[0].otp);
     // validation of otp
     if (recentOtp.length === 0) {
       // OTP not found
@@ -233,7 +233,7 @@ exports.changePassword = async (req, res) => {
   try {
     // get data from req.body
     const userId = req.user.id;
-    console.log("Req body in change password", req.body);
+    // console.log("Req body in change password", req.body);
     const { currentPassword, newPassword } = req.body.currentPassword;
 
     // get oldPassword, newPassword, confirmPassword

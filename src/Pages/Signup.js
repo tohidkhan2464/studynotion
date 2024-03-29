@@ -4,6 +4,8 @@ import Template from '../components/core/Auth/Template'
 
 const Signup = ({ setIsLoggedIn }) => {
   return (
+    <div className=' flex items-center justify-center'>
+
     <Template
       title="Join the millions learning to code with StudyNotion for free."
       desc1="Build skills for today, tomorrow, and beyond."
@@ -11,7 +13,8 @@ const Signup = ({ setIsLoggedIn }) => {
       image={signupImg}
       formType="signup"
       setIsLoggedIn={setIsLoggedIn}
-    />
+      />
+      </div>
   )
 }
 

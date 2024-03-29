@@ -3,7 +3,7 @@ import loginImg from '../assets/login.png'
 
 const Login = ({setIsLoggedIn}) => {
   return (
-    <div className="h-screen mobile:h-full">
+    <div className="h-screen flex items-center justify-center mobile:h-full">
 
     <Template
       title="Welcome Back"

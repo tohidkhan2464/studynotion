@@ -20,7 +20,35 @@ export async function getUserEnrolledCourses(token) {
       },
     });
 
-    console.log("GET USER ENROLLED COURSES API RESPONSE .... ", response);
+    // console.log("GET USER ENROLLED COURSES API RESPONSE .... ", response);
+
+    if (!response.data.success) {
+      throw new Error(response.data.message);
+    }
+
+    result = response.data.courses;
+  } catch (error) {
+    console.log("GET USER ENROLLED COURSES API ERROE .... ", error);
+    toast.error("Could not get Enrolled Courses.");
+  }
+  toast.dismiss(toastId);
+  return result;
+}
+
+export async function getUserCourses(token) {
+  const toastId = toast.loading("loading...");
+  let result = [];
+  try {
+    const response = await apiConnector({
+      method: "GET",
+      url: GET_USER_DETAILS_API,
+      bodyData: null,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    console.log("GET USER  COURSES API RESPONSE .... ", response);
 
     if (!response.data.success) {
       throw new Error(response.data.message);

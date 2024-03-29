@@ -100,7 +100,7 @@ const SignupForm = () => {
   
 
   return (
-    <div className="text-richblack-5">
+    <div className="text-richblack-5 mb-5 ">
       {/* Student - Instructor Tab */}
       <div className="flex  bg-richblack-800 p-1 gap-x-1 my-6 rounded-full max-w-max">
         <button

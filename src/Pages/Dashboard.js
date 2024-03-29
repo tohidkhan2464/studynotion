@@ -9,8 +9,8 @@ const Dashboard = () => {
 
   if (profileLoading || authLoading) {
     return (
-      <div className="h-screen w-screen mx-auto my-auto">
-        <div className="spinner "></div>
+      <div className="h-[calc(100vh-3.5rem)] flex items-center justify-center w-screen mx-auto ">
+        <div className="spinner"></div>
       </div>
     );
   }

@@ -5,7 +5,7 @@ import LoginForm from "./LoginForm";
 
 const Template = ({ title, desc1, desc2, image, formType, setIsLoggedIn }) => {
   return (
-    <div className="flex w-11/12 max-w-[1160px] mobile:flex-col py-12 mx-auto gap-x-12  pb-32 mobile:pb-20 justify-between gap-y-0 ">
+    <div className="flex w-11/12 max-w-[1160px] mobile:flex-col py-12 mx-auto gap-x-12 items-center  pb-32 mobile:pb-20 justify-between gap-y-0 ">
       <div className=" w-11/12 max-w-[450px] mobile:w-full mobile:max-w-[350px] mobile:mx-auto ">
         <h1 className="text-richblack-5 font-semibold text-[1.75rem] leading-[2.75rem]">
           {title}

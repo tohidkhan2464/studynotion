@@ -12,7 +12,7 @@ exports.uploadImageToCloudinary = async (file, folder, height, quality)=>{
     }
 
     options.resource_type = 'auto';
-    console.log("File coudinary", file)
+    // console.log("File coudinary", file)
 
     return await cloudinary.uploader.upload(file.tempFilePath, options);
 }

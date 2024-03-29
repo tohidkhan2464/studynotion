@@ -47,7 +47,7 @@ const VerifyEmail = () => {
   };
 
   return (
-    <div className="w-maxContent w-11/12 h-screen  mobile:items-start mobile:pt-[15rem]  flex justify-center items-center gap-2 ">
+    <div className="w-maxContent w-11/12 h-[calc(100vh-3.5rem)]  mobile:items-start mobile:pt-[15rem]  flex justify-center items-center gap-2 ">
       {loading ? (
         <div className="spinner"></div>
       ) : (
