@@ -4,11 +4,17 @@ const {
   createCourse,
   getAllCourses,
   getCourseDetails,
+  editCourse,
+  deleteCourse,
+  getInstructorCourses,
+  getFullCourseDetails,
 } = require("../controller/Course");
 const {
   createCategory,
   showAllCategories,
   categoryPageDetails,
+  deleteCategory,
+  updateCategory,
 } = require("../controller/Category");
 const {
   createSection,
@@ -34,18 +40,18 @@ const {
 
 router.get("/getAllCourses", getAllCourses);
 router.post("/getCourseDetails", getCourseDetails);
-// router.put("/editCourse", editCourse);
+router.put("/editCourse", auth, isInstructor, editCourse);
 router.get("/showAllCategories", showAllCategories);
 router.post("/createCourse", auth, isInstructor, createCourse);
 router.post("/addSection", auth, isInstructor, createSection);
 router.post("/addSubSection", auth, isInstructor, createSubsection);
 router.post("/updateSection", auth, isInstructor, updateSection);
 router.post("/updateSubSection", auth, isInstructor, updateSubsection);
-// router.get("/getInstructorCourses", getInstructorCourses);
+router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses);
 router.post("/deleteSection", auth, isInstructor, deleteSection);
 router.post("/deleteSubSection", auth, isInstructor, deleteSubsection);
-// router.post("/deleteCourse", auth, isInstructor, deleteCourse);
-// router.get("/getFullCourseDetails", getFullCourseDetails);
+router.post("/deleteCourse", auth, isInstructor, deleteCourse);
+router.get("/getFullCourseDetails", auth, getFullCourseDetails);
 // router.post("/updateCourseProgress", auth, updateCourseProgress);
 router.post("/createRating", auth, isStudent, createRating);
 
@@ -53,8 +59,8 @@ router.get("/getReviews", getAllRating);
 
 router.get("/showAllCategories", showAllCategories);
 router.post("/createCategory", auth, isAdmin, createCategory);
-// router.delete("/deleteCategory", auth, isAdmin, deleteCategory);
-// router.put("/updateCategory", auth, isAdmin, updateCategory);
+router.delete("/deleteCategory", auth, isAdmin, deleteCategory);
+router.put("/updateCategory", auth, isAdmin, updateCategory);
 
 router.post("/getCategoryPageDetails", categoryPageDetails);
 

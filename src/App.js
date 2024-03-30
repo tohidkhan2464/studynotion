@@ -20,12 +20,13 @@ import Cart from "./components/core/Dashboard/Cart";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import { useSelector } from "react-redux";
 import MyCourses from "./components/core/Dashboard/Instructor/My Courses/MyCourses";
+import AddCourse from "./components/core/Dashboard/AddCourse";
 
 function App() {
   const { user } = useSelector((state) => state.profile);
 
   return (
-    <div className=" w-screen bg-richblack-900 flex flex-col font-inter">
+    <div className=" w-screen min-h-scree bg-richblack-900 flex flex-col font-inter">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -93,7 +94,7 @@ function App() {
           {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
             <>
               <Route path="/dashboard/my-courses" element={<MyCourses />} />
-              <Route path="/dashboard/add-course" />
+              <Route path="/dashboard/add-course" element={<AddCourse />} />
               <Route path="/dashboard/instructor" />
             </>
           )}

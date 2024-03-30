@@ -8,6 +8,7 @@ const {
   getUserDetails,
   updateDisplayPicture,
   getEnrolledCourses,
+  deleteAccountByAdmin,
 } = require("../controller/Profile");
 
 router.delete("/deleteProfile", auth, deleteAccount);
@@ -18,7 +19,7 @@ router.get("/getUserDetails", auth, getUserDetails);
 router.get("/getEnrolledCourses", auth, getEnrolledCourses);
 router.get("/allUserData", auth, getAllUserDetails);
 router.get("/userProfile", auth, isInstructor, getUserDetails);
-// router.get("/deleteAccountByAdmin", auth, isAdmin, deleteAccountByAdmin);
+router.get("/deleteAccountByAdmin", auth, isAdmin, deleteAccountByAdmin);
 // router.get("/instructorDashboard", auth,isInstructor, getInstructorDashboard);
 
 // router.post("/createSocial", auth createSocial)

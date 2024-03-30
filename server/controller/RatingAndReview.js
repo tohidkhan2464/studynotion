@@ -121,7 +121,6 @@ exports.getAllRating = async (req, res) => {
     }
 };
 
-// // TODO : Get course specific all rating and review
 exports.getAllCourseRating = async (req, res) => {
     try {
         // fetch courseId

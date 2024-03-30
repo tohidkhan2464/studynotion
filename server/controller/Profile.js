@@ -69,12 +69,9 @@ exports.updateProfile = async (req, res) => {
 // delete account
 exports.deleteAccount = async (req, res) => {
   try {
-    // fetch id
     const id = req.user.id;
-    console.log("id ->", id);
-    // validate
     const userDetails = await User.findById(id);
-    console.log("userDetails ->", userDetails);
+
     if (!userDetails) {
       return res.status(404).json({
         success: false,
@@ -82,17 +79,12 @@ exports.deleteAccount = async (req, res) => {
       });
     }
 
-    // delete profile
     await Profile.findByIdAndDelete({ _id: userDetails.additionalDetails });
-
-    // // TODO : HW unenrolled user from all enrolled courses
 
     await Course.findOneAndDelete({ studentsEnrolled: id });
 
-    // delete user
     await User.findByIdAndDelete({ _id: id });
 
-    // return response
     return res.status(200).json({
       success: true,
       message: "User Deleted successfully.",
@@ -143,7 +135,6 @@ exports.getAllUserDetails = async (req, res) => {
       userDetails,
       courses: userDetails.courses,
     });
-    
   } catch (err) {
     console.log(err);
     return res.status(500).json({
@@ -268,6 +259,38 @@ exports.getEnrolledCourses = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Something went wrong",
+    });
+  }
+};
+
+exports.deleteAccountByAdmin = async (req, res) => {
+  try {
+    const id = req.user.id;
+    const userDetails = await User.findById(id);
+
+    if (!userDetails) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found.",
+      });
+    }
+
+    await Profile.findByIdAndDelete({ _id: userDetails.additionalDetails });
+
+    await Course.findOneAndDelete({ studentsEnrolled: id });
+
+    await User.findByIdAndDelete({ _id: id });
+
+    return res.status(200).json({
+      success: true,
+      message: "User Deleted successfully by Admin.",
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      success: false,
+      message: "Unable to delete profile.",
+      error: err.message,
     });
   }
 };
