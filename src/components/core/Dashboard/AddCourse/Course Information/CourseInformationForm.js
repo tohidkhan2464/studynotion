@@ -13,7 +13,7 @@ import IconBtn from "../../../../common/IconBtn";
 import { toast } from "react-hot-toast";
 import { COURSE_STATUS } from "../../../../../utils/constants";
 import ChipInput from "./ChipInput";
-import Upload from "./Upload";
+import Upload from "../Upload";
 
 const CourseInformationForm = () => {
   const {
@@ -111,12 +111,12 @@ const CourseInformationForm = () => {
             JSON.stringify(data.courseRequirements)
           );
         }
-        // console.log("FORM DATA", formData);
+        console.log("FORM DATA", formData);
         setLoading(true);
         const result = await editCourseDetails(formData, token);
         setLoading(false);
         if (result) {
-          setStep(2);
+          dispatch(setStep(2));
           dispatch(setCourse(result));
         }
       } else {
@@ -140,11 +140,11 @@ const CourseInformationForm = () => {
     setLoading(true);
     const result = await addCourseDetails(formData, token);
     if (result) {
-      setStep(2);
+      dispatch(setStep(2));
       dispatch(setCourse(result));
     }
     setLoading(false);
-    // console.log("FORM DATA", formData);
+    console.log("FORM DATA", formData);
   };
 
   return (
