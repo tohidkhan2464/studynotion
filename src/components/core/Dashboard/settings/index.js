@@ -5,7 +5,7 @@ import DeleteProfile from "./DeleteProfile";
 
 const Settings = () => {
   return (
-    <div className="text-white w-11/12 max-w-maxContent flex flex-col items-center mx-auto my-12">
+    <div className="text-white w-11/12 desktop:ml-[15rem] desktop:w-9/12 max-w-maxContent flex flex-col items-center mx-auto my-12">
       <h1 className="text-4xl mobile:text-2xl font-semibold">Edit Profile</h1>
 
       {/* Section 1 Display Picture*/}

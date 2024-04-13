@@ -3,7 +3,7 @@ import IconBtn from "./IconBtn";
 
 const ConfirmationModal = ({ modalData }) => {
   return (
-    <div className="text-white  flex items-center justify-center h-screen -mt-14 w-screen mobile:p-2 backdrop-blur  ">
+    <div className="text-white z-[1000]  flex items-center justify-center h-screen w-screen -mt-14 mobile:p-2 backdrop-blur  ">
       <div className=" bg-richblack-800 z-[1000] border-[1px] border-richblack-600 py-8 px-10 rounded-xl flex items-center justify-center flex-col  gap-10">
         <p className="text-4xl mobile:text-2xl font-semibold">
           {modalData.text1}

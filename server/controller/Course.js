@@ -12,10 +12,10 @@ exports.createCourse = async (req, res) => {
     // fetch the data
     const { courseName, courseDescription, whatYouWillLearn, price, category } =
       req.body;
-
+    console.log("req body", req.body)
     // get thumbnail
     const thumbnail = req.files.thumbnail;
-
+    
     // validation
     console.log("courseName -> ", courseName);
     console.log("courseDescription -> ", courseDescription);
@@ -86,8 +86,6 @@ exports.createCourse = async (req, res) => {
       },
       { new: true }
     );
-
-    // // TODO: HW update the category schema
 
     await Category.findByIdAndUpdate(
       { _id: tagDetails._id },

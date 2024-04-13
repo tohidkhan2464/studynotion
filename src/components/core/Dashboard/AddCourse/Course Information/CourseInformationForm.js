@@ -61,10 +61,10 @@ const CourseInformationForm = () => {
       currentValues.courseTitle !== course.courseName ||
       currentValues.courseShortDesc !== course.courseDescription ||
       currentValues.coursePrice !== course.price ||
-      //  currentValues.coursetags.toString() !== course.tag.toString() ||
+       currentValues.coursetags.toString() !== course.tag.toString() ||
       currentValues.courseBenefits !== course.whatYouWillLearn ||
       currentValues.courseCategory._id !== course.category._id ||
-      //   currentValues.courseImage !== course.thumbnail ||
+        currentValues.courseImage !== course.thumbnail ||
       currentValues.courseRequirements.toString() !==
         course.instructions.toString()
     ) {

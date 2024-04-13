@@ -36,7 +36,7 @@ const EnrolledCourses = () => {
   }, []);
 
   return (
-    <div className="text-white w-11/12 max-w-maxContent flex flex-col  mx-auto my-5">
+    <div className="text-white w-11/12 desktop:ml-[20rem] desktop:w-9/12 max-w-maxContent flex flex-col  mx-auto my-5">
       <div className="text-4xl mobile:text-2xl font-medium">
         Enrolled Courses
       </div>

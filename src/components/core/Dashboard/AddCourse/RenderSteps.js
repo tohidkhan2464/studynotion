@@ -25,7 +25,7 @@ const RenderSteps = () => {
     <>
       <div className="relative mb-2 flex w-full justify-center ">
         {steps.map((item) => (
-          <>
+          <React.Fragment key={item.id} >
             <div className="flex flex-col items-center">
               <div
                 className={`grid cursor-default aspect-square w-[45px] h-[45px] place-items-center rounded-full border-[1px] ${
@@ -49,13 +49,13 @@ const RenderSteps = () => {
                 ></div>
               </>
             )}
-          </>
+          </React.Fragment>
         ))}
       </div>
 
       <div className="flex relative mb-5 w-full select-none justify-between px-10">
         {steps.map((item) => (
-          <>
+          <React.Fragment key={item.id}>
             <div
               className={`flex min-w-[130px] flex-col items-center gap-y-2 rounded-full ${
                 step === item.id ? " text-richblack-5" : " text-richblack-300"
@@ -63,7 +63,7 @@ const RenderSteps = () => {
             >
               <p>{item.title}</p>
             </div>
-          </>
+          </React.Fragment>
         ))}
       </div>
 

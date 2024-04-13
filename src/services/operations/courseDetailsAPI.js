@@ -151,7 +151,7 @@ export const editCourseDetails = async (data, token) => {
 };
 
 // create a section
-export const createSection = async (data, token) => {
+export const createSection = async ({data, token}) => {
   let result = null;
   const toastId = toast.loading("Loading...");
   try {
@@ -163,12 +163,12 @@ export const createSection = async (data, token) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    // console.log("CREATE SECTION API RESPONSE............", response);
+    console.log("CREATE SECTION API RESPONSE............", response);
     if (!response?.data?.success) {
       throw new Error("Could Not Create Section");
     }
     toast.success("Course Section Created");
-    result = response?.data?.updatedCourse;
+    result = response?.data?.data;
   } catch (error) {
     console.log("CREATE SECTION API ERROR............", error);
     toast.error(error.message);
@@ -181,16 +181,18 @@ export const createSection = async (data, token) => {
 export const createSubSection = async (data, token) => {
   let result = null;
   const toastId = toast.loading("Loading...");
+  console.log("FORM DATA.....", data);
   try {
     const response = await apiConnector({
       method: "POST",
       url: CREATE_SUBSECTION_API,
       bodyData: data,
       headers: {
+        "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${token}`,
       },
     });
-    // console.log("CREATE SUB-SECTION API RESPONSE............", response);
+    console.log("CREATE SUB-SECTION API RESPONSE............", response);
     if (!response?.data?.success) {
       throw new Error("Could Not Add Lecture");
     }
@@ -217,7 +219,7 @@ export const updateSection = async (data, token) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    // console.log("UPDATE SECTION API RESPONSE............", response);
+    console.log("UPDATE SECTION API RESPONSE............", response);
     if (!response?.data?.success) {
       throw new Error("Could Not Update Section");
     }
