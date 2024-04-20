@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RxDropdownMenu } from "react-icons/rx";
@@ -13,7 +13,6 @@ import {
   deleteSubSection,
 } from "../../../../../services/operations/courseDetailsAPI";
 import { setCourse } from "../../../../../slices/courseSlice";
-import { formatDate } from "../../../../../services/formatDate";
 
 const NestedView = ({ hadnleChangeEditSectionName }) => {
   const { course } = useSelector((state) => state.course);
@@ -26,8 +25,6 @@ const NestedView = ({ hadnleChangeEditSectionName }) => {
   const [editSubSection, setEditSubSection] = useState(null);
 
   const [confirmationModal, setConfirmationModal] = useState(null);
-  const isTime = 'sdf';  
-  const isDate=false;
   const handleDeleteSection = async (sectionId) => {
     const result = await deleteSection({
       sectionId,
@@ -124,7 +121,7 @@ const NestedView = ({ hadnleChangeEditSectionName }) => {
                     <div className="flex items-center gap-x-3 py-2">
                       <RxDropdownMenu className="text-2xl text-richblack-50" />
                       <p className="font-semibold text-richblack-50">
-                        {subSection?.title} 
+                        {subSection?.title}
                       </p>
                     </div>
 

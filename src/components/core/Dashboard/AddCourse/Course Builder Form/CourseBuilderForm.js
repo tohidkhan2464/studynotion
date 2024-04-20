@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import IconBtn from "../../../../common/IconBtn";
 import { BsPlusCircleDotted } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
 import { IoChevronForwardOutline, IoChevronBackOutline } from "react-icons/io5";
 import {
   setCourse,
@@ -45,13 +45,15 @@ const CourseBuilderForm = () => {
 
   const gotoNext = () => {
     // if course doesnot contain any section
-    if (course.courseContent.length === 0) {
+    if (course?.courseContent.length === 0) {
       toast.error("Please add atleast one Section");
       return;
     }
 
     // if section doesnot contain any Subsection
-    if (course.courseContent.some((section) => section.subSection.length === 0)) {
+    if (
+      course?.courseContent.some((section) => section?.subSections.length === 0)
+    ) {
       toast.error("Please add atleast one lecture in each section");
       return;
     }
@@ -77,18 +79,18 @@ const CourseBuilderForm = () => {
       );
     } else {
       // create Section
-      result = await createSection(
-        {data:{
+      result = await createSection({
+        data: {
           sectionName: data.sectionName,
           courseId: course._id,
         },
-        token:token}
-      );
+        token: token,
+      });
     }
 
     //update Values
     if (result) {
-      console.log("RESULT AFTER SECTION CREATION IN COURSE BUILDER ", result);
+      console.log("RESULT AFTER SECTION CREATION/UPDATION IN COURSE BUILDER ", result);
       dispatch(setCourse(result));
       setEditSectionName(null);
       setValue("sectionName", "");
@@ -140,7 +142,7 @@ const CourseBuilderForm = () => {
             outline={true}
             customclasess={"flex flex-row gap-2 items-center text-yellow-50"}
           >
-            <BsPlusCircleDotted className="text-yellow-50" fontSize={20}/>
+            <BsPlusCircleDotted className="text-yellow-50" fontSize={20} />
           </IconBtn>
 
           {editSectionName && (
@@ -162,14 +164,27 @@ const CourseBuilderForm = () => {
 
       {/* Buttons */}
       <div className="flex z-50 justify-end gap-x-3">
-        <IconBtn text="Back" onclick={gotoBack} disabled={loading} customclasess={"flex flex-row-reverse gap-2 items-center"} bgColor={false} textColor={false}>
+        <IconBtn
+          text="Back"
+          onclick={gotoBack}
+          disabled={loading}
+          customclasess={"flex flex-row-reverse gap-2 items-center"}
+          bgColor={false}
+          textColor={false}
+        >
           <IoChevronBackOutline className="text-xl" />
         </IconBtn>
-        <IconBtn text="Next" onclick={gotoNext} disabled={loading} customclasess={"flex flex-row gap-2 items-center"} bgColor={true} textColor={true}>
+        <IconBtn
+          text="Next"
+          onclick={gotoNext}
+          disabled={loading}
+          customclasess={"flex flex-row gap-2 items-center"}
+          bgColor={true}
+          textColor={true}
+        >
           <IoChevronForwardOutline className="text-xl" />
         </IconBtn>
       </div>
-
     </div>
   );
 };

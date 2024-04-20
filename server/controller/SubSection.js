@@ -38,7 +38,7 @@ exports.createSubsection = async (req, res) => {
     // create the subsection
     const subsectionDetails = await SubSection.create({
       title: title,
-        timeDuration: uploadDetails.duration,
+      timeDuration: uploadDetails.duration,
       description: description,
       videoUrl: uploadDetails.secure_url,
     });
@@ -75,13 +75,18 @@ exports.createSubsection = async (req, res) => {
 exports.updateSubsection = async (req, res) => {
   try {
     // fetch data from req.body
-    const { subsectionId, title, timeDuration, description } = req.body;
+    const { sectionId, subSectionId, title = "", description = "" } = req.body;
+    // console.log("sectionId", sectionId);
+    // console.log("title", title);
+    // console.log("subsectionId", subSectionId);
+    // console.log("description", description);
 
     // extract file/video
-    const video = req.files.videoFile;
+    const video = req.files.videoUrl;
+    // console.log("videoUrl", video);
 
     // validation
-    if (!subsectionId || !title || !timeDuration || !description || !video) {
+    if (!subSectionId || !title || !description || !video) {
       return res.status(400).json({
         success: false,
         message: "All fields are required.",
@@ -95,19 +100,21 @@ exports.updateSubsection = async (req, res) => {
     );
 
     // get subsectionDetails
-    const subsectionDetails = await SubSection.findById(subsectionId);
+    const subsectionDetails = await SubSection.findById(subSectionId);
 
     subsectionDetails.title = title;
-    subsectionDetails.timeDuration = timeDuration;
+    subsectionDetails.timeDuration = uploadDetails.duration;
     subsectionDetails.description = description;
     subsectionDetails.videoUrl = uploadDetails.secure_url;
     await subsectionDetails.save();
-
+    const section = await Section.findById(sectionId)
+      .populate("subSections")
+      .exec();
     // return response
     return res.status(200).json({
       success: true,
       message: "SubSection updated successfully.",
-      subsectionDetails,
+      data: section,
     });
   } catch (err) {
     console.log(err);
@@ -132,7 +139,7 @@ exports.deleteSubsection = async (req, res) => {
     )
       .populate("subSections")
       .exec();
-    
+
     await SubSection.findByIdAndDelete({ _id: subSectionId });
 
     return res.status(200).json({
@@ -140,7 +147,6 @@ exports.deleteSubsection = async (req, res) => {
       message: "Subsection Deleted successfully.",
       data: updatedSection,
     });
-    
   } catch (err) {
     console.log(err);
     return res.status(500).json({

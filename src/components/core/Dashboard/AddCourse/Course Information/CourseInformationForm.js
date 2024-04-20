@@ -6,6 +6,7 @@ import {
   editCourseDetails,
   fetchCourseCategories,
 } from "../../../../../services/operations/courseDetailsAPI";
+import { IoChevronForwardOutline } from "react-icons/io5";
 import { HiOutlineCurrencyRupee } from "react-icons/hi";
 import RequirementField from "./RequirementField";
 import { setCourse, setStep } from "../../../../../slices/courseSlice";
@@ -61,10 +62,10 @@ const CourseInformationForm = () => {
       currentValues.courseTitle !== course.courseName ||
       currentValues.courseShortDesc !== course.courseDescription ||
       currentValues.coursePrice !== course.price ||
-       currentValues.coursetags.toString() !== course.tag.toString() ||
+      currentValues.coursetags.toString() !== course.tag.toString() ||
       currentValues.courseBenefits !== course.whatYouWillLearn ||
       currentValues.courseCategory._id !== course.category._id ||
-        currentValues.courseImage !== course.thumbnail ||
+      currentValues.courseImage !== course.thumbnail ||
       currentValues.courseRequirements.toString() !==
         course.instructions.toString()
     ) {
@@ -150,7 +151,7 @@ const CourseInformationForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="mb-20">
+    <form onSubmit={handleSubmit(onSubmit)} className="mb-20 ">
       <div className="rounded-md border-richblack-700 border-[1px] bg-richblack-800 mt-10 p-8 space-y-8">
         <div>
           <label
@@ -289,18 +290,23 @@ const CourseInformationForm = () => {
         />
       </div>
 
-      <div className="mt-2 text-right">
+      <div className="mt-2 text-right flex flex-row gap-4 justify-end">
         {editCourse && (
           <button onClick={() => dispatch(setStep(2))}>
             Continue without Saving
           </button>
         )}
         <IconBtn
-          text={!editCourse ? (loading? "loading..." : "Next"): "Save changes"}
-          textColor={loading? false : true}
-          bgColor={loading? false : true}
+          text={
+            !editCourse ? (loading ? "loading..." : "Next") : "Save changes"
+          }
+          customclasess={"flex flex-row gap-1 items-center"}
+          textColor={loading ? false : true}
           type={"submit"}
-        />
+          bgColor={loading ? false : true}
+        >
+          <IoChevronForwardOutline className="text-xl" />
+        </IconBtn>
       </div>
     </form>
   );

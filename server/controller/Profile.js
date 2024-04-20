@@ -3,6 +3,7 @@ const Course = require("../models/Course");
 const Profile = require("../models/Profile");
 const User = require("../models/User");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
+const { convertSecondsToDuration } = require("../utils/secToDuration");
 
 // update the additional details in the profile
 exports.updateProfile = async (req, res) => {
@@ -247,12 +248,21 @@ exports.getEnrolledCourses = async (req, res) => {
       .populate({ path: "courseContent", populate: { path: "subSections" } })
       .populate({ path: "ratingAndReviews" })
       .exec();
+    let totalDurationInSeconds = 0;
+    courseDetails.courseContent.forEach((content) => {
+      content.subSections.forEach((subSection) => {
+        const timeDurationInSeconds = parseInt(subSection.timeDuration);
+        totalDurationInSeconds += timeDurationInSeconds;
+      });
+    });
 
+    const totalDuration = convertSecondsToDuration(totalDurationInSeconds);
     // console.log("courseDetails ->", courseDetails);
     return res.status(200).json({
       success: true,
       message: "Courses fetched successfully",
       courses: courseDetails,
+      duration: totalDuration,
     });
   } catch (err) {
     console.error(err);

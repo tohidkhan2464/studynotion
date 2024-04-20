@@ -124,7 +124,7 @@ export const addCourseDetails = async (data, token) => {
 // edit the course details
 export const editCourseDetails = async (data, token) => {
   let result = null;
-  console.log("FORM DATA.....", data);
+  // console.log("FORM DATA.....", data);
   const toastId = toast.loading("Loading...");
   try {
     const response = await apiConnector({
@@ -237,6 +237,7 @@ export const updateSection = async (data, token) => {
 // update a subsection
 export const updateSubSection = async (data, token) => {
   let result = null;
+  console.log("Data in update api ", data);
   const toastId = toast.loading("Loading...");
   try {
     const response = await apiConnector({
@@ -247,7 +248,7 @@ export const updateSubSection = async (data, token) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    // console.log("UPDATE SUB-SECTION API RESPONSE............", response);
+    console.log("UPDATE SUB-SECTION API RESPONSE............", response);
     if (!response?.data?.success) {
       throw new Error("Could Not Update Lecture");
     }
@@ -329,7 +330,7 @@ export const fetchInstructorCourses = async (token) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    // console.log("INSTRUCTOR COURSES API RESPONSE............", response);
+    console.log("INSTRUCTOR COURSES API RESPONSE............", response);
     if (!response?.data?.success) {
       throw new Error("Could Not Fetch Instructor Courses");
     }

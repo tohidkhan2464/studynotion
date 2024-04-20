@@ -40,7 +40,7 @@ const {
 
 router.get("/getAllCourses", getAllCourses);
 router.post("/getCourseDetails", getCourseDetails);
-router.put("/editCourse", auth, isInstructor, editCourse);
+router.post("/editCourse", auth, isInstructor, editCourse);
 router.get("/showAllCategories", showAllCategories);
 router.post("/createCourse", auth, isInstructor, createCourse);
 router.post("/addSection", auth, isInstructor, createSection);

@@ -50,7 +50,7 @@ exports.createSection = async (req, res) => {
 exports.updateSection = async (req, res) => {
   try {
     // fetch data
-    const { sectionName, sectionId } = req.body;
+    const { sectionName, sectionId, courseId } = req.body;
 
     // data validation
     if (!sectionName || !sectionId) {
@@ -61,17 +61,22 @@ exports.updateSection = async (req, res) => {
     }
 
     // update data
-    const section = await Section.findByIdAndUpdate(
-      sectionId,
-      { sectionName },
-      { new: true }
-    );
+    await Section.findByIdAndUpdate(sectionId, { sectionName }, { new: true });
+
+    const course = await Course.findById(courseId)
+      .populate({
+        path: "courseContent",
+        populate: {
+          path: "subSections",
+        },
+      })
+      .exec();
 
     // return response
     return res.status(200).json({
       success: true,
       message: "Section updated successfully.",
-      section,
+      data: course,
     });
   } catch (err) {
     console.log(err);

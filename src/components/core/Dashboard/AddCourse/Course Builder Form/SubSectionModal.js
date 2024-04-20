@@ -59,7 +59,7 @@ const SubSectionModal = ({
     const formData = new FormData();
 
     formData.append("sectionId", modalData.sectionId);
-    formData.append("subSection", modalData._id);
+    formData.append("subSectionId", modalData._id);
 
     if (currentValues.lectureTitle !== modalData.title) {
       formData.append("title", currentValues.lectureTitle);
@@ -72,11 +72,10 @@ const SubSectionModal = ({
     }
 
     setLoading(true);
-
+    console.log("Form data in subsection modal", formData);
     //API Call
     const result = await updateSubSection(formData, token);
     if (result) {
-      // Todo aur kya kya kar skte ho
       const updatedCourseContent = course.courseContent.map((section) =>
         section._id === modalData.sectionId ? result : section
       );
@@ -94,7 +93,7 @@ const SubSectionModal = ({
     }
 
     if (edit) {
-      if (isFormUpdated) {
+      if (!isFormUpdated) {
         toast.error("No changes made to the form");
       } else {
         // edit kardo
@@ -110,7 +109,6 @@ const SubSectionModal = ({
     formData.append("title", data.lectureTitle);
     formData.append("description", data.lectureDesc);
     formData.append("videoUrl", data.lectureVideo);
-    // formData.append("duration", data.duration);
 
     setLoading(true);
 
