@@ -52,17 +52,6 @@ exports.createSubsection = async (req, res) => {
       .populate("subSections")
       .exec();
 
-    const courseDetails = await Course.find({
-      courseContent: updatedSection._id,
-    })
-      .populate({
-        path: "courseContent",
-        populate: {
-          path: "subSections",
-        },
-      })
-      .exec();
-
     // // TODO :  log updated section here, after adding populate query
 
     // return response
@@ -70,7 +59,7 @@ exports.createSubsection = async (req, res) => {
       success: true,
       message: "Subsection created successfully.",
       //   updatedSection,
-      data: courseDetails,
+      data: updatedSection,
     });
   } catch (err) {
     console.log(err);
@@ -134,20 +123,24 @@ exports.updateSubsection = async (req, res) => {
 exports.deleteSubsection = async (req, res) => {
   try {
     // fetch subsectio id
-    const { subsectionId, sectionId } = req.body;
+    const { subSectionId, sectionId } = req.body;
 
-    await Section.findByIdAndUpdate(
+    const updatedSection = await Section.findByIdAndUpdate(
       { _id: sectionId },
-      { $pull: { subSections: { _id: subsectionId } } },
+      { $pull: { subSections: subSectionId } },
       { new: true }
-    );
-
-    await SubSection.findByIdAndDelete(subsectionId);
+    )
+      .populate("subSections")
+      .exec();
+    
+    await SubSection.findByIdAndDelete({ _id: subSectionId });
 
     return res.status(200).json({
       success: true,
       message: "Subsection Deleted successfully.",
+      data: updatedSection,
     });
+    
   } catch (err) {
     console.log(err);
     return res.status(500).json({

@@ -16,6 +16,7 @@ import { setCourse } from "../../../../../slices/courseSlice";
 
 const NestedView = ({ hadnleChangeEditSectionName }) => {
   const { course } = useSelector((state) => state.course);
+  console.log("Course", course);
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -28,7 +29,7 @@ const NestedView = ({ hadnleChangeEditSectionName }) => {
   const handleDeleteSection = async (sectionId) => {
     const result = await deleteSection({
       sectionId,
-      course: course._id,
+      courseId: course._id,
       token,
     });
 
@@ -37,16 +38,6 @@ const NestedView = ({ hadnleChangeEditSectionName }) => {
     }
     setConfirmationModal(null);
   };
-
-  // useEffect(() => {
-  //   course?.courseContent?.map((section) =>
-  //     // console.log("section", section)
-
-  //     section?.subSections?.map((subSection) =>
-  //       console.log("subsection", subSection)
-  //     )
-  //   );
-  // }, []);
 
   const handleDeleteSubSection = async (subSectionId, sectionId) => {
     const result = await deleteSubSection({
@@ -69,9 +60,9 @@ const NestedView = ({ hadnleChangeEditSectionName }) => {
 
   return (
     <>
-      <div className=" relative  w-full">
+      <div className=" relative overflow-y-hidden  w-full">
         <div className="rounded-lg bg-richblack-700 p-2 px-8">
-          {course?.courseContent?.map((section) => (
+          {course?.courseContent.map((section) => (
             <details key={section._id} open>
               <summary className="flex items-center justify-between py-1 border-b-2 border-richblack-600 cursor-pointer">
                 {/* Section  */}
@@ -210,7 +201,7 @@ const NestedView = ({ hadnleChangeEditSectionName }) => {
         )}
       </div>
       {confirmationModal && (
-        <div className="h-screen w-screen absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+        <div className="h-[100vh] z-10 w-screen absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
           <ConfirmationModal modalData={confirmationModal} />
         </div>
       )}

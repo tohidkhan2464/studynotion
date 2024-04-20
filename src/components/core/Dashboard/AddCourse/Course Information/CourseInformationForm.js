@@ -117,6 +117,7 @@ const CourseInformationForm = () => {
         setLoading(false);
         if (result) {
           dispatch(setStep(2));
+          console.log("RESULT AFTER COURSE EDITING IN COURSE INFO ", result);
           dispatch(setCourse(result));
         }
       } else {
@@ -141,6 +142,7 @@ const CourseInformationForm = () => {
     const result = await addCourseDetails(formData, token);
     if (result) {
       dispatch(setStep(2));
+      console.log("RESULT AFTER COURSE CREATION IN COURSE INFO ", result);
       dispatch(setCourse(result));
     }
     setLoading(false);

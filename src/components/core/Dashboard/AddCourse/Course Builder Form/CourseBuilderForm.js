@@ -88,6 +88,7 @@ const CourseBuilderForm = () => {
 
     //update Values
     if (result) {
+      console.log("RESULT AFTER SECTION CREATION IN COURSE BUILDER ", result);
       dispatch(setCourse(result));
       setEditSectionName(null);
       setValue("sectionName", "");

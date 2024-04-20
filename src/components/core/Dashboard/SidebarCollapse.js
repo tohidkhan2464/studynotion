@@ -110,7 +110,7 @@ const SidebarCollapse = () => {
           </div>
         </div>
       )}
-      {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
+      {confirmationModal && (<ConfirmationModal modalData={confirmationModal} />)}
     </button>
   );
 };

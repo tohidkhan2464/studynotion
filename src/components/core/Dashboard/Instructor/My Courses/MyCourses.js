@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { getUserEnrolledCourses } from "../../../../../services/operations/profileAPI";
 import ProgressBar from "@ramonak/react-progress-bar";
 import thumbnailImage from "../../../../../assets/thumbnail.jpeg";
@@ -8,10 +7,17 @@ import { FiTrash2 } from "react-icons/fi";
 import { HiPencil } from "react-icons/hi2";
 import { HiClock } from "react-icons/hi2";
 import { HiCheckCircle } from "react-icons/hi2";
+import { useDispatch, useSelector } from "react-redux";
+import ConfirmationModal from "../../../../common/ConfirmationModal";
+
+import { deleteCourse } from "../../../../../services/operations/courseDetailsAPI";
+import { setCourse } from "../../../../../slices/courseSlice";
 
 const MyCourses = () => {
-  const { token } = useSelector((state) => state.auth);
   const [enrolledCourses, setEnrolledCourses] = useState(null);
+  const [confirmationModal, setConfirmationModal] = useState(null);
+  const { token } = useSelector((state) => state.auth);
+
   // const enrolledCourses = [
   //   {
   //     courseName: "Introduction to Design: ",
@@ -75,6 +81,17 @@ const MyCourses = () => {
   // ];
   // const index = 1;
   // setEnrolledCourses(courseSample);
+
+  const handleDeleteCourse = async (courseId) => {
+    await deleteCourse({
+      courseId,
+      token,
+    });
+
+    setConfirmationModal(null);
+    getEnrolledCourses();
+  };
+
   const getEnrolledCourses = async () => {
     try {
       const response = await getUserEnrolledCourses(token);
@@ -162,7 +179,20 @@ const MyCourses = () => {
                     </div>
                     <div className="w-[10%] text-richblack-300 flex flex-row gap-2 text-3xl items-center justify-center ">
                       <HiPencil className=" cursor-pointer hover:text-white" />
-                      <FiTrash2 className=" cursor-pointer hover:text-white" />
+                      <button
+                        onClick={() =>
+                          setConfirmationModal({
+                            text1: "Delete this Course Permanantly",
+                            text2: "Selected Course will be deleted",
+                            btn1Text: "Delete",
+                            btn1Handler: () => handleDeleteCourse(course._id),
+                            btn2Text: "Cancel",
+                            btn2Handler: () => setConfirmationModal(null),
+                          })
+                        }
+                      >
+                        <FiTrash2 className="cursor-pointer hover:text-white  text-richblack-300" />
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -171,6 +201,11 @@ const MyCourses = () => {
           </div>
         )}
       </div>
+      {confirmationModal && (
+        <div className="h-screen z-10 w-screen absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+          <ConfirmationModal modalData={confirmationModal} />
+        </div>
+      )}
     </div>
   );
 };

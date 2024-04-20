@@ -28,11 +28,11 @@ const Sidebar = () => {
 
   return (
     <div className=" absolute top-0 left-0 ">
-      <div className="transition-all duration-200">
+      <div className="transition-all relative duration-200">
         {size.width <= 768 ? (
           <SidebarCollapse />
         ) : !confirmationModal ? (
-          <div className="transition-all duration-200  mobile:min-h-[calc(100vh-3rem)] min-h-[calc(100vh-3.5rem)]">
+          <div className="transition-all duration-200  relative mobile:min-h-[calc(100vh-3rem)] min-h-[calc(100vh-3.5rem)]">
             <div className="fixed flex laptop:min-w-[200px] desktop:min-w-[222px] flex-col border-r-[1px] border-richblack-700 transition-all duration-200 h-[calc(100vh-3.5rem)] bg-richblack-800 py-10">
               <div className="flex flex-col">
                 {sidebarLinks.map((link) => {
@@ -78,7 +78,9 @@ const Sidebar = () => {
           </div>
         ) : (
           confirmationModal && (
+            <div className="h-[100vh] z-10 w-screen ">
             <ConfirmationModal modalData={confirmationModal} />
+          </div>
           )
         )}
       </div>

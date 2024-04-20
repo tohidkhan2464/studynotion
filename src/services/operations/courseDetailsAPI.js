@@ -198,6 +198,7 @@ export const createSubSection = async (data, token) => {
     }
     toast.success("Lecture Added");
     result = response?.data?.data;
+    console.log("CREATE SUB-SECTION API result............", result);
   } catch (error) {
     console.log("CREATE SUB-SECTION API ERROR............", error);
     toast.error(error.message);
@@ -264,9 +265,10 @@ export const updateSubSection = async (data, token) => {
 export const deleteSection = async (data, token) => {
   let result = null;
   const toastId = toast.loading("Loading...");
+  // console.log("Data in call", data);
   try {
     const response = await apiConnector({
-      method: "POST",
+      method: "PUT",
       url: DELETE_SECTION_API,
       bodyData: data,
       headers: {
@@ -278,6 +280,7 @@ export const deleteSection = async (data, token) => {
       throw new Error("Could Not Delete Section");
     }
     toast.success("Course Section Deleted");
+    
     result = response?.data?.data;
   } catch (error) {
     console.log("DELETE SECTION API ERROR............", error);
@@ -292,14 +295,14 @@ export const deleteSubSection = async (data, token) => {
   const toastId = toast.loading("Loading...");
   try {
     const response = await apiConnector({
-      method: "POST",
+      method: "PUT",
       url: DELETE_SUBSECTION_API,
       bodyData: data,
       headers: {
+        
         Authorization: `Bearer ${token}`,
       },
     });
-    // console.log("DELETE SUB-SECTION API RESPONSE............", response);
     if (!response?.data?.success) {
       throw new Error("Could Not Delete Lecture");
     }
@@ -342,6 +345,7 @@ export const fetchInstructorCourses = async (token) => {
 // delete a course
 export const deleteCourse = async (data, token) => {
   const toastId = toast.loading("Loading...");
+  console.log("data", data);
   try {
     const response = await apiConnector({
       method: "DELETE",
@@ -351,7 +355,7 @@ export const deleteCourse = async (data, token) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    // console.log("DELETE COURSE API RESPONSE............", response);
+    console.log("DELETE COURSE API RESPONSE............", response);
     if (!response?.data?.success) {
       throw new Error("Could Not Delete Course");
     }

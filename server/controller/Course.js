@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-keys */
 const Course = require("../models/Course");
 const Category = require("../models/Category");
 const User = require("../models/User");
@@ -12,10 +13,10 @@ exports.createCourse = async (req, res) => {
     // fetch the data
     const { courseName, courseDescription, whatYouWillLearn, price, category } =
       req.body;
-    console.log("req body", req.body)
+    console.log("req body", req.body);
     // get thumbnail
     const thumbnail = req.files.thumbnail;
-    
+
     // validation
     console.log("courseName -> ", courseName);
     console.log("courseDescription -> ", courseDescription);
@@ -301,6 +302,7 @@ exports.getInstructorCourses = async (req, res) => {
 exports.deleteCourse = async (req, res) => {
   try {
     const { courseId } = req.body;
+    const userId = req.user.id;
 
     const courseDetails = await Course.find({ _id: courseId });
 
@@ -311,25 +313,26 @@ exports.deleteCourse = async (req, res) => {
       });
     }
 
-    await RatingAndReview.findByIdAndDelete({
+    await RatingAndReview.deleteMany({
       _id: { $in: courseDetails.ratingAndReviews },
     });
 
-    const sectionDetails = await Section.findById({
+    const sectionDetails = await Section.find({
       _id: { $in: courseDetails.courseContent },
     });
 
-    await SubSection.findByIdAndDelete({
+    await SubSection.deleteMany({
       _id: { $in: sectionDetails.subSections },
     });
 
-    await Section.findByIdAndDelete({
+    await Section.deleteMany({
       _id: { $in: courseDetails.courseContent },
     });
 
     await User.findByIdAndUpdate(
-      { courses: courseId },
-      { $pullAll: { courses: { $in: courseDetails } } }
+      { _id: userId },
+      { $pull: { courses: courseId } },
+      { new: true }
     );
 
     await Course.findByIdAndDelete({ _id: courseId });
