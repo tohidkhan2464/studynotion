@@ -13,10 +13,11 @@ import {
   deleteSubSection,
 } from "../../../../../services/operations/courseDetailsAPI";
 import { setCourse } from "../../../../../slices/courseSlice";
+import { formatDate } from "../../../../../services/formatDate";
 
 const NestedView = ({ hadnleChangeEditSectionName }) => {
   const { course } = useSelector((state) => state.course);
-  console.log("Course", course);
+  // console.log("Course", course);
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -25,7 +26,8 @@ const NestedView = ({ hadnleChangeEditSectionName }) => {
   const [editSubSection, setEditSubSection] = useState(null);
 
   const [confirmationModal, setConfirmationModal] = useState(null);
-
+  const isTime = 'sdf';  
+  const isDate=false;
   const handleDeleteSection = async (sectionId) => {
     const result = await deleteSection({
       sectionId,
@@ -85,6 +87,7 @@ const NestedView = ({ hadnleChangeEditSectionName }) => {
                   >
                     <FiEdit2 className="text-xl text-richblack-300" />
                   </button>
+
                   {/* delete Button */}
                   <button
                     onClick={() =>
@@ -116,12 +119,12 @@ const NestedView = ({ hadnleChangeEditSectionName }) => {
                     onClick={() => setViewSubSection(subSection)}
                     className="flex items-center justify-between py-2 border-b-2 border-richblack-600 cursor-pointer gap-x-3"
                   >
-                    {console.log("subsection", subSection)}
+                    {/* {console.log("subsection", subSection)} */}
                     {/* DropDown button */}
                     <div className="flex items-center gap-x-3 py-2">
                       <RxDropdownMenu className="text-2xl text-richblack-50" />
                       <p className="font-semibold text-richblack-50">
-                        {subSection?.title}
+                        {subSection?.title} 
                       </p>
                     </div>
 

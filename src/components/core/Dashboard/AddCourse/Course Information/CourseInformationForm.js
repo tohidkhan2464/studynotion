@@ -296,9 +296,9 @@ const CourseInformationForm = () => {
           </button>
         )}
         <IconBtn
-          text={!editCourse ? "Next" : "Save changes"}
-          textColor={true}
-          bgColor={true}
+          text={!editCourse ? (loading? "loading..." : "Next"): "Save changes"}
+          textColor={loading? false : true}
+          bgColor={loading? false : true}
           type={"submit"}
         />
       </div>

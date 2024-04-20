@@ -110,6 +110,7 @@ const SubSectionModal = ({
     formData.append("title", data.lectureTitle);
     formData.append("description", data.lectureDesc);
     formData.append("videoUrl", data.lectureVideo);
+    // formData.append("duration", data.duration);
 
     setLoading(true);
 

@@ -34,11 +34,11 @@ exports.createSubsection = async (req, res) => {
       video,
       process.env.FOLDER_NAME
     );
-
+    // console.log("upload respone -> ", uploadDetails);
     // create the subsection
     const subsectionDetails = await SubSection.create({
       title: title,
-      //   timeDuration: timeDuration,
+        timeDuration: uploadDetails.duration,
       description: description,
       videoUrl: uploadDetails.secure_url,
     });
