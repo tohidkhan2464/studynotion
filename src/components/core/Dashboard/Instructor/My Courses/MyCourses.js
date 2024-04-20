@@ -108,7 +108,7 @@ const MyCourses = () => {
   return (
     <div className="flex items-center justify-center">
       <div className="text-white desktop:ml-[20rem] desktop:w-9/12 w-11/12 max-w-maxContent flex flex-col  mx-auto my-5">
-        <div className="text-4xl mobile:text-2xl font-medium">My Courses</div>
+        <div className="text-4xl mobile:text-2xl font-medium">My Courses adsfghgfdsadfgnbdsadfg</div>
         {!enrolledCourses ? (
           <div className="mt-[20rem] ml-[41rem] spinner"></div>
         ) : !enrolledCourses.length ? (
