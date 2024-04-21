@@ -6,20 +6,20 @@ const Course = require("../models/Course");
 require("dotenv").config();
 
 // create subsection
-exports.createSubsection = async (req, res) => {
+exports.createSubSection = async (req, res) => {
   try {
-    console.log("req body", req.body.formData);
+    // console.log("req body", req.body.formData);
 
     // fetch data from req.body
     const { sectionId, title, description } = req.body;
     // extract file/video
     // const video = videoUrl;
-    console.log("sectionId", sectionId);
-    console.log("title", title);
+    // console.log("sectionId", sectionId);
+    // console.log("title", title);
     // console.log("timeDuration", timeDuration);
-    console.log("description", description);
-    const video = req.files.videoUrl;
-    console.log("videoUrl", video);
+    // console.log("description", description);
+    const video = req.files.video;
+    // console.log("videoUrl", video);
 
     // validation
     if (!sectionId || !title || !description || !video) {
@@ -72,7 +72,7 @@ exports.createSubsection = async (req, res) => {
 };
 
 // updateSubSection
-exports.updateSubsection = async (req, res) => {
+exports.updateSubSection = async (req, res) => {
   try {
     // fetch data from req.body
     const { sectionId, subSectionId, title = "", description = "" } = req.body;
@@ -127,7 +127,7 @@ exports.updateSubsection = async (req, res) => {
 };
 
 // deletesubsection
-exports.deleteSubsection = async (req, res) => {
+exports.deleteSubSection = async (req, res) => {
   try {
     // fetch subsectio id
     const { subSectionId, sectionId } = req.body;

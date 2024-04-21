@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import OtpInput from "react-otp-input";
@@ -89,7 +91,7 @@ const VerifyEmail = () => {
                 <p className=" text-[16px] mt-1 w-full text-richblack-300 max-w-max flex flex-row items-center gap-1 hover:text-richblack-5 transition-all duration-200">
                   <GoArrowLeft className="h-6 w-6" /> Back to Login
                 </p>
-              </Link> 
+              </Link>
             </div>
             <button
               onClick={() => dispatch(sendOtp(signupData.email, navigate))}

@@ -4,7 +4,7 @@ import RenderCartCourses from "./RenderCartCourses";
 import RenderTotalAmount from "./RenderTotalAmount";
 
 export default function Cart() {
-  const { total, totalItems } = useSelector((state) => state.cart);
+  const { totalItems } = useSelector((state) => state.cart);
 
   return (
     <div className="text-white w-11/12 desktop:ml-[20rem] desktop:w-9/12 max-w-maxContent flex flex-col  mx-auto my-5">

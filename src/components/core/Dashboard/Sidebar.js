@@ -7,7 +7,7 @@ import ConfirmationModal from "../../common/ConfirmationModal";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { VscSignOut } from "react-icons/vsc";
-import { CiCircleChevRight } from "react-icons/ci";
+// import { CiCircleChevRight } from "react-icons/ci";
 import SidebarCollapse from "./SidebarCollapse";
 import GetWindowSize from "../../../hooks/getWindowSize";
 

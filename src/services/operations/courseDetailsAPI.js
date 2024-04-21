@@ -151,8 +151,9 @@ export const editCourseDetails = async (data, token) => {
 };
 
 // create a section
-export const createSection = async ({data, token}) => {
+export const createSection = async (data, token) => {
   let result = null;
+  console.log("data, token", data, token);
   const toastId = toast.loading("Loading...");
   try {
     const response = await apiConnector({
@@ -417,12 +418,13 @@ export const getFullDetailsOfCourse = async (courseId, token) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    // console.log("COURSE_FULL_DETAILS_API API RESPONSE............", response);
+    console.log("COURSE_FULL_DETAILS_API API RESPONSE............", response);
 
     if (!response.data.success) {
       throw new Error(response.data.message);
     }
     result = response?.data?.data;
+    console.log("COURSE_FULL_DETAILS_API API result............", result);
   } catch (error) {
     console.log("COURSE_FULL_DETAILS_API API ERROR............", error);
     result = error.response.data;

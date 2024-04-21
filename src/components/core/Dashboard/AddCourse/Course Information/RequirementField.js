@@ -1,54 +1,55 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-const RequirementField = ({
+export default function RequirementsField({
   name,
   label,
   register,
-  errors,
   setValue,
+  errors,
   getValues,
-}) => {
+}) {
+  const { editCourse, course } = useSelector((state) => state.course);
   const [requirement, setRequirement] = useState("");
-  const [requirementList, setRequirementList] = useState([]);
+  const [requirementsList, setRequirementsList] = useState([]);
 
   useEffect(() => {
+    if (editCourse) {
+      setRequirementsList(course?.instructions);
+    }
     register(name, { required: true, validate: (value) => value.length > 0 });
   }, []);
 
   useEffect(() => {
-    setValue(name, requirementList);
-  }, [requirementList]);
+    setValue(name, requirementsList);
+  }, [requirementsList]); //jab jab requirementlist update ho rhi hai tab we set that value;
 
   const handleAddRequirement = () => {
     if (requirement) {
-      setRequirementList([...requirementList, requirement]);
+      setRequirementsList([...requirementsList, requirement]);
       setRequirement("");
     }
   };
+
   const handleRemoveRequirement = (index) => {
-    const updatedRequirementList = [...requirementList];
-    updatedRequirementList.splice(index, 1);
-    setRequirementList(updatedRequirementList);
+    const updatedRequirements = [...requirementsList];
+    updatedRequirements.splice(index, 1);
+    setRequirementsList(updatedRequirements);
   };
 
   return (
-    <div>
-      <label
-        htmlFor={name}
-        className="text-base text-richblack-5 mb-1 leading-[1.375rem]"
-      >
-        {label}
-        <sup className=" text-pink-200">*</sup>{" "}
+    <div >
+      <label className="text-base text-richblack-5 mb-1 leading-[1.375rem]" htmlFor={name}>
+        {" "}
+        {label} <sup className="text-pink-200">*</sup>{" "}
       </label>
-      <div>
+      <div className="flex flex-col items-start space-y-2">
         <input
           type="text"
           id={name}
-          placeholder="Enter the Requirements or Instructions"
           value={requirement}
           onChange={(e) => setRequirement(e.target.value)}
-          className=" bg-richblack-700 mt-2 rounded-[0.5rem] text-richblack-5 w-full p-[12px] drop-shadow-[0px_2px_0px_rgba(255,255,255,0.18)]"
+          className="form-style bg-richblack-700 mt-2 rounded-[0.5rem] text-richblack-5 w-full p-[12px] drop-shadow-[0px_2px_0px_rgba(255,255,255,0.18)]"
         />
         <button
           type="button"
@@ -58,27 +59,30 @@ const RequirementField = ({
           Add
         </button>
       </div>
-      {requirementList.length > 0 && (
-        <ul>
-          {requirementList.map((requirement, index) => (
+
+      {requirementsList.length > 0 && (
+        <ul className="mt-2 list-inside list-disc">
+          {requirementsList.map((requirement, index) => (
             <li key={index} className="flex items-center text-richblack-5">
-              <span> {requirement} </span>
+              <span>{requirement}</span>
               <button
                 type="button"
+                className="mx-2 text-base underline text-pure-greys-300 "
                 onClick={() => handleRemoveRequirement(index)}
-                className="text-base mx-2 text-pure-greys-400 underline"
               >
-                Clear
+                clear
               </button>
             </li>
           ))}
         </ul>
       )}
+
       {errors[name] && (
-        <span className=" text-red-500 mt-1">{label} is required</span>
+        <span className="ml-2 text-xs tracking-wide text-pink-200">
+          {" "}
+          {label} is required{" "}
+        </span>
       )}
     </div>
   );
-};
-
-export default RequirementField;
+}

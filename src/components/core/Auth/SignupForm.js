@@ -42,7 +42,7 @@ const SignupForm = () => {
     //   setValidation(true)
     // }
   }
-  const { firstName, lastName, email, password, contactNumber, confirmPassword } = formData;
+  const {  password, confirmPassword } = formData;
 
   // const uppercaseRegExp = /(?=.*?[A-Z])/;
   // const lowercaseRegExp = /(?=.*?[a-z])/;

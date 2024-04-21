@@ -2,7 +2,7 @@ require("dotenv").config();
 const nodemailer = require("nodemailer");
 
 
-exports.contactUs = async (req, res) => {
+exports.contactUsController = async (req, res) => {
   try {
     const { email, firstName, lastName = "", message } = req.body;
 

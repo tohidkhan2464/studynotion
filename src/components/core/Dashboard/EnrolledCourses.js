@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getUserEnrolledCourses } from "../../../services/operations/profileAPI";
 import ProgressBar from "@ramonak/react-progress-bar";
-import thumbnailImage from "../../../assets/thumbnail.jpeg";
+// import thumbnailImage from "../../../assets/thumbnail.jpeg";
 import { HiDotsVertical } from "react-icons/hi";
 
 const EnrolledCourses = () => {

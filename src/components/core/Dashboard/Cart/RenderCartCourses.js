@@ -1,27 +1,27 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ReactStars from "react-stars";
-import { render } from "react-dom";
-import { FaStar, FaRegStar } from "react-icons/fa";
-import thumbnailImage from "../../../../assets/thumbnail.jpeg";
+// import { render } from "react-dom";
+// import { FaStar, FaRegStar } from "react-icons/fa";
+// import thumbnailImage from "../../../../assets/thumbnail.jpeg";
 import trash from "../../../../assets/dashboard/fi-br-trash.svg";
 import IconBtn from "../../../common/IconBtn";
 
 const RenderCartCourses = () => {
   const { cart, removeFromCart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  const course = {
-    courseName: "The Complete Python Bootcamp From Zero to Hero in Python",
-    courseDescription: "A complete Web Dev course",
-    instructor: "Tk",
-    whatYouWillLearn: "You will learn about Web Dev",
-    price: "1000",
-    thumbnail: `${thumbnailImage}`,
-    category: { name: "Dev" },
-    totalDuration: "1hr 30 mins",
-    progressPercentage: "",
-    ratingAndReviews: [1, 2, 3, 4, 5, 6],
-  };
+  // const course = {
+  //   courseName: "The Complete Python Bootcamp From Zero to Hero in Python",
+  //   courseDescription: "A complete Web Dev course",
+  //   instructor: "Tk",
+  //   whatYouWillLearn: "You will learn about Web Dev",
+  //   price: "1000",
+  //   thumbnail: `${thumbnailImage}`,
+  //   category: { name: "Dev" },
+  //   totalDuration: "1hr 30 mins",
+  //   progressPercentage: "",
+  //   ratingAndReviews: [1, 2, 3, 4, 5, 6],
+  // };
   return (
     <div className="w-[70%]">
       {cart.map((course, index) => {

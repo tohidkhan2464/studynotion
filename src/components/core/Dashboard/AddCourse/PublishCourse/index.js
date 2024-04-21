@@ -8,6 +8,7 @@ import { IoChevronBackOutline } from "react-icons/io5";
 import { resetCourseSection, setStep } from "../../../../../slices/courseSlice";
 import { COURSE_STATUS } from "../../../../../utils/constants";
 import { editCourseDetails } from "../../../../../services/operations/courseDetailsAPI";
+import { useNavigate } from "react-router-dom";
 
 const PublishCourse = () => {
   const { register, handleSubmit, setValue, getValues } = useForm();
@@ -17,6 +18,7 @@ const PublishCourse = () => {
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (course?.status === COURSE_STATUS.PUBLISHED) {
@@ -31,7 +33,7 @@ const PublishCourse = () => {
 
   const goToCourses = () => {
     dispatch(resetCourseSection());
-    // navigate("dashboard/my-courses");
+    navigate("/dashboard/my-courses");
   };
 
   const handleCoursePublish = async () => {

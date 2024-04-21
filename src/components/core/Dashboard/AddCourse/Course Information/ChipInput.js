@@ -1,9 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"; // Importing React hook for managing component state
 import { MdClose } from "react-icons/md";
 import { useSelector } from "react-redux";
 
-const ChipInput = ({
+export default function ChipInput({
   label,
   name,
   placeholder,
@@ -11,10 +10,9 @@ const ChipInput = ({
   errors,
   setValue,
   getValues,
-}) => {
+}) {
   const { editCourse, course } = useSelector((state) => state.course);
-
-  const [chips, setChips] = useState([]);
+  const [chips, setChips] = useState([]); // Setting up state for managing chips array
 
   useEffect(() => {
     if (editCourse) {
@@ -27,58 +25,78 @@ const ChipInput = ({
     setValue(name, chips);
   }, [chips]);
 
+  // Function to handle user input when chips are added
   const handleKeyDown = (event) => {
     if (event.key === "Enter" || event.key === ",") {
-      event.preventDefault();
-      const chipValue = event.target.value.trim();
-
+      // Check if user presses "Enter" or ","
+      event.preventDefault(); // Prevent the default behavior of the event
+      const chipValue = event.target.value.trim(); // Get the input value and remove any leading/trailing spaces
       if (chipValue && !chips.includes(chipValue)) {
-        const newChips = [...chips, chipValue];
+        // Check if the input value exists and is not already in the chips array
+        const newChips = [...chips, chipValue]; // Add the chip to the array and clear the input
         setChips(newChips);
         event.target.value = "";
       }
     }
   };
 
+  // Function to handle deletion of a chip
   const handleDeleteChip = (chipIndex) => {
-    const newChips = chips.filter((_, index) => index !== chipIndex);
+    const newChips = chips.filter((_, index) => index !== chipIndex); // Filter the chips array to remove the chip with the given index
     setChips(newChips);
   };
+
+  // Render the component
   return (
     <div className="flex flex-col space-y-2">
+      {/* Render the label for the input */}
       <label className="text-sm text-richblack-5" htmlFor={name}>
         {label} <sup className="text-pink-200">*</sup>
       </label>
+
+      {/* Render the chips and input */}
       <div className="flex w-full flex-wrap gap-y-2">
+        {chips.map(
+          (
+            chip,
+            index //   {/* Map over the chips array and render each chip */}
+          ) => (
+            <div
+              key={index}
+              className="m-1 flex items-center rounded-full bg-yellow-400 px-2 py-1 text-sm text-richblack-5"
+            >
+              {chip} {/* Render the chip value */}
+              <button
+                type="button"
+                className="ml-2 focus:outline-none"
+                onClick={() => handleDeleteChip(index)}
+              >
+                {" "}
+                {/* Render the button to delete the chip */}
+                <MdClose className="text-sm" />
+              </button>
+            </div>
+          )
+        )}
+
+        {/* Render the input for adding new chips */}
         <input
           id={name}
           name={name}
           type="text"
           placeholder={placeholder}
           onKeyDown={handleKeyDown}
-          className=" bg-richblack-700 mt-2 rounded-[0.5rem] text-richblack-5 w-full p-[12px]  drop-shadow-[0px_2px_0px_rgba(255,255,255,0.18)]"
+          className="form-style bg-richblack-700 mt-2 rounded-[0.5rem] text-richblack-5 w-full p-[12px]  drop-shadow-[0px_2px_0px_rgba(255,255,255,0.18)]"
         />
-        {chips.map((chip, index) => (
-          <div
-            key={index}
-            className="m-1 flex items-center rounded-full bg-yellow-400 px-4 py-1 text-base text-richblack-5"
-          >
-            {chip}
-            <button
-              type="button"
-              className="ml-2 focus:outline-none"
-              onClick={() => handleDeleteChip(index)}
-            >
-              <MdClose className="text-base" />
-            </button>
-          </div>
-        ))}
       </div>
+
+      {/* Render an error message if the input is required and not filled */}
       {errors[name] && (
-        <p className=" text-red-500 mt-2">{label} is required</p>
+        <span className="ml-2 text-xs tracking-wide text-pink-200">
+          {" "}
+          {label} is required{" "}
+        </span>
       )}
     </div>
   );
-};
-
-export default ChipInput;
+}

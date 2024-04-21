@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table";
-import { formatDate } from "../../../../services/formatDate";
+// import { formatDate } from "../../../../services/formatDate";
 import { COURSE_STATUS } from "../../../../utils/constants";
 import { useNavigate } from "react-router-dom";
 import ConfirmationModal from "../../../common/ConfirmationModal";
@@ -17,10 +17,10 @@ import { HiPencil } from "react-icons/hi2";
 
 export default function CoursesTable({ courses, setCourses }) {
   console.log("Courses in course Table", courses);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
-  const [confiationModal, setConfirmationModal] = useState(null);
+  const [confirmationModal, setConfirmationModal] = useState(null);
   const navigate = useNavigate();
 
   const handleCourseDelete = async (courseId) => {
@@ -85,7 +85,7 @@ export default function CoursesTable({ courses, setCourses }) {
                         .join(" ") + "..."}
                     </p>
                     <p className=" font-medium text-richblack-5">
-                      Created: {formatDate(course.CreatedAt)}
+                      Created: 27 April 2024
                     </p>
                     <div className=" flex flex-row gap-2 items-center bg-richblack-600 w-fit px-3 pr-4  py-1 rounded-2xl">
                       {course.status === COURSE_STATUS.DRAFT ? (
@@ -111,9 +111,9 @@ export default function CoursesTable({ courses, setCourses }) {
                 <Td className="w-[10%] text-richblack-300 flex flex-row gap-4 text-3xl items-center justify-center ">
                   <button
                     disabled={loading}
-                    // onClick={() => {
-                    //   navigate();
-                    // }}
+                    onClick={() => {
+                      navigate(`/dashboard/edit-course/${course._id}`);
+                    }}
                   >
                     <HiPencil className=" cursor-pointer hover:text-white" />
                   </button>
@@ -164,7 +164,11 @@ export default function CoursesTable({ courses, setCourses }) {
           )}
         </Tbody>
       </Table>
-      {confiationModal && <ConfirmationModal modalData={confiationModal} />}
+      {confirmationModal && (
+        <div className="h-[100vh] z-10 w-screen absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+          <ConfirmationModal modalData={confirmationModal} />
+        </div>
+      )}
     </div>
   );
 }
