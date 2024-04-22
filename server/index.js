@@ -20,11 +20,18 @@ const PORT = process.env.PORT || 4000;
 // database connect
 database.connect();
 // middleware
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(
-  cors()
-  // { origin: "https://localhost:3000", credentials: true, }
+  cors({
+    origin: [
+      "https://localhost:3000",
+      "https://studynotion-8f4u.vercel.app/",
+      "*",
+    ],
+    credentials: true,
+  })
 );
 app.use(fileUpload({ useTempFiles: true, tempFileDir: "/tmp" }));
 
