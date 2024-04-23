@@ -38,12 +38,13 @@ const PublishCourse = () => {
 
   const handleCoursePublish = async () => {
     if (
+      // check if form has been updated or not
+
       (course?.status === COURSE_STATUS.PUBLISHED &&
         getValues("public") === true) ||
-      (course.status === COURSE_STATUS.DRAFT && getValues("public") === false)
+      (course?.status === COURSE_STATUS.DRAFT && getValues("public") === false)
     ) {
-      // no update in form
-      // no need for api call
+      // form has not been updated  no need to make api call
       goToCourses();
       return;
     }
@@ -72,16 +73,19 @@ const PublishCourse = () => {
     <div className="space-y-8 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6">
       <p className="text-2xl font-semibold text-richblue-5">Publish Settings</p>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-row-reverse gap-4 justify-end items-center">
-          <label htmlFor="public" className="text-sm text-richblack-5">
-            Make this Course as Public
+        <div className="my-6 mb-8">
+          <label htmlFor="public" className="inline-flex items-center text-lg">
+            <input
+              type="checkbox"
+              id="public"
+              {...register("public")}
+              className="border-gray-300 h-4 w-4 rounded bg-richblack-500 text-richblack-400 focus:ring-2 focus:ring-richblack-5"
+            />
+            <span className="ml-2 text-richblack-400">
+              {" "}
+              Make this course as public{" "}
+            </span>
           </label>
-          <input
-            type="checkbox"
-            id="public"
-            {...register("public")}
-            className="rounded-[1rem] text-richblack-5 w-4 h-4 p-[12px] "
-          />
         </div>
         <div className="flex mt-10 z-50 justify-end gap-x-3">
           <IconBtn

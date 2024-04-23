@@ -14,6 +14,7 @@ import { HiClock } from "react-icons/hi2";
 import { HiCheckCircle } from "react-icons/hi2";
 import { FiTrash2 } from "react-icons/fi";
 import { HiPencil } from "react-icons/hi2";
+import { formattedDate } from "../../../../utils/dateformatter";
 
 export default function CoursesTable({ courses, setCourses }) {
   console.log("Courses in course Table", courses);
@@ -85,10 +86,10 @@ export default function CoursesTable({ courses, setCourses }) {
                         .join(" ") + "..."}
                     </p>
                     <p className=" font-medium text-richblack-5">
-                      Created: 27 April 2024
+                      Created: {formattedDate(course?.createdAt)}
                     </p>
                     <div className=" flex flex-row gap-2 items-center bg-richblack-600 w-fit px-3 pr-4  py-1 rounded-2xl">
-                      {course.status === COURSE_STATUS.DRAFT ? (
+                      {course.status === COURSE_STATUS.PUBLISHED ? (
                         <>
                           <HiCheckCircle className=" text-pink-50" />
                           <p className="text-pink-100">Published </p>

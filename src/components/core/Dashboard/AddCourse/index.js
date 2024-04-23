@@ -2,7 +2,7 @@ import RenderSteps from "./RenderSteps";
 
 export default function AddCourse() {
   return (
-    <>
+    <div  className="flex items-center justify-center" >
       <div className="text-white w-11/12  desktop:ml-[20rem] desktop:w-9/12 max-w-maxContent flex flex-row gap-5 mx-auto my-12">
         <div className="w-[90%] flex flex-col">
           <h1 className="text-4xl mobile:text-2xl font-medium">
@@ -35,6 +35,6 @@ export default function AddCourse() {
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 }

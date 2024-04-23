@@ -16,7 +16,7 @@ export const profileEndpoints = {
   GET_INSTRUCTOR_PROFILE_API: BASE_URL + "/profile/userProfile",
   GET_ALL_USERS_DATA_API: BASE_URL + "/profile/allUserData",
   DELETE_ACCOUNT_BY_ADMIN: BASE_URL + "/profile/deleteAccountByAdmin",
- GET_INSTRUCTOR_DATA_API: BASE_URL + "/profile/instructorDashboard",
+  GET_INSTRUCTOR_DATA_API: BASE_URL + "/profile/instructorDashboard",
 };
 
 // STUDENTS ENDPOINTS
@@ -41,7 +41,8 @@ export const courseEndpoints = {
   DELETE_SECTION_API: BASE_URL + "/course/deleteSection",
   DELETE_SUBSECTION_API: BASE_URL + "/course/deleteSubSection",
   DELETE_COURSE_API: BASE_URL + "/course/deleteCourse",
-  GET_FULL_COURSE_DETAILS_AUTHENTICATED: BASE_URL + "/course/getFullCourseDetails",
+  GET_FULL_COURSE_DETAILS_AUTHENTICATED:
+    BASE_URL + "/course/getFullCourseDetails",
   LECTURE_COMPLETION_API: BASE_URL + "/course/updateCourseProgress",
   CREATE_RATING_API: BASE_URL + "/course/createRating",
 };

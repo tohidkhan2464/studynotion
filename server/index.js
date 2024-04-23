@@ -20,18 +20,17 @@ const PORT = process.env.PORT || 4000;
 // database connect
 database.connect();
 // middleware
-const allowedOrigins = [
-  'https://studynotion-8f4u.vercel.app/',
-  'http://localhost:3000',
-  // 'https://collegechatts.netlify.app',
-  '*',
-];
-
-app.use(
-  cors({
-    origin: allowedOrigins,
-  })
-);
+// const allowedOrigins = [
+//   'https://studynotion-8f4u.vercel.app/',
+//   'http://localhost:3000',
+//   // 'https://collegechatts.netlify.app',
+//   '*',
+// ];
+// app.use(
+//   cors({
+//     origin: allowedOrigins,
+//   })
+// );
 
 app.use(express.json());
 app.use(cookieParser());
@@ -45,6 +44,8 @@ app.use(cookieParser());
 //     credentials: true,
 //   })
 // );
+
+app.use(cors());
 app.use(fileUpload({ useTempFiles: true, tempFileDir: "/tmp" }));
 
 // cloudinary connection

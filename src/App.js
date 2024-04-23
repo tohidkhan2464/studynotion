@@ -23,15 +23,17 @@ import { useSelector } from "react-redux";
 import AddCourse from "./components/core/Dashboard/AddCourse";
 import MyCourses from "./components/core/Dashboard/MyCourses";
 import EditCourse from "./components/core/Dashboard/EditCourse";
+import Catalog from "./Pages/Catalog";
 
 function App() {
   const { user } = useSelector((state) => state.profile);
 
   return (
-    <div className=" w-screen min-h-scree bg-richblack-900 flex flex-col font-inter">
+    <div className=" w-screen min-h-screen  bg-richblack-900 flex flex-col font-inter">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/catalog/:catalogName" element={<Catalog />} />
 
         <Route
           path="/login"
