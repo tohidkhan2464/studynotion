@@ -12,6 +12,7 @@ import ConfirmationModal from "../components/common/ConfirmationModal";
 import { GoDotFill } from "react-icons/go";
 import Error from "./Error";
 import Footer from "../components/common/Footer";
+import CourseSection from "../components/core/CourseDetails/CourseSection";
 
 const CourseDetails = () => {
   const { courseId } = useParams();
@@ -54,6 +55,7 @@ const CourseDetails = () => {
       lectures += sec?.subSections?.length || 0;
     });
     setTotalNoOfLectures(lectures);
+    console.log("COURSE DETAILS", courseDetails);
   }, [courseDetails]);
 
   const handleBuyCourse = () => {
@@ -69,16 +71,6 @@ const CourseDetails = () => {
       btn1Handler: () => navigate("/login"),
       btn2Handler: () => setConfirmationModal(null),
     });
-  };
-
-  const [isActive, setIsActive] = useState(Array(0));
-
-  const handleActive = (id) => {
-    setIsActive(
-      !isActive.includes(id)
-        ? isActive.concat([id])
-        : isActive.filter((e) => e !== id)
-    );
   };
 
   if (loading || !courseDetails) {
@@ -142,6 +134,7 @@ const CourseDetails = () => {
             <CourseDetailsCard
               course={courseDetails}
               setConfirmationModal={setConfirmationModal}
+              handleBuyCourse={handleBuyCourse}
             />
           </div>
         </div>
@@ -192,6 +185,11 @@ const CourseDetails = () => {
             </div>
 
             {/* Section and subsections */}
+            <div className="py-4">
+              {courseDetails?.courseContent?.map((section, index) => (
+                <CourseSection key={index} section={section} />
+              ))}
+            </div>
           </div>
         </div>
       </section>

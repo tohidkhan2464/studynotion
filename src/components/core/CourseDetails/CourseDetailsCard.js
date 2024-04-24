@@ -8,7 +8,11 @@ import { toast } from "react-hot-toast";
 import { ACCOUNT_TYPE } from "../../../utils/constants";
 import { addToCart } from "../../../slices/cartSlice";
 
-const CourseDetailsCard = ({ course, setConfirmationModal }) => {
+const CourseDetailsCard = ({
+  course,
+  setConfirmationModal,
+  handleBuyCourse,
+}) => {
   const { user } = useSelector((state) => state.profile);
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
@@ -34,10 +38,6 @@ const CourseDetailsCard = ({ course, setConfirmationModal }) => {
         btn2Handler: () => setConfirmationModal(null),
       });
     }
-  };
-
-  const handleBuyCourse = () => {
-    handleAddToCart();
   };
 
   const handleShare = () => {
@@ -71,7 +71,7 @@ const CourseDetailsCard = ({ course, setConfirmationModal }) => {
             onClick={
               user && course?.studentsEnrolled?.includes(user?._id)
                 ? () => navigate("/dashboard/enrolled-courses")
-                : handleBuyCourse
+                : handleBuyCourse()
             }
             className="bg-richblack-800 mt-2 rounded-[8px]  py-[10px] px-[24px] cursor-pointer items-center 
              drop-shadow-[2px_2px_0px_#424854] transition-all duration-200 hover:-translate-y-1 w-full hover:text-yellow-50"
