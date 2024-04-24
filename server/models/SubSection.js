@@ -6,7 +6,7 @@ const subSectionSchema = new mongoose.Schema({
         type: String,
     },
     timeDuration: {
-        type: Date,
+        type: String,
     },
     description: {
         type: String,

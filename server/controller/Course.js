@@ -330,7 +330,7 @@ exports.getCourseDetails = async (req, res) => {
       .populate({
         path: "courseContent",
         populate: {
-          path: "subSection",
+          path: "subSections",
           select: "-videoUrl",
         },
       })
@@ -345,14 +345,13 @@ exports.getCourseDetails = async (req, res) => {
 
     let totalDurationInSeconds = 0;
     courseDetails.courseContent.forEach((content) => {
-      content.subSection.forEach((subSection) => {
+      content.subSections.forEach((subSection) => {
         const timeDurationInSeconds = parseInt(subSection.timeDuration);
         totalDurationInSeconds += timeDurationInSeconds;
       });
     });
 
     const totalDuration = convertSecondsToDuration(totalDurationInSeconds);
-
     return res.status(200).json({
       success: true,
       data: { courseDetails, totalDuration },
@@ -398,21 +397,21 @@ exports.getFullCourseDetails = async (req, res) => {
       });
     }
 
-    // let totalDurationInSeconds = 0;
-    // courseDetails.courseContent.forEach((content) => {
-    //   content.subSection.forEach((subSection) => {
-    //     const timeDurationInSeconds = parseInt(subSection.timeDuration);
-    //     totalDurationInSeconds += timeDurationInSeconds;
-    //   });
-    // });
+    let totalDurationInSeconds = 0;
+    courseDetails.courseContent.forEach((content) => {
+      content.subSection.forEach((subSection) => {
+        const timeDurationInSeconds = parseInt(subSection.timeDuration);
+        totalDurationInSeconds += timeDurationInSeconds;
+      });
+    });
 
-    // const totalDuration = convertSecondsToDuration(totalDurationInSeconds);
+    const totalDuration = convertSecondsToDuration(totalDurationInSeconds);
 
     return res.status(200).json({
       success: true,
       data: {
         courseDetails,
-        // totalDuration,
+        totalDuration,
         completedVideos: courseProgressCount?.completedVideos
           ? courseProgressCount?.completedVideos
           : [],

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react"; // Importing React hook for managing component state
 import { MdClose } from "react-icons/md";
 import { useSelector } from "react-redux";

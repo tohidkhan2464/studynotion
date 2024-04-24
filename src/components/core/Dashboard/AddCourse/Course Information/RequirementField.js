@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -38,8 +39,11 @@ export default function RequirementsField({
   };
 
   return (
-    <div >
-      <label className="text-base text-richblack-5 mb-1 leading-[1.375rem]" htmlFor={name}>
+    <div>
+      <label
+        className="text-base text-richblack-5 mb-1 leading-[1.375rem]"
+        htmlFor={name}
+      >
         {" "}
         {label} <sup className="text-pink-200">*</sup>{" "}
       </label>

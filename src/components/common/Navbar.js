@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { Link, matchPath, useLocation } from "react-router-dom";
 import logo from "../../assets/Home_items/Logo.svg";
