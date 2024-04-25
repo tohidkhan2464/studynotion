@@ -2,14 +2,54 @@
     "version": 2,
     "builds": [
         {
-            "src": "index.js",
+            "src": "routes/Course.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "routes/Profile.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "routes/User.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "routes/Payment.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "routes/Contact.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "routes/search.js",
             "use": "@vercel/node"
         }
     ],
     "routes": [
         {
-            "src": "/(.*)",
-            "dest": "routes/index.js"
+            "src": "/Course",
+            "dest": "routes/Course.js"
+        },
+        {
+            "src": "/Profile",
+            "dest": "routes/Profile.js"
+        },
+        {
+            "src": "/User",
+            "dest": "routes/User.js"
+        },
+        {
+            "src": "/Payment",
+            "dest": "routes/Payment.js"
+        },
+        {
+            "src": "/Contact",
+            "dest": "routes/Contact.js"
+        },
+        {
+            "src": "/search",
+            "dest": "routes/search.js"
         }
     ]
 }
