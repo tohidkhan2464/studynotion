@@ -2,29 +2,9 @@
     "version": 2,
     "builds": [
         {
-            "src": "routes/Course.js",
+            "src": "index.js",
             "use": "@vercel/node"
-        },
-        {
-            "src": "routes/Profile.js",
-            "use": "@vercel/node"
-        },
-        {
-            "src": "routes/User.js",
-            "use": "@vercel/node"
-        },
-        {
-            "src": "routes/Payment.js",
-            "use": "@vercel/node"
-        },
-        {
-            "src": "routes/Contact.js",
-            "use": "@vercel/node"
-        },
-        {
-            "src": "routes/search.js",
-            "use": "@vercel/node"
-        }
+          }
     ],
     "routes": [
         {
