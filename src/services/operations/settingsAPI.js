@@ -55,7 +55,6 @@ export function updateProfile(
       );
       toast.success("Update Successful");
     } catch (error) {
-      console.log("Profile API ERROR............", error);
       toast.error(error?.response?.data?.message || "Failed");
     }
     dispatch(setLoading(false));
@@ -77,7 +76,6 @@ export function updateDisplayPicture(token, formData) {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("RESPONSE", response)
       if (!response.data.success) {
         throw new Error(response.data.message);
       }
@@ -91,7 +89,6 @@ export function updateDisplayPicture(token, formData) {
       );
       localStorage.setItem("user", JSON.stringify(response.data.image_url));
     } catch (error) {
-      console.log("UPDATE_DISPLAY_PICTURE_API API ERROR............", error);
       toast.error("Could Not Update Display Picture");
     }
     toast.dismiss(toastId);
@@ -114,16 +111,13 @@ export function updatePassword(token, currentPassword, newPassword) {
           Authorization: `Bearer ${token}`,
         },
       });
-      // console.log("Password Update API RESPONSE............", response);
 
       if (!response.data.success) {
         throw new Error(response.data.message);
       }
-      // console.log("Update password details", response.data.updatedUserDetails);
 
       toast.success("Update Successful");
     } catch (error) {
-      console.log("Profile API ERROR............", error);
       toast.error(error?.response?.data?.message || "Failed");
     }
     dispatch(setLoading(false));
@@ -157,7 +151,6 @@ export function deleteProfile(token, navigate) {
       navigate("/");
       toast.success("Account Deleted Successful");
     } catch (error) {
-      console.log("Profile API ERROR............", error);
       toast.error(error?.response?.data?.message || "Failed");
     }
     dispatch(setLoading(false));

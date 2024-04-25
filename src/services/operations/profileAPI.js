@@ -20,7 +20,6 @@ export async function getUserEnrolledCourses(token) {
       },
     });
 
-    // console.log("GET USER ENROLLED COURSES API RESPONSE .... ", response);
 
     if (!response.data.success) {
       throw new Error(response.data.message);
@@ -29,7 +28,6 @@ export async function getUserEnrolledCourses(token) {
     result = response.data.courses;
     
   } catch (error) {
-    console.log("GET USER ENROLLED COURSES API ERROE .... ", error);
     toast.error("Could not get Enrolled Courses.");
   }
   toast.dismiss(toastId);
@@ -49,7 +47,6 @@ export async function getUserCourses(token) {
       },
     });
 
-    console.log("GET USER  COURSES API RESPONSE .... ", response);
 
     if (!response.data.success) {
       throw new Error(response.data.message);
@@ -57,7 +54,6 @@ export async function getUserCourses(token) {
 
     result = response.data.courses;
   } catch (error) {
-    console.log("GET USER ENROLLED COURSES API ERROE .... ", error);
     toast.error("Could not get Enrolled Courses.");
   }
   toast.dismiss(toastId);
