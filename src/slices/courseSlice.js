@@ -23,6 +23,9 @@ const courseSlice = createSlice({
     setPayment(state, action) {
       state.paymentLoading = action.payload;
     },
+    setPaymentLoading(state, action) {
+      state.paymentLoading = action.payload;
+    },
     resetCourseSection: (state) => {
       state.step = 1;
       state.course = null;
@@ -37,5 +40,6 @@ export const {
   setEditCourse,
   setPayment,
   resetCourseSection,
+  setPaymentLoading,
 } = courseSlice.actions;
 export default courseSlice.reducer;

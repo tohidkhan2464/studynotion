@@ -6,9 +6,10 @@ import ReactStars from "react-stars";
 // import thumbnailImage from "../../../../assets/thumbnail.jpeg";
 import trash from "../../../../assets/dashboard/fi-br-trash.svg";
 import IconBtn from "../../../common/IconBtn";
+import { removeFromCart } from "../../../../slices/cartSlice";
 
 const RenderCartCourses = () => {
-  const { cart, removeFromCart } = useSelector((state) => state.cart);
+  const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   // const course = {
   //   courseName: "The Complete Python Bootcamp From Zero to Hero in Python",

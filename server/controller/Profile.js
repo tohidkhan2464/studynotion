@@ -249,8 +249,8 @@ exports.getEnrolledCourses = async (req, res) => {
       .populate({ path: "ratingAndReviews" })
       .exec();
     let totalDurationInSeconds = 0;
-    courseDetails.courseContent.forEach((content) => {
-      content.subSections.forEach((subSection) => {
+    courseDetails?.courseContent?.forEach((content) => {
+      content?.subSections?.forEach((subSection) => {
         const timeDurationInSeconds = parseInt(subSection.timeDuration);
         totalDurationInSeconds += timeDurationInSeconds;
       });

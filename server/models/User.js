@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema(
     },
     lastName: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
     },
     // Define the email field with type String, required, and trimmed

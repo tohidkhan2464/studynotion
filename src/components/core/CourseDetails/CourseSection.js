@@ -1,10 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { CiCircleChevRight } from "react-icons/ci";
+import { FiChevronsRight } from "react-icons/fi";
 import { convertSecondsToDuration } from "../../../services/convertSecondsToDuration";
-
-const CourseSection = ({ section, isActive, handleActive }) => {
+import CourseSubSection from "./CourseSubSection";
+const CourseSection = ({
+  section,
+  isVisible,
+  isActive,
+  setIsActive,
+  handleVisible,
+}) => {
   const [totalDuration, setTotalDuration] = useState("");
 
+  const handleActive = (id) => {
+    setIsActive(
+      !isActive.includes(id)
+        ? isActive.concat([id])
+        : isActive.filter((e) => e !== id)
+    );
+  };
   useEffect(() => {
     const totalLectureTime = () => {
       let totalDurationInSeconds = 0;
@@ -18,13 +31,18 @@ const CourseSection = ({ section, isActive, handleActive }) => {
   }, []);
 
   return (
-    <div className=" bg-richblack-700 py-4 px-8">
-      <div
-        className="flex flex-row items-center justify-between"
-      >
-        <div className="flex flex-row gap-x-2 items-center">
-          <CiCircleChevRight
-            
+    <div className=" bg-richblack-700  ">
+      <div className="flex flex-row items-center py-4 justify-between px-8">
+        <div
+          className="flex flex-row gap-x-2 items-center"
+          onClick={() => {
+            handleVisible(section._id);
+          }}
+        >
+          <FiChevronsRight
+            className={`${
+              isVisible?.includes(section._id) ? " rotate-90" : " rotate-0"
+            }`}
           />
           <p>{section?.sectionName}</p>
         </div>
@@ -37,7 +55,18 @@ const CourseSection = ({ section, isActive, handleActive }) => {
           </p>
         </div>
       </div>
-      <div></div>
+      {isVisible?.includes(section._id) && (
+        <div className="bg-richblack-900 py-4 px-8 border-[1px] border-richblack-600 ">
+          {section?.subSections?.map((subSection, index) => (
+            <CourseSubSection
+              subSection={subSection}
+              key={index}
+              isActive={isActive}
+              handleActive={handleActive}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

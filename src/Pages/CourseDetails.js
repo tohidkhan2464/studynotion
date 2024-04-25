@@ -13,6 +13,7 @@ import { GoDotFill } from "react-icons/go";
 import Error from "./Error";
 import Footer from "../components/common/Footer";
 import CourseSection from "../components/core/CourseDetails/CourseSection";
+import { buyCourse } from "../services/operations/studentFeaturesApi";
 
 const CourseDetails = () => {
   const { courseId } = useParams();
@@ -20,6 +21,8 @@ const CourseDetails = () => {
   const [totalDuration, setTotalDuration] = useState("");
   const [avgReviewCount, setAvgReviewCount] = useState(0);
   const [confirmationModal, setConfirmationModal] = useState(null);
+  const [isVisible, setIsVisible] = useState(Array(0));
+  const [isActive, setIsActive] = useState(Array(0));
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.profile);
@@ -27,6 +30,13 @@ const CourseDetails = () => {
   const { paymentLoading } = useSelector((state) => state.course);
   const dispatch = useDispatch();
 
+  const handleVisible = (id) => {
+    setIsVisible(
+      !isVisible.includes(id)
+        ? isVisible.concat([id])
+        : isVisible.filter((e) => e !== id)
+    );
+  };
   useEffect(() => {
     const count = GetAvgRating(courseDetails.ratingAndReviews);
     setAvgReviewCount(count);
@@ -43,7 +53,7 @@ const CourseDetails = () => {
       }
     };
     getCourseDetails();
-    console.log("COURSE DETAILS", courseDetails);
+    // console.log("COURSE DETAILS", courseDetails);
     // console.log("COURSE totalDuration", totalDuration);
   }, [courseId]);
 
@@ -55,12 +65,12 @@ const CourseDetails = () => {
       lectures += sec?.subSections?.length || 0;
     });
     setTotalNoOfLectures(lectures);
-    console.log("COURSE DETAILS", courseDetails);
+    // console.log("COURSE DETAILS", courseDetails);
   }, [courseDetails]);
 
   const handleBuyCourse = () => {
     if (token) {
-      //   buyCourse(token, [courseId], user, navigate, dispatch)
+      buyCourse(token, [courseId], user, navigate, dispatch);
       return;
     }
     setConfirmationModal({
@@ -179,7 +189,13 @@ const CourseDetails = () => {
                   {totalDuration} Total Length
                 </span>
               </div>
-              <div className="text-yellow-50">
+              <div
+                className="text-yellow-50"
+                onClick={() => {
+                  setIsVisible([]);
+                  setIsActive([]);
+                }}
+              >
                 <p>Collapse all Sections</p>
               </div>
             </div>
@@ -187,7 +203,14 @@ const CourseDetails = () => {
             {/* Section and subsections */}
             <div className="py-4">
               {courseDetails?.courseContent?.map((section, index) => (
-                <CourseSection key={index} section={section} />
+                <CourseSection
+                  key={index}
+                  section={section}
+                  isVisible={isVisible}
+                  isActive={isActive}
+                  setIsActive={setIsActive}
+                  handleVisible={handleVisible}
+                />
               ))}
             </div>
           </div>

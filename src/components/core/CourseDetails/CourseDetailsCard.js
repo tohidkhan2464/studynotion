@@ -40,6 +40,26 @@ const CourseDetailsCard = ({
     }
   };
 
+  const handleBuy = () => {
+    if (user?.accountType === ACCOUNT_TYPE.INSTRUCTOR) {
+      toast.error("You are an Intructor, You can't buy a course.");
+      return;
+    }
+    if (token) {
+      handleBuyCourse();
+      return;
+    } else {
+      setConfirmationModal({
+        text1: "You are not logged in!",
+        text2: "Please login to buy the course",
+        btn1Text: "Login",
+        btn2Text: "Cancel",
+        btn1Handler: () => navigate("/login"),
+        btn2Handler: () => setConfirmationModal(null),
+      });
+    }
+  };
+
   const handleShare = () => {
     copy(window.location.href);
     toast.success("Link copied to clipboard");
@@ -71,7 +91,7 @@ const CourseDetailsCard = ({
             onClick={
               user && course?.studentsEnrolled?.includes(user?._id)
                 ? () => navigate("/dashboard/enrolled-courses")
-                : handleBuyCourse()
+                : handleBuy
             }
             className="bg-richblack-800 mt-2 rounded-[8px]  py-[10px] px-[24px] cursor-pointer items-center 
              drop-shadow-[2px_2px_0px_#424854] transition-all duration-200 hover:-translate-y-1 w-full hover:text-yellow-50"
