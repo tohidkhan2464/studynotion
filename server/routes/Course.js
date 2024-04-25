@@ -40,7 +40,7 @@ const {
   isInstructor,
   isStudent,
   isAdmin,
-} = require("../middleware/auth"); // Importing Middlewares
+} = require("../middleware/Auth"); // Importing Middlewares
 const { updateCourseProgress } = require("../controller/courseProgress");
 
 // ********************************************************************************************************

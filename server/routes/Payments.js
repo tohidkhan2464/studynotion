@@ -11,7 +11,7 @@ const {
   isInstructor,
   isStudent,
   isAdmin,
-} = require("../middleware/auth");
+} = require("../middleware/Auth");
 
 router.post("/capturePayment", auth, isStudent, capturePayment);
 router.post("/verifyPayment", auth, isStudent, verifyPayment);

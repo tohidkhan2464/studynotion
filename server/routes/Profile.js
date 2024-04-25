@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Routes for deleteprofile , updateprofile ,getuserdetails , getEnrolledCourse , updateDisplayPicture;
 
-const { auth, isInstructor } = require("../middleware/auth");
+const { auth, isInstructor } = require("../middleware/Auth");
 const {
   deleteAccount,
   updateProfile,
