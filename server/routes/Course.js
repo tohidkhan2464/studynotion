@@ -29,7 +29,7 @@ const {
   createSubSection,
   updateSubSection,
   deleteSubSection,
-} = require("../controller/Subsection"); // Sub-Sections Controllers Import
+} = require("../controller/SubSection"); // Sub-Sections Controllers Import
 const {
   createRating,
   getAverageRating,
