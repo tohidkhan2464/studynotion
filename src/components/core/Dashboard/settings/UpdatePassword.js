@@ -36,7 +36,7 @@ const UpdatePassword = () => {
           {/* Current Password - New Password */}
           <div className="flex gap-x-10 mt-4 mobile:flex-col mobile:gap-y-4">
             {/* Current Password */}
-            <div className="flex flex-col gap-2 w-[48%]">
+            <div className="flex flex-col mobile:w-full gap-2 w-[48%]">
               <label htmlFor="currentPassword" className="lable-style">
                 Current Password
               </label>
@@ -56,7 +56,7 @@ const UpdatePassword = () => {
             </div>
 
             {/* New Password */}
-            <div className="flex flex-col gap-2 w-[48%]">
+            <div className="flex flex-col mobile:w-full gap-2 w-[48%]">
               <label htmlFor="newPassword" className="lable-style">
                 New Password
               </label>

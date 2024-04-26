@@ -18,7 +18,7 @@ const CourseSubSection = ({ subSection, handleActive, isActive }) => {
 
   return (
     <div className=" text-richblack-5 py-2">
-      <div className="flex flex-row items-center justify-between">
+      <div className="flex flex-row items-center justify-between ">
         <div
           className="flex flex-row items-center gap-x-2 text-richblack-50"
           onClick={() => {
@@ -26,7 +26,7 @@ const CourseSubSection = ({ subSection, handleActive, isActive }) => {
           }}
         >
           <IoVideocam />
-          <p>{subSection?.title}</p>
+          <p className="mobile:max-w-[280px]">{subSection?.title}</p>
 
           <BsChevronUp
             className={`${
@@ -40,7 +40,7 @@ const CourseSubSection = ({ subSection, handleActive, isActive }) => {
         </div>
       </div>
       {isActive?.includes(subSection._id) && (
-        <div className="px-6 pr-40 mt-2 text-richblack-300 ">
+        <div className="px-6 pr-40 mobile:pr-20 mt-2 text-richblack-300 ">
           <p>{subSection?.description} </p>
         </div>
       )}

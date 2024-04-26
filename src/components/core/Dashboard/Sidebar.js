@@ -29,7 +29,7 @@ const Sidebar = () => {
   return (
     <div className=" absolute top-0 left-0 ">
       <div className="transition-all relative duration-200">
-        {size.width <= 768 ? (
+        {size.width <= 1200 ? (
           <SidebarCollapse />
         ) : !confirmationModal ? (
           <div className="transition-all duration-200  relative mobile:min-h-[calc(100vh-3rem)] min-h-[calc(100vh-3.5rem)]">
@@ -79,8 +79,8 @@ const Sidebar = () => {
         ) : (
           confirmationModal && (
             <div className="h-[100vh] z-10 w-screen ">
-            <ConfirmationModal modalData={confirmationModal} />
-          </div>
+              <ConfirmationModal modalData={confirmationModal} />
+            </div>
           )
         )}
       </div>

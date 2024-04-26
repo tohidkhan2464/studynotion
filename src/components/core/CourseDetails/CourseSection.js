@@ -8,9 +8,10 @@ const CourseSection = ({
   isActive,
   setIsActive,
   handleVisible,
+  index,
+  last,
 }) => {
   const [totalDuration, setTotalDuration] = useState("");
-
   const handleActive = (id) => {
     setIsActive(
       !isActive.includes(id)
@@ -31,8 +32,12 @@ const CourseSection = ({
   }, []);
 
   return (
-    <div className=" bg-richblack-700  ">
-      <div className="flex flex-row items-center py-4 justify-between px-8">
+    <div
+      className={`bg-richblack-700 mobile:text-sm ${
+        index === 0 ? "rounded-t-xl" : "border-none"
+      } ${index + 1 === last ? " rounded-b-xl" : "border-none"}`}
+    >
+      <div className="flex flex-row items-center mobile:px-3 py-4 justify-between px-8">
         <div
           className="flex flex-row gap-x-2 items-center"
           onClick={() => {
@@ -44,9 +49,9 @@ const CourseSection = ({
               isVisible?.includes(section._id) ? " rotate-90" : " rotate-0"
             }`}
           />
-          <p>{section?.sectionName}</p>
+          <p className="mobile:max-w-[220px]">{section?.sectionName}</p>
         </div>
-        <div className="flex flex-row gap-x-2 items-center justify-between max-w-[170px] w-full">
+        <div className="flex flex-row gap-x-2 items-center justify-between mobile:max-w-[150px] max-w-[170px] w-full">
           <p className="text-yellow-50">
             {section?.subSections?.length} Lectures
           </p>
@@ -56,7 +61,7 @@ const CourseSection = ({
         </div>
       </div>
       {isVisible?.includes(section._id) && (
-        <div className="bg-richblack-900 py-4 px-8 border-[1px] border-richblack-600 ">
+        <div className="bg-richblack-900 py-4 px-8  mobile:px-3 border-[1px] border-richblack-600 ">
           {section?.subSections?.map((subSection, index) => (
             <CourseSubSection
               subSection={subSection}

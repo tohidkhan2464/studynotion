@@ -3,7 +3,7 @@ import * as Icons from "react-icons/vsc";
 import { NavLink, useLocation, matchPath } from "react-router-dom";
 // import { useDispatch } from "react-redux";
 
-const SidebarLink = ({ link, iconName }) => {
+const SidebarLink = ({ link, iconName, onClick }) => {
   const Icon = Icons[iconName];
   const location = useLocation();
   // const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const SidebarLink = ({ link, iconName }) => {
   };
 
   return (
-    <NavLink
+    <NavLink onClick={onClick}
       to={link.path}
       className={` relative px-8 py-2 text-sm font-medium transition-all duration-200  ${
         matchRoute(link.path)

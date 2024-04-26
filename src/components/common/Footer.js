@@ -1,6 +1,7 @@
 import React from "react";
 import { FooterLink2 } from "../../data/footer-links";
 import logo from "../../assets/Home_items/Logo.svg";
+import { useNavigate } from "react-router-dom";
 import {
   PiFacebookLogoFill,
   PiTwitterLogoFill,
@@ -9,9 +10,36 @@ import {
 } from "react-icons/pi";
 import { GoHeartFill } from "react-icons/go";
 
-const company = ["About", "Carrer", "Affiliates"];
+import {
+  HiHome,
+  HiInformationCircle,
+  HiAcademicCap,
+  HiMail,
+} from "react-icons/hi";
+export const NavbarLinks = [
+  {
+    title: "Home",
+    path: "/",
+    icon: <HiHome fontSize={20} />,
+  },
+  {
+    title: "All Courses",
+    path: "/all-courses",
+    icon: <HiAcademicCap fontSize={20} />,
+  },
+  {
+    title: "About Us",
+    path: "/about",
+    icon: <HiInformationCircle fontSize={20} />,
+  },
+  {
+    title: "Contact Us",
+    path: "/contact",
+    icon: <HiMail fontSize={20} />,
+  },
+];
 
-const BottomFooter = ["Privacy Policy", "Cookie Policy", "Terms"];
+const BottomFooter = ["Privacy Policy", "Terms", "Cookie Policy"];
 const Resources = [
   "Articles",
   "Blog",
@@ -24,9 +52,12 @@ const Resources = [
 ];
 const Plans = ["Paid memberships", "For students", "Business solutions"];
 const Community = ["Forums", "Chapters", "Events"];
+
 const Footer = () => {
+  const navigate = useNavigate();
+
   return (
-    <div >
+    <div>
       <div className="w-maxContent mobile:w-full  border-t-2 border-richblack-700 py-12 flex flex-col gap-8 bg-richblack-800 items-center mx-auto text-richblack-300">
         <div className=" flex flex-row mobile:grid mobile:grid-cols-2 gap-6 mobile:gap-0">
           <div className="flex flex-row mobile:flex-col gap-3 mobile:border-none border-r-2 border-richblack-700">
@@ -40,13 +71,15 @@ const Footer = () => {
               </p>
 
               <div className="flex flex-col gap-1 mt-2">
-                {company.map((ele, index) => {
+                {NavbarLinks.map((links, index) => {
                   return (
                     <div
                       key={index}
-                      className="text-[14px] mt-1 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline"
+                      onClick={() => navigate(`${links?.path}`)}
+                      className="text-[14px] mt-1 flex flex-row items-center gap-x-2 hover:text-richblack-50 cursor-pointer hover:-translate-y-1 transition-all duration-500 hover:underline"
                     >
-                      {ele}
+                      {links.icon}
+                      {links.title}
                     </div>
                   );
                 })}
@@ -134,7 +167,10 @@ const Footer = () => {
             <div className="flex flex-row mobile:flex-col gap-3">
               {FooterLink2.map((element, index) => {
                 return (
-                  <div key={index} className="flex flex-col gap-3 mobile:mr-0 mr-20">
+                  <div
+                    key={index}
+                    className="flex flex-col gap-3 mobile:mr-0 mr-20"
+                  >
                     <p className="text-[16px] text-richblack-50 font-semibold mt-2">
                       {element.title}
                     </p>

@@ -12,7 +12,7 @@ const RenderTotalAmount = () => {
   };
 
   return (
-    <div className="w-[30%] pt-6">
+    <div className="w-[30%] mobile:w-full pt-6">
       <div className="flex flex-col w-full px-10 py-14 bg-richblack-800 rounded-2xl border-[1px] border-richblack-700">
         <p className="text-2xl font-medium text-richblack-300">Total:</p>
         <p className=" font-semibold my-5 text-4xl text-yellow-50">₹ {total}</p>

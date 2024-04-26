@@ -53,8 +53,6 @@ const CourseDetails = () => {
       }
     };
     getCourseDetails();
-    // console.log("COURSE DETAILS", courseDetails);
-    // console.log("COURSE totalDuration", totalDuration);
   }, [courseId]);
 
   const [totalNoOfLectures, setTotalNoOfLectures] = useState(0);
@@ -65,7 +63,6 @@ const CourseDetails = () => {
       lectures += sec?.subSections?.length || 0;
     });
     setTotalNoOfLectures(lectures);
-    // console.log("COURSE DETAILS", courseDetails);
   }, [courseDetails]);
 
   const handleBuyCourse = () => {
@@ -102,17 +99,21 @@ const CourseDetails = () => {
   return (
     <div className="text-richblack-5 bg-richblack-900">
       {/* Hero Section 1 */}
-      <section className="bg-richblack-800 text-white h-fit max-h-[340px]">
-        <div className="pt-[20px] mobile:pt-[10px] flex flex-row gap-x-10 w-11/12 h-full max-w-maxContent mx-auto mobile:items-center mobile:mx-auto">
-          <div className="pt-5 w-[calc(100%-400px)] mx-auto mobile:items-center mobile:mx-auto border-r-[1px] h-full border-richblack-500 pr-10 ">
+      <section className="bg-richblack-800 text-white h-fit mobile:max-h-fit max-h-[340px]">
+        <div className="pt-[20px] mobile:pt-[10px] flex flex-row mobile:flex-col gap-x-10 w-11/12 h-full max-w-maxContent mx-auto mobile:items-center mobile:mx-auto">
+          <div className="pt-5 w-[calc(100%-400px)] mobile:w-[100%] mx-auto mobile:items-center mobile:mx-auto mobile:border-none border-r-[1px] h-full border-richblack-500 pr-10 ">
             <div className="h-fit">
               <p className="text-sm text-richblack-300">
-                {`Home / Catalog / `}
+                {/* {`Home / Catalog / `} */}
+                <span onClick={() => navigate("/")}>Home / &nbsp;</span>
+                <span onClick={() => navigate("/all-courses")}>
+                  Catalog /&nbsp;{" "}
+                </span>
                 <span className="text-yellow-25">
                   {courseDetails.courseName}
                 </span>
               </p>
-              <p className="text-3xl my-2 text-richblack-5">
+              <p className="text-3xl mobile:text-xl my-2 text-richblack-5">
                 {courseDetails.courseName}
               </p>
               <p className=" text-richblack-200">
@@ -140,7 +141,7 @@ const CourseDetails = () => {
               </p>
             </div>
           </div>
-          <div className="max-w-[350px] w-full">
+          <div className="max-w-[350px] mobile:max-w-[100%] mobile:mt-5 w-full">
             <CourseDetailsCard
               course={courseDetails}
               setConfirmationModal={setConfirmationModal}
@@ -153,14 +154,16 @@ const CourseDetails = () => {
       {/* Section 2 */}
       <section className=" text-white h-fit">
         <div className="mt-[20px] mobile:mt-[10px] flex flex-row gap-x-10 w-11/12 max-w-maxContent mx-auto mobile:items-center mobile:mx-auto">
-          <div className="mt-5 w-[calc(100%-395px)] mobile:items-center mobile:mx-auto border-[1px] h-fit border-richblack-500 ">
+          <div className="mt-5 w-[calc(100%-395px)] mobile:w-full mobile:items-center mobile:mx-auto border-[1px] h-fit border-richblack-500 ">
             <div className="p-8">
-              <p className="text-3xl font-medium">What you'll learn</p>
-              <div className="flex flex-col gap-y-1 mt-4 text-richblack-100">
+              <p className="text-3xl mobile:text-xl font-medium">
+                What you'll learn
+              </p>
+              <div className="flex flex-col gap-y-1  mt-4 text-richblack-100">
                 {courseDetails?.whatYouWillLearn
                   ?.split("\n")
                   .map((item, index) => (
-                    <p className="text-base" key={index}>
+                    <p className="text-base mobile:text-sm" key={index}>
                       {item}
                     </p>
                   ))}
@@ -173,13 +176,19 @@ const CourseDetails = () => {
       {/* Section 3 */}
       <section className=" text-white h-fit">
         <div className="mt-[20px] mobile:mt-[10px] flex flex-row gap-x-10 w-11/12 max-w-maxContent mx-auto mobile:items-center mobile:mx-auto">
-          <div className="mt-5 w-[calc(100%-395px)] mobile:items-center mobile:mx-auto  h-fit ">
+          <div className="mt-5 w-[calc(100%-395px)] mobile:w-full mobile:items-center mobile:mx-auto  h-fit ">
             <div className="pt-8">
-              <p className="text-3xl font-medium">Course Content</p>
+              <p className="text-3xl mobile:text-xl font-medium">
+                Course Content
+              </p>
             </div>
-            <div className="flex items-center justify-between">
-              <div className="flex flex-row gap-x-4 mt-2 text-richblack-300">
-                <span>{courseDetails?.courseContent?.length} Sections</span>
+            <div className="flex items-center justify-between mobile:text-sm">
+              <div className="flex flex-row mobile:flex-col gap-x-4 mt-2 text-richblack-300">
+                <span className="flex flex-row gap-1 items-center">
+                  {" "}
+                  <GoDotFill />
+                  {courseDetails?.courseContent?.length} Sections
+                </span>
                 <span className="flex flex-row gap-1 items-center">
                   <GoDotFill />
                   {totalNoOfLectures} Lectures
@@ -205,6 +214,8 @@ const CourseDetails = () => {
               {courseDetails?.courseContent?.map((section, index) => (
                 <CourseSection
                   key={index}
+                  index={index}
+                  last={courseDetails?.courseContent?.length}
                   section={section}
                   isVisible={isVisible}
                   isActive={isActive}
@@ -220,20 +231,20 @@ const CourseDetails = () => {
       {/* Section 4 */}
       <section className=" my-14 text-white h-fit">
         <div className=" flex flex-row gap-x-10 w-11/12 max-w-maxContent mx-auto mobile:items-center mobile:mx-auto">
-          <div className="w-[calc(100%-395px)] mobile:items-center mobile:mx-auto  h-fit pr-10 ">
-            <p className="text-3xl font-medium">Author</p>
+          <div className="w-[calc(100%-395px)] mobile:w-full mobile:items-center mobile:mx-auto  h-fit pr-10 ">
+            <p className="text-3xl mobile:text-xl font-medium">Author</p>
             <div className="flex flex-row gap-x-4 items-center">
               <img
                 src={courseDetails?.instructor?.image}
                 alt={`Profile of ${courseDetails?.instructor?.firstName}`}
-                className="rounded-full overflow-hidden h-14 w-14 aspect-square mt-2"
+                className="rounded-full overflow-hidden mobile:h-10 mobile:w-10 h-14 w-14 aspect-square mt-2"
               />
-              <p>
+              <p className="mobile:text-sm">
                 {courseDetails?.instructor?.firstName}{" "}
                 {courseDetails?.instructor?.lastName}{" "}
               </p>
             </div>
-            <p className="mt-2 text-richblack-50">
+            <p className="mt-2 mobile:text-sm text-richblack-50">
               I will be your lead trainer in this course. Within no time, I will
               help you to understand the subject in an easy manner. I have a
               huge experience in online training and recording videos. Let's get
@@ -245,7 +256,7 @@ const CourseDetails = () => {
 
       <Footer />
       {confirmationModal && (
-        <div className="h-[100vh] z-10 w-screen absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+        <div className="h-screen z-10 w-screen absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
           <ConfirmationModal modalData={confirmationModal} />
         </div>
       )}

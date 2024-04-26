@@ -3,8 +3,8 @@ import RenderSteps from "./RenderSteps";
 export default function AddCourse() {
   return (
     <div  className="flex items-center justify-center" >
-      <div className="text-white w-11/12  desktop:ml-[20rem] desktop:w-9/12 max-w-maxContent flex flex-row gap-5 mx-auto my-12">
-        <div className="w-[90%] flex flex-col">
+      <div className="text-white w-11/12  desktop:ml-[20rem] desktop:w-9/12 max-w-maxContent flex flex-row  gap-5 mx-auto my-12">
+        <div className="w-[90%] mobile:w-full flex flex-col">
           <h1 className="text-4xl mobile:text-2xl font-medium">
             {" "}
             Add Course{" "}
@@ -15,7 +15,7 @@ export default function AddCourse() {
         </div>
 
         {/* Course Upload Tips */}
-        <div className="w-[450px] desktop:w-[500px] bg-richblack-800 border-[1px] rounded-xl border-richblack-700 flex flex-col p-6  h-fit">
+        <div className="w-[450px] desktop:w-[500px] mobile:hidden bg-richblack-800 border-[1px] rounded-xl border-richblack-700 flex flex-col p-6  h-fit">
           <p className="text-lg font-semibold">⚡ Course Upload Tips</p>
           <ul className="mt-5 flex flex-col gap-y-4 ml-5 list-disc text-[14px]">
             <li>Set the Course Price option or make it free.</li>

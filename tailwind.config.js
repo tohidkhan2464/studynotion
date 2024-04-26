@@ -142,7 +142,8 @@ module.exports = {
       mobile: { max: "480px" },
       tablet: { min: "481px", max: "768px" },
       laptop: { min: "769px", max: "1200px" },
-      desktop: { min: "1200px" },
+      desktop: { min: "1201px", max: "1600px" },
+      largeScreen: { min: "1600px" },
     },
     extend: {
       maxWidth: {

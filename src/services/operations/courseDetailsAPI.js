@@ -32,6 +32,8 @@ export const getAllCourses = async () => {
       method: "GET",
       url: GET_ALL_COURSE_API,
     });
+    // console.log("GET_ALL_COURSE_API API response............", response);
+
     if (!response?.data?.success) {
       throw new Error("Could Not Fetch Course Categories");
     }

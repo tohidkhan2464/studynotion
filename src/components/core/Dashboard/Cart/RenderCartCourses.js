@@ -11,30 +11,19 @@ import { removeFromCart } from "../../../../slices/cartSlice";
 const RenderCartCourses = () => {
   const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  // const course = {
-  //   courseName: "The Complete Python Bootcamp From Zero to Hero in Python",
-  //   courseDescription: "A complete Web Dev course",
-  //   instructor: "Tk",
-  //   whatYouWillLearn: "You will learn about Web Dev",
-  //   price: "1000",
-  //   thumbnail: `${thumbnailImage}`,
-  //   category: { name: "Dev" },
-  //   totalDuration: "1hr 30 mins",
-  //   progressPercentage: "",
-  //   ratingAndReviews: [1, 2, 3, 4, 5, 6],
-  // };
+
   return (
-    <div className="w-[70%]">
+    <div className="w-[70%] mobile:w-full">
       {cart.map((course, index) => {
         return (
           <div
-            className={`flex flex-row gap-x-4 py-6 pr-10 w-full justify-between ${
+            className={`flex flex-row mobile:pr-0 gap-x-4 py-6 pr-10 w-full justify-between ${
               index === -1
                 ? "border-none"
                 : "border-richblack-500 border-b-[1px]"
             } `}
           >
-            <div className="flex flex-row gap-x-4 w-full">
+            <div className="flex flex-row mobile:flex-col gap-x-4 w-full">
               <img
                 src={course?.thumbnail}
                 alt="Course Thumbnail"

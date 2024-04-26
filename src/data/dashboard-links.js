@@ -10,7 +10,7 @@ export const sidebarLinks = [
     id: 2,
     name: "Dashboard",
     path: "/dashboard/instructor",
-    type: ACCOUNT_TYPE.INSTRUCTOR, 
+    type: ACCOUNT_TYPE.INSTRUCTOR,
     icon: "VscDashboard",
   },
   {
@@ -36,7 +36,7 @@ export const sidebarLinks = [
   },
   {
     id: 6,
-    name: "Wishlist",
+    name: "Cart",
     path: "/dashboard/cart",
     type: ACCOUNT_TYPE.STUDENT,
     icon: "VscBookmark",
@@ -56,7 +56,7 @@ export const sidebarLinks = [
     icon: "VscMortarBoard",
   },
   //! For admin
-  
+
   {
     id: 9,
     name: "Add Categories",
@@ -93,6 +93,4 @@ export const sidebarLinks = [
     type: ACCOUNT_TYPE.ADMIN,
     icon: "VscInbox",
   },
-  
-  
 ];

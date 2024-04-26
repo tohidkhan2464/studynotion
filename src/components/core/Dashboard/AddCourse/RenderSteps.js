@@ -24,7 +24,7 @@ export default function RenderSteps() {
 
   return (
     <>
-      <div className="relative mb-2 flex w-full justify-center ">
+      <div className="relative mb-2 mobile:px-14 flex w-full justify-center ">
         {steps.map((item) => (
           <React.Fragment key={item.id}>
             <div className="flex flex-col items-center " key={item.id}>

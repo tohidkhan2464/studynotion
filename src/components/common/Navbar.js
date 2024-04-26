@@ -10,12 +10,13 @@ import { categories } from "../../services/api";
 // import axios from 'axios'
 import { apiConnector } from "../../services/apiConnector";
 import { IoIosArrowDropdown } from "react-icons/io";
+import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
 
 const Navbar = () => {
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
   const { totalItems } = useSelector((state) => state.cart);
-
+  const [isVisible, setIsVisible] = useState(false);
   const location = useLocation();
   const [loading, setLoading] = useState(false);
   const [subLinks, setSubLinks] = useState([]);
@@ -68,25 +69,38 @@ const Navbar = () => {
 
   return (
     <div className="flex h-14 items-center justify-center bg-richblack-800 border-b-2 border-b-richblack-700">
-      <div className="flex w-11/12 max-w-maxContent items-center justify-between">
+      <div className="relative flex w-11/12 max-w-maxContent items-center justify-between">
         {/* Logo Image */}
+        <div className="hidden mobile:block text-richblack-5 transition-all duration-200">
+          {!isVisible ? (
+            <RxHamburgerMenu onClick={() => setIsVisible(!isVisible)} />
+          ) : (
+            <RxCross1 onClick={() => setIsVisible(!isVisible)} />
+          )}
+        </div>
         <Link to="/">
           <img
             src={logo}
             alt="logo"
-            className="w-[160px] h-[32px] mobile:w-[120px] mobile:h-[28px]"
+            className="w-[160px] mobile:absolute mobile:top-1 mobile:left-6 h-[32px] mobile:w-[120px] mobile:h-[28px]"
             loading="lazy"
           />
         </Link>
 
         {/* Nav links */}
-        <nav className=" mobile:hidden">
-          <ul className="flex gap-x-6 text-richblack-25">
+        <nav
+          className={`${
+            isVisible
+              ? "block absolute top-[45px] rounded-xl bg-richblack-700 z-20 py-2 px-4 -left-5"
+              : "mobile:hidden desktop:block"
+          }`}
+        >
+          <ul className="flex mobile:flex-col gap-x-6 text-richblack-25">
             {NavbarLinks.map((links, index) => {
               return (
                 <li key={index}>
                   {links.title === "Catalog" ? (
-                    <div className="flex gap-1  items-center relative group">
+                    <div className="flex gap-1 mobile:hidden  items-center relative group">
                       <p>{links.title}</p>
                       <IoIosArrowDropdown />
 
@@ -118,18 +132,21 @@ const Navbar = () => {
                               ))}
                           </>
                         ) : (
-                          <p className="text-center">No Courses Found</p>
+                          <p className="text-center py-1 px-4">
+                            No Courses Found
+                          </p>
                         )}
                       </div>
                     </div>
                   ) : (
                     <Link to={links?.path}>
                       <p
+                        onClick={() => setIsVisible(false)}
                         className={`${
                           matchRoute(links?.path)
                             ? "text-yellow-25"
                             : "text-richblack-25"
-                        }`}
+                        } mobile:my-2`}
                       >
                         {links.title}
                       </p>

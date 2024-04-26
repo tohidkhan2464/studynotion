@@ -14,7 +14,7 @@ export default function Cart() {
       </p>
 
       {totalItems > 0 ? (
-        <div className="flex flex-row gap-x-4">
+        <div className="flex flex-row mobile:flex-col-reverse gap-x-4">
           <RenderCartCourses />
           <RenderTotalAmount />
         </div>
