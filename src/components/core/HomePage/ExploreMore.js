@@ -35,14 +35,14 @@ const ExploreMore = () => {
       </p>
 
       <div
-        className="flex flex-row mobile:flex-wrap mobile:rounded-xl mobile:mb-0 rounded-full mobile:justify-center mobile:items-center
+        className="flex flex-row mobile:flex-wrap mobile:rounded-xl mobile:mb-0 rounded-full mobile:justify-center 
         w-fit mobile:bg-richblack-700 bg-richblack-800 my-5 mobile:my-3 border-1 border-richblack-100 p-1"
       >
         {tabsName.map((element, index) => {
           return (
-            <div className="flex items-center justify-center flex-nowrap">
+            <div className="flex flex-nowrap">
               <div
-                className={`text-[16px] flex flex-row  w-fit flex-nowrap gap-2 mobile:gap-1 m-1 
+                className={`text-[16px] flex flex-row w-fit gap-2 mobile:gap-1 m-1 
                         ${
                           currentTab === element
                             ? "bg-richblack-900 text-richblack-5 font-medium"
