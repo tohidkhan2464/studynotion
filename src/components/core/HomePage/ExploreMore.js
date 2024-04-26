@@ -41,10 +41,11 @@ const ExploreMore = () => {
                 tabsName.map((element, index) => {
                     return (
                         <div 
-                        className={`text-[16px] flex flex-row items-center gap-2 mobile:gap-1 m-1 
+                        className={`text-[16px] flex flex-row items-center w-fit flex-nowrap gap-2 mobile:gap-1 m-1 
                          ${currentTab === element 
                             ? "bg-richblack-900 text-richblack-5 font-medium" 
-                            : "text-richblack-200"} rounded-full transition-all duration-500 cursor-pointer hover:bg-richblack-900 hover:text-richblack-5 px-7 mobile:px-3 mobile:py-1 py-2`}
+                            : "text-richblack-200"} rounded-full transition-all duration-500 cursor-pointer
+                             hover:bg-richblack-900 hover:text-richblack-5 px-7 mobile:px-3 mobile:py-1 py-2`}
                         key={index} onClick={() => setMyCards(element)} >
                             {element}
                         </div>
