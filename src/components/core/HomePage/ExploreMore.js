@@ -35,15 +35,16 @@ const ExploreMore = () => {
             Learn to build anything you can imagine
         </p>
 
-        <div className="flex flex-row mobile:flex-col mobile:rounded-xl mobile:mb-0 rounded-full w-fit mobile:bg-richblack-700 bg-richblack-800 mb-5 border-1 border-richblack-100 mt-5 p-1">
+        <div className="flex flex-row mobile:flex-wrap mobile:rounded-xl mobile:mb-0 rounded-full mobile:justify-center mobile:items-center
+        w-fit mobile:bg-richblack-700 bg-richblack-800 my-5 mobile:my-3 border-1 border-richblack-100 p-1">
             {
                 tabsName.map((element, index) => {
                     return (
                         <div 
-                        className={`text-[16px] flex flex-row items-center gap-2 m-1 
+                        className={`text-[16px] flex flex-row items-center gap-2 mobile:gap-1 m-1 
                          ${currentTab === element 
                             ? "bg-richblack-900 text-richblack-5 font-medium" 
-                            : "text-richblack-200"} rounded-full transition-all duration-500 cursor-pointer hover:bg-richblack-900 hover:text-richblack-5 px-7 py-2`}
+                            : "text-richblack-200"} rounded-full transition-all duration-500 cursor-pointer hover:bg-richblack-900 hover:text-richblack-5 px-7 mobile:px-3 mobile:py-1 py-2`}
                         key={index} onClick={() => setMyCards(element)} >
                             {element}
                         </div>
