@@ -40,7 +40,7 @@ const CodeBlocks = ({
 
         {/* section 2 */}
         
-        <div className="flex relative z-10 flex-row justify-between h-fit text-md !mobile:text-xs w-[50%] py-4 mobile:w-11/12 mobile:mx-auto code-border">
+        <div className="flex relative z-10 flex-row justify-between h-fit text-md mobile:text-xs w-[50%] py-4 mobile:w-11/12 mobile:mx-auto code-border">
           <div
             className={`absolute -z-10 top-0 left-0 rounded-full blur-3xl opacity-50 ${backgroundGradient} mobile:w-[250px] mobile:h-[150px] h-[257px]  w-[397px]`}
           ></div>
