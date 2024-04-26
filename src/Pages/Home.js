@@ -24,7 +24,7 @@ const Home = () => {
           "
           >
             <div className="flex flex-row items-center gap-2 rounded-full px-10 py-[5px]  transition-all duration-500 group-hover:bg-richblack-900 ">
-              <p >Become an Instructor</p>
+              <p>Become an Instructor</p>
               <FaArrowRight />
             </div>
           </div>
@@ -68,7 +68,7 @@ const Home = () => {
         </div>
 
         {/* Code Section 1 */}
-        <div>
+        <div className="mx-auto flex items-center justify-center">
           <CodeBlocks
             position={`flex-row mobile:flex-col`}
             heading={
@@ -110,11 +110,9 @@ const Home = () => {
         </div>
 
         {/* Code Section 2 */}
-        <div>
+        <div className="mx-auto flex items-center justify-center">
           <CodeBlocks
-            position={
-              "flex-row-reverse mobile:flex-col "
-            }
+            position={"flex-row-reverse mobile:flex-col "}
             heading={
               <div className="text-4xl mobile:text-2xl font-semibold">
                 Unlock Your <HighlightText text={"coding potential"} /> with our
@@ -158,7 +156,7 @@ const Home = () => {
 
       {/* Section 2 */}
       <div className=" bg-pure-greys-5 text-richblack-700 mt-10">
-        <div className="homepage_bg h-[333px]">
+        <div className="homepage_bg h-[333px] mobile:h-[300px]">
           <div className="w-11/12  max-w-maxContent flex flex-col items-center justify-between gap-5 mx-auto">
             <div className="h-[150px]"></div>
             <div className="flex flex-row gap-7 text-white">
