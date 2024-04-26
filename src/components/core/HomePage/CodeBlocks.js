@@ -18,7 +18,9 @@ const CodeBlocks = ({
       <div
         className={`flex ${position} my-20 mobile:my-5 justify-between mobile:justify-center mobile:items-center mobile:gap-0 mobile:gap-y-5 gap-10`}
       >
-        <div className={`flex ${position} my-20 mobile:my-5 justify-between mobile:justify-center  mobile:gap-0 mobile:gap-y-5 gap-10`}>
+        <div
+          className={`flex ${position} my-20 mobile:my-5 justify-between mobile:justify-center  mobile:gap-0 mobile:gap-y-5 gap-10`}
+        >
           {/* section1 */}
           <div className="w-full flex items-center justify-center">
             <div className="flex flex-col w-[50%] mobile:w-11/12  mobile:text-center mobile:items-center gap-8 mobile:gap-2 justify-center">

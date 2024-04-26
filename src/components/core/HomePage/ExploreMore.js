@@ -42,7 +42,7 @@ const ExploreMore = () => {
           return (
             <div className="flex items-center justify-center flex-nowrap">
               <div
-                className={`text-[16px] flex flex-row items-center w-fit flex-nowrap gap-2 mobile:gap-1 m-1 
+                className={`text-[16px] flex flex-row  w-fit flex-nowrap gap-2 mobile:gap-1 m-1 
                         ${
                           currentTab === element
                             ? "bg-richblack-900 text-richblack-5 font-medium"
