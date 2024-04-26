@@ -42,9 +42,9 @@ const CodeBlocks = ({
         
         <div className="flex relative z-10 flex-row justify-between h-fit text-md mobile:text-xs w-[50%] py-4 mobile:w-11/12 mobile:mx-auto code-border">
           <div
-            className={`absolute -z-10 top-0 left-0 rounded-full blur-3xl opacity-50 ${backgroundGradient} mobile:w-[250px] mobile:h-[150px] h-[257px]  w-[397px]`}
+            className={`absolute -z-10 top-0 left-0 rounded-full mobile:text-xs blur-3xl opacity-50 ${backgroundGradient} mobile:w-[250px] mobile:h-[150px] h-[257px]  w-[397px]`}
           ></div>
-          <div className="text-center flex flex-col w-[10%] text-richblack-400 font-inter font-bold">
+          <div className="text-center flex flex-col w-[10%] mobile:text-xs text-richblack-400 font-inter font-bold">
             <p>1</p>
             <p>2</p>
             <p>3</p>
@@ -59,7 +59,7 @@ const CodeBlocks = ({
             <p>12</p>
           </div>
           <div
-            className={`min-w-[90%] flex flex-col gap-2 font-bold text-nowrap font-mono ${codeColor} pr-2`}
+            className={`min-w-[90%] flex flex-col gap-2 font-bold text-nowrap mobile:text-xs font-mono ${codeColor} pr-2`}
           >
             <TypeAnimation
               sequence={[codeBlock, 2000, ""]}

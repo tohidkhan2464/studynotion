@@ -46,9 +46,7 @@ export default function CoursesTable({ courses, setCourses }) {
             <th className="w-[10%] text-center mobile:text-sm flex items-center justify-center ">
               Duration / Price
             </th>
-            {/* <th className="w-[10%] text-center mobile:text-sm flex items-center justify-center ">
-              Price{" "}
-            </th> */}
+
             <th className="w-[10%] text-center mobile:text-sm flex items-center justify-center ">
               Actions{" "}
             </th>
@@ -107,11 +105,9 @@ export default function CoursesTable({ courses, setCourses }) {
                 </td>
                 <td className="w-[10%] text-richblack-300 flex-col  mobile:text-sm text-center text-base font-medium flex items-center justify-center ">
                   <span className="whitespace-nowrap">2hr 30min</span>
-                  <span>{course.price}</span>
+                  <span>Rs. {course.price}</span>
                 </td>
-                {/* <td className="w-[10%] text-richblack-300  mobile:text-sm text-center text-base font-medium flex items-center justify-center ">
-                  {course.price}
-                </td> */}
+
                 <td className="w-[10%] text-richblack-300  mobile:text-xl flex flex-row mobile:flex-col gap-4 text-3xl items-center justify-center ">
                   <button
                     disabled={loading}
