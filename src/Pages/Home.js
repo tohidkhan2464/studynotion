@@ -93,8 +93,8 @@ const Home = () => {
             codeBlock={`<!DOCTYPE html>
                 <html>
                 <head> <title>Example</title>
-                <link rel="stylesheet"href="styles.css">
-                <head>
+                <link rel="stylesheet" 
+                href="styles.css"> </head>
                 <body>
                 <h1> <a href="/">Header</a> </h1>
                 <nav> <a href="one/">One</a> 
@@ -135,15 +135,15 @@ const Home = () => {
             codeBlock={`import React from "react";
             import CTAButton from "./Button";
             import TypeAnimation from "react-type";
-            import { FaArrowRight } from "react-icons/fa";
-
             const Home = () => {
-              return (
-                <div>Home</div>
-                )
-              }
+            return (
+            <div>
+            Home
+            </div>
+            )
+            }
 
-              export default Home;`}
+            export default Home;`}
             codeColor={"text-[#C5C7D4]"}
             backgroundGradient={
               "bg-gradient-to-l  from-[#1FA2FF] from[-3.62%] via-[#12D8FA] via-[50.44%] to-[#A6FFCB] to-[104.51%]"
