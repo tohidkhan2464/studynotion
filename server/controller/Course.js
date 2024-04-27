@@ -493,7 +493,7 @@ exports.deleteCourse = async (req, res) => {
     for (const sectionId of courseSections) {
       const section = await Section.findById(sectionId); // Delete sub-sections of the section
       if (section) {
-        const subSections = section.subSection;
+        const subSections = section.subSections;
         for (const subSectionId of subSections) {
           await SubSection.findByIdAndDelete(subSectionId);
         }
