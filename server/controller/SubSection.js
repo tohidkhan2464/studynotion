@@ -71,42 +71,96 @@ exports.createSubSection = async (req, res) => {
   }
 };
 
+// exports.editCourse = async (req, res) => {
+//   try {
+//     const { courseId } = req.body;
+//     const updates = req.body;
+//     const course = await Course.findById(courseId);
+//     if (!course) {
+//       return res.status(404).json({ error: "Course not found" });
+//     }
+
+//     // If Thumbnail Image is found, update it
+//     if (req.files) {
+//       const thumbnail = req.files.thumbnailImage;
+//       const thumbnailImage = await uploadImageToCloudinary(
+//         thumbnail,
+//         process.env.FOLDER_NAME
+//       );
+//       course.thumbnail = thumbnailImage.secure_url;
+//     }
+
+//     // Update only the fields that are present in the request body
+//     for (const key in updates) {
+//       if (updates.hasOwnProperty(key)) {
+//         if (key === "tag" || key === "instructions") {
+//           course[key] = JSON.parse(updates[key]);
+//         } else {
+//           course[key] = updates[key];
+//         }
+//       }
+//     }
+
+//     await course.save(); // save the course;
+
+//     const updatedCourse = await Course.findOne({ _id: courseId })
+//       .populate({
+//         path: "instructor",
+//         populate: {
+//           path: "additionalDetails",
+//         },
+//       })
+//       .populate("category")
+//       .populate("ratingAndReviews")
+//       .populate({
+//         path: "courseContent",
+//         populate: {
+//           path: "subSections",
+//         },
+//       })
+//       .exec();
+//     res.json({
+//       success: true,
+//       message: "Course updated successfully",
+//       data: updatedCourse,
+//     });
+//   } catch (error) {
+//     res.status(500).json({
+//       success: false,
+//       message: "Internal server error",
+//       error: error.message,
+//     });
+//   }
+// };
+
 // updateSubSection
 exports.updateSubSection = async (req, res) => {
   try {
-    // fetch data from req.body
-    const { sectionId, subSectionId, title = "", description = "" } = req.body;
-    // console.log("sectionId", sectionId);
-    // console.log("title", title);
-    // console.log("subsectionId", subSectionId);
-    // console.log("description", description);
+    const { sectionId, subSectionId } = req.body;
+    const updates = req.body;
 
-    // extract file/video
-    const video = req.files.videoUrl;
-    // console.log("videoUrl", video);
+    const subSection = await SubSection.findById(subSectionId);
 
-    // validation
-    if (!subSectionId || !title || !description || !video) {
-      return res.status(400).json({
-        success: false,
-        message: "All fields are required.",
-      });
+    if (!subSection) {
+      return res.status(404).json({ error: "SubSection not found" });
     }
 
-    // upload video to cloudinary
-    const uploadDetails = await uploadImageToCloudinary(
-      video,
-      process.env.FOLDER_NAME
-    );
+    if (req.files) {
+      const video = req.files.videoUrl;
+      const videoDetails = await uploadImageToCloudinary(
+        video,
+        process.env.FOLDER_NAME
+      );
+      subSection.thumbnail = videoDetails.secure_url;
+    }
 
-    // get subsectionDetails
-    const subsectionDetails = await SubSection.findById(subSectionId);
+    for (const key in updates) {
+      if (updates.hasOwnProperty(key)) {
+        subSection[key] = updates[key];
+      }
+    }
 
-    subsectionDetails.title = title;
-    subsectionDetails.timeDuration = uploadDetails.duration;
-    subsectionDetails.description = description;
-    subsectionDetails.videoUrl = uploadDetails.secure_url;
-    await subsectionDetails.save();
+    await subSection.save();
     const section = await Section.findById(sectionId)
       .populate("subSections")
       .exec();
