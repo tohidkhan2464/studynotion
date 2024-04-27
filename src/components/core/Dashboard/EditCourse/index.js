@@ -21,14 +21,14 @@ export default function EditCourse() {
       if (result?.courseDetails) {
         dispatch(setEditCourse(true));
         dispatch(setCourse(result?.courseDetails));
+        setLoading(false);
       }
-      setLoading(false);
     })();
   }, []);
 
   if (loading) {
     return (
-      <div className="grid flex-1 place-items-center">
+      <div className="grid flex-1 h-[80vh] w-screen place-items-center">
         <div className="spinner"></div>
       </div>
     );

@@ -53,7 +53,7 @@ export default function CoursesTable({ courses, setCourses }) {
           </tr>
         </thead>
         <tbody className="border-[1px] rounded-b-xl border-richblack-500">
-          {courses.length === 0 ? (
+          {courses.length === 0 && !loading ? (
             <tr
               className={`flex gap-x-10 border-b-richblack-500 border-b-[1px] p-8`}
             >

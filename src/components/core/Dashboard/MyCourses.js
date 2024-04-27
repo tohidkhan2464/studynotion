@@ -10,17 +10,30 @@ const MyCourses = () => {
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     const fetchCourses = async () => {
       const result = await fetchInstructorCourses(token);
       console.log("result", result);
       if (result) {
         setCourses(result);
+        setLoading(false);
       }
     };
+
     fetchCourses();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="grid flex-1 h-[80vh] w-screen place-items-center">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex items-center justify-center">
       <div className="text-white desktop:ml-[18rem] mobile:mx-auto mobile:w-11/12 desktop:w-9/12 w-11/12 max-w-maxContent flex flex-col  mx-auto my-5">

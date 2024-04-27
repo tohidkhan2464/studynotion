@@ -41,7 +41,7 @@ const AllCourses = () => {
             All Available Courses
           </div>
           <div className="py-8">
-            <div className="grid grid-cols-1 gap-6 desktop:grid-cols-2">
+            <div className="grid mobile:grid-cols-1 gap-6 grid-cols-2 largeScreen:grid-cols-3">
               {catalogPageData?.map((course, index) => (
                 <CourseCard
                   course={course}
