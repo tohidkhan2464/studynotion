@@ -399,7 +399,7 @@ exports.getFullCourseDetails = async (req, res) => {
 
     let totalDurationInSeconds = 0;
     courseDetails.courseContent.forEach((content) => {
-      content.subSection.forEach((subSection) => {
+      content.subSections.forEach((subSection) => {
         const timeDurationInSeconds = parseInt(subSection.timeDuration);
         totalDurationInSeconds += timeDurationInSeconds;
       });
