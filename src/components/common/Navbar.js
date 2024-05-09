@@ -95,12 +95,12 @@ const Navbar = () => {
               : "mobile:hidden desktop:block"
           }`}
         >
-          <ul className="flex mobile:flex-col gap-x-6 text-richblack-25">
+          <ul className="flex mobile:flex-col  text-richblack-25">
             {NavbarLinks.map((links, index) => {
               return (
                 <li key={index}>
                   {links.title === "Catalog" ? (
-                    <div className="flex gap-1 mobile:hidden  items-center relative group">
+                    <div className="flex gap-1 mobile:hidden mx-3  items-center relative group">
                       <p>{links.title}</p>
                       <IoIosArrowDropdown />
 
@@ -138,6 +138,19 @@ const Navbar = () => {
                         )}
                       </div>
                     </div>
+                  ) : (token !== null && links.title === "All Courses") ? (
+                    <Link to={links?.path}>
+                      <p
+                        onClick={() => setIsVisible(false)}
+                        className={`hidden h-0 w-0 ${
+                          matchRoute(links?.path)
+                            ? "text-yellow-25"
+                            : "text-richblack-25"
+                        } mobile:my-2 mx-3`}
+                      >
+                        {links.title}
+                      </p>
+                    </Link>
                   ) : (
                     <Link to={links?.path}>
                       <p
@@ -146,7 +159,7 @@ const Navbar = () => {
                           matchRoute(links?.path)
                             ? "text-yellow-25"
                             : "text-richblack-25"
-                        } mobile:my-2`}
+                        } mobile:my-2 mx-3`}
                       >
                         {links.title}
                       </p>
