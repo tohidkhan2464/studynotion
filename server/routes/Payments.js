@@ -8,9 +8,7 @@ const {
 } = require("../controller/Payments");
 const {
   auth,
-  isInstructor,
   isStudent,
-  isAdmin,
 } = require("../middleware/Auth");
 
 router.post("/capturePayment", auth, isStudent, capturePayment);

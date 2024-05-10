@@ -46,12 +46,12 @@ export async function buyCourse(
     }
 
     //initiate the order
-    const orderResponse = await apiConnector(
-      "POST",
-      COURSE_PAYMENT_API,
-      { courses },
-      { Authorization: `Bearer ${token}` }
-    );
+    const orderResponse = await apiConnector({
+      method: "POST",
+      url: COURSE_PAYMENT_API,
+      bodyData: { courses },
+      headers: { Authorization: `Bearer ${token}` },
+    });
 
     if (!orderResponse.data.success) {
       throw new Error(orderResponse.data.message);
@@ -98,18 +98,18 @@ export async function buyCourse(
 
 async function sendPaymentSuccessEmail(response, amount, token) {
   try {
-    await apiConnector(
-      "POST",
-      SEND_PAYMENT_SUCCESS_EMAIL_API,
-      {
+    await apiConnector({
+      method: "POST",
+      url: SEND_PAYMENT_SUCCESS_EMAIL_API,
+      bodyData: {
         orderId: response.razorpay_order_id,
         paymentId: response.razorpay_payment_id,
         amount,
       },
-      {
+      headers: {
         Authorization: `Bearer ${token}`,
-      }
-    );
+      },
+    });
   } catch (error) {
     console.log("PAYMENT SUCCESS EMAIL ERROR....", error);
   }

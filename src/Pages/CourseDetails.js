@@ -65,9 +65,9 @@ const CourseDetails = () => {
     setTotalNoOfLectures(lectures);
   }, [courseDetails]);
 
-  const handleBuyCourse = () => {
+  const handleBuyCourse = async () => {
     if (token) {
-      buyCourse(token, [courseId], user, navigate, dispatch);
+      await buyCourse(token, [courseId], user, navigate, dispatch);
       return;
     }
     setConfirmationModal({
