@@ -37,7 +37,7 @@ export default function CoursesTable({ courses, setCourses }) {
   };
 
   return (
-    <div className=" text-richblack-5 pt-24 mobile:pt-10">
+    <div className=" text-richblack-5 pt-12 mobile:pt-10">
       <table>
         <thead className="mt-20 mobile:mt-10">
           <tr className="flex flex-row items-center gap-x-10 text-richblack-300 py-4 px-8 mobile:px-4 -ml-[.5px] border-[1px] border-b-[0px] rounded-t-xl border-richblack-500  text-base font-medium   ">

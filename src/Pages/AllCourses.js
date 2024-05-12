@@ -35,7 +35,7 @@ const AllCourses = () => {
   return (
     <div className="text-richblack-5 bg-richblack-900">
       <div
-        className={`py-[50px] pt-[50px] mobile:py-[20px] text-white w-11/12 ${
+        className={`py-[50px] pt-0 mobile:py-[20px] text-white w-11/12 ${
           token === null ? "" : "desktop:ml-[20rem]"
         } desktop:w-9/12 max-w-maxContent flex flex-col  mx-auto my-5 mobile:pt-[10px]  mobile:max-w-screen  mobile:items-center`}
       >
