@@ -9,6 +9,7 @@ import StatesComponent from "../components/core/AboutPage/StatesComponent";
 import LearningGrid from "../components/core/AboutPage/learningGrid";
 import ContactForm from "../components/core/AboutPage/ContactForm";
 import Footer from "../components/common/Footer";
+import ReviewSlider from "../components/common/ReviewSlider";
 
 const About = () => {
   return (
@@ -127,10 +128,13 @@ const About = () => {
 
       {/* Review Slider */}
       <div className="bg-richblack-900 text-white mt-20">
-        <section className="text-center mx-auto w-11/12 max-w-maxContent">
+        <section className=" mx-auto w-11/12 max-w-maxContent">
           <div>
-            <h1 className="text-4xl mobile:text-2xl text-white">Reveiws from other Learners</h1>
+            <h1 className="text-4xl text-center mobile:text-2xl text-white">
+              Reveiws from other Learners
+            </h1>
             {/* <ReviewSlider/> */}
+            <ReviewSlider />
           </div>
         </section>
       </div>

@@ -44,7 +44,7 @@ const VideoDetails = () => {
         const filteredData = courseSectionData.filter(
           (section) => section._id === sectionId
         );
-        const filteredVideoData = filteredData?.[0].subSections.filter(
+        const filteredVideoData = filteredData?.[0]?.subSections.filter(
           (data) => data._id === subSectionId
         );
         setVideoData(filteredVideoData);

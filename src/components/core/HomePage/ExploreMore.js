@@ -40,7 +40,7 @@ const ExploreMore = () => {
       >
         {tabsName.map((element, index) => {
           return (
-            <div className="flex flex-nowrap">
+            <div className="flex flex-nowrap" key={index}>
               <div
                 className={`text-[16px] whitespace-nowrap flex flex-row w-fit gap-2 mobile:gap-1 m-1 
                         ${

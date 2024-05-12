@@ -4,13 +4,13 @@ import chat from "../assets/ContactUs/chat-bubble-left-right.svg";
 import globe from "../assets/ContactUs/globe-europe-africa.svg";
 import phone from "../assets/ContactUs/phone.svg";
 import Footer from "../components/common/Footer";
+import ReviewSlider from "../components/common/ReviewSlider";
 
 const ContactUs = () => {
   return (
     <div className="bg-richblack-900 text-white">
       <div className="py-[50px] pt-[100px] mobile:pt-[70px] w-11/12 max-w-maxContent mx-auto flex mobile:flex-col mobile:items-center mobile:mx-auto flex-row gap-14">
         <div className="w-[450px] mobile:w-[300px] mobile:min-w-[350px] min-w-[450px] bg-richblack-800 h-fit rounded-xl p-6 flex flex-col gap-6">
-          
           <div className="flex flex-row items-start  gap-4">
             <div className="p-2">
               <img src={chat} alt="chat icon" />
@@ -75,6 +75,7 @@ const ContactUs = () => {
         <h1 className="text-4xl mobile:text-2xl text-center font-bold">
           Review from other learners
         </h1>
+        <ReviewSlider />
       </div>
 
       <div className="pt-[50px]">

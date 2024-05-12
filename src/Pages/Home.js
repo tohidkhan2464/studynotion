@@ -11,6 +11,7 @@ import InstructorSection from "../components/core/HomePage/InstructorSection";
 import Footer from "../components/common/Footer";
 import ExploreMore from "../components/core/HomePage/ExploreMore";
 import useWindowDimensions from "../hooks/getWindowSize";
+import ReviewSlider from "../components/common/ReviewSlider";
 
 const Home = () => {
   const { height, width } = useWindowDimensions();
@@ -211,6 +212,7 @@ const Home = () => {
         <h2 className="text-center text-4xl mobile:text-2xl font-semibold mt-10">
           Review from other Learners
         </h2>
+        <ReviewSlider />
       </div>
 
       {/* Footer */}

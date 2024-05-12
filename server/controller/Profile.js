@@ -277,9 +277,7 @@ exports.getEnrolledCourses = async (req, res) => {
         });
       });
       const totalDuration = convertSecondsToDuration(totalDurationInSeconds);
-      const courseProg = courseProgressCount?.completedVideos
-        ? courseProgressCount?.completedVideos
-        : [];
+      const courseProg = courseProgressCount?.completedVideos.length;
 
       let totalVideos = 0;
       courseDetails?.courseContent?.forEach((content) => {

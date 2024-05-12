@@ -43,13 +43,6 @@ export const sidebarLinks = [
   },
   {
     id: 7,
-    name: "Purchase History",
-    path: "/dashboard/purchase-history",
-    type: ACCOUNT_TYPE.STUDENT,
-    icon: "VscHistory",
-  },
-  {
-    id: 8,
     name: "All Courses",
     path: "/dashboard/all-courses",
     type: ACCOUNT_TYPE.STUDENT,
@@ -58,21 +51,21 @@ export const sidebarLinks = [
   //! For admin
 
   {
-    id: 9,
+    id: 8,
     name: "Add Categories",
     path: "/dashboard/add-category",
     type: ACCOUNT_TYPE.ADMIN,
     icon: "VscLayers",
   },
   {
-    id: 10,
+    id: 9,
     name: "All Courses",
     path: "/dashboard/all-courses",
     type: ACCOUNT_TYPE.ADMIN,
     icon: "VscVm",
   },
   {
-    id: 11,
+    id: 10,
     name: "All Users",
     path: "/dashboard/all-users",
     type: ACCOUNT_TYPE.ADMIN,
@@ -80,14 +73,14 @@ export const sidebarLinks = [
   },
 
   {
-    id: 12,
+    id: 11,
     name: "Bugs",
     path: "/dashboard/all-bugs",
     type: ACCOUNT_TYPE.ADMIN,
     icon: "VscBug",
   },
   {
-    id: 13,
+    id: 12,
     name: "Requests/Contact",
     path: "/dashboard/user-contact",
     type: ACCOUNT_TYPE.ADMIN,
