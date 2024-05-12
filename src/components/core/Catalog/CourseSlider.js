@@ -4,6 +4,7 @@ import "swiper/css";
 import CourseCard from "./CourseCard";
 
 const CourseSlider = ({ courses }) => {
+  console.log("courses slider", courses)
   return (
     <div className="w-full">
       {courses?.length ? (

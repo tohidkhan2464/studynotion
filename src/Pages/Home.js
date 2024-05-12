@@ -55,9 +55,10 @@ const Home = () => {
           </CTAButton>
         </div>
 
-        <div className="mx-3 my-7 mobile:max-w-[350px] ">
+        <div className="mx-3 my-7 mobile:max-w-[350px] largeMobile:max-w-[650px] ">
           <div className=" relative z-20">
-            <div className=" absolute top-5 left-0 -z-[2] blur-3xl h-[300px] w-[992px] mobile:w-[300px] mobile:h-[150px] bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4]"></div>
+            <div className=" absolute top-5 left-0 -z-[2] blur-3xl h-[300px] w-[992px]
+             mobile:w-[300px] mobile:h-[150px] largeMobile:w-[450px] largeMobile:h-[200px] bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4]"></div>
 
             <div>
               <video
@@ -75,9 +76,9 @@ const Home = () => {
         {/* Code Section 1 */}
         <div className="mx-auto flex items-center justify-center">
           <CodeBlocks
-            position={`flex-row mobile:flex-col`}
+            position={`flex-row mobile:flex-col largeMobile:flex-col`}
             heading={
-              <div className="text-4xl mobile:text-2xl font-semibold">
+              <div className="text-4xl mobile:text-2xl largeMobile:text-2xl font-semibold">
                 Unlock Your <HighlightText text={"coding potential"} /> with our
                 online courses
               </div>
@@ -117,9 +118,9 @@ const Home = () => {
         {/* Code Section 2 */}
         <div className="mx-auto flex items-center justify-center">
           <CodeBlocks
-            position={"flex-row-reverse mobile:flex-col "}
+            position={"flex-row-reverse mobile:flex-col largeMobile:flex-col "}
             heading={
-              <div className="text-4xl mobile:text-2xl font-semibold">
+              <div className="text-4xl mobile:text-2xl largeMobile:text-2xl font-semibold">
                 Unlock Your <HighlightText text={"coding potential"} /> with our
                 online courses
               </div>
@@ -161,7 +162,7 @@ const Home = () => {
       
       {/* Section 2 */}
       <div className=" bg-pure-greys-5 text-richblack-700 mt-10">
-        <div className="homepage_bg h-[333px] mobile:h-[300px]">
+        <div className="homepage_bg h-[333px] mobile:h-[300px] largeMobile:h-[300px]">
           <div className="w-11/12  max-w-maxContent flex flex-col items-center justify-between gap-5 mx-auto">
             <div className="h-[150px]"></div>
             <div className="flex flex-row gap-7 text-white">
@@ -180,12 +181,12 @@ const Home = () => {
         </div>
 
         <div className="w-11/12  max-w-maxContent flex flex-col items-center justify-between gap-7 mx-auto">
-          <div className="flex flex-row mobile:flex-col mobile:gap-5 gap-[95px] my-10 ">
-            <div className=" text-4xl mobile:text-2xl font-semibold w-[45%] mobile:w-full">
+          <div className="flex flex-row mobile:flex-col mobile:gap-5 largeMobile:flex-col largeMobile:gap-5 gap-[95px] my-10 ">
+            <div className=" text-4xl mobile:text-2xl largeMobile:text-2xl font-semibold w-[45%] largeMobile:w-full mobile:w-full">
               Get the Skills you need for a
               <HighlightText text={"job that is in Demand"} />
             </div>
-            <div className="flex flex-col gap-10 mobile:w-full mobile:items-center w-[40%] items-start">
+            <div className="flex flex-col gap-10 mobile:w-full largeMobile:w-full largeMobile:items-center mobile:items-center w-[40%] items-start">
               <div className="text-[16px]">
                 The modern StudyNotion is the dictates its own terms. Today, to
                 be a competitive specialist requires more than professional

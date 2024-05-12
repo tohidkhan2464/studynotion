@@ -33,3 +33,18 @@ input::-webkit-inner-spin-button {
    -webkit-appearance: none;
    margin: 0;
 }
+.blackButton{
+   @apply cursor-pointer rounded-md bg-richblack-800 px-[20px] py-[8px] font-semibold text-richblack-5;
+}
+
+.section_heading{
+
+}
+
+.form-style{
+
+}
+
+.label-style{
+   
+}

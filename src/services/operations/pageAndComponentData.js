@@ -12,6 +12,7 @@ export const getCatalogPageData = async (categoryId) => {
       url: catalogData.CATALOGPAGEDATA_API,
       bodyData: categoryId,
     });
+
     console.log("CATALOG PAGE DATA API RESPONSE...", response);
     if (!response?.data?.success) {
       throw new Error("Could not fetch Category data");

@@ -284,7 +284,7 @@ export const deleteSection = async (data, token) => {
       throw new Error("Could Not Delete Section");
     }
     toast.success("Course Section Deleted");
-    
+
     result = response?.data?.data;
   } catch (error) {
     console.log("DELETE SECTION API ERROR............", error);
@@ -303,7 +303,6 @@ export const deleteSubSection = async (data, token) => {
       url: DELETE_SUBSECTION_API,
       bodyData: data,
       headers: {
-        
         Authorization: `Bearer ${token}`,
       },
     });
@@ -440,7 +439,7 @@ export const getFullDetailsOfCourse = async (courseId, token) => {
 // mark a lecture as complete
 export const markLectureAsComplete = async (data, token) => {
   let result = null;
-  // console.log("mark complete data", data);
+  console.log("mark complete data", data);
   const toastId = toast.loading("Loading...");
   try {
     const response = await apiConnector({
@@ -451,10 +450,10 @@ export const markLectureAsComplete = async (data, token) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    // console.log(
-    //   "MARK_LECTURE_AS_COMPLETE_API API RESPONSE............",
-    //   response
-    // );
+    console.log(
+      "MARK_LECTURE_AS_COMPLETE_API API RESPONSE............",
+      response
+    );
 
     if (!response.data.message) {
       throw new Error(response.data.error);

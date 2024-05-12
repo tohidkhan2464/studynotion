@@ -7,6 +7,7 @@ import ReactStars from "react-stars";
 import trash from "../../../../assets/dashboard/fi-br-trash.svg";
 import IconBtn from "../../../common/IconBtn";
 import { removeFromCart } from "../../../../slices/cartSlice";
+import GetAvgRating from "../../../../utils/avgRating";
 
 const RenderCartCourses = () => {
   const { cart } = useSelector((state) => state.cart);
@@ -27,24 +28,26 @@ const RenderCartCourses = () => {
               <img
                 src={course?.thumbnail}
                 alt="Course Thumbnail"
-                className=" rounded-xl h-[180px]"
+                className=" rounded-xl h-[180px] mobile:h-[120px] w-[240px] object-contain"
               />
-              <div className="w-full flex flex-col">
+              <div className="w-full flex mobile:mt-2 flex-col">
                 <p className="w-full text-lg font-medium">
                   {course?.courseName}
                 </p>
-                <p className="text-richblack-300 mt-2">
+                <p className="text-richblack-300 mt-2 mobile:mt-1">
                   {course?.category?.name}
                 </p>
-                <div className="flex flex-row gap-x-2 items-center">
-                  <span className="text-lg font-semibold">4.8</span>
+                <div className="flex flex-row gap-x-2 mobile:gap-x-1 items-center">
+                  <span className="text-lg font-semibold">
+                    {GetAvgRating(course?.ratingAndReviews)}
+                  </span>
                   <ReactStars
                     count={5}
                     size={30}
-                    edit={true}
+                    edit={false}
                     color2="#ffd700"
                     half={true}
-                    value={4.5}
+                    value={GetAvgRating(course?.ratingAndReviews)}
                   />
 
                   <span className="text-lg text-richblack-300">

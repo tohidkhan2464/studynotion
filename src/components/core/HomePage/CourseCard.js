@@ -9,7 +9,8 @@ const CourseCard = ({ cardData, currentCard, setCurrentCard }) => {
   return (
     <div
       onClick={() => setCurrentCard(heading)}
-      className={`group flex flex-col justify-between items-start mobile:pt-5  pt-10 transition-all duration-500 cursor-pointer mobile:bg-white mobile:shadow-[10px_10px_#FFD60A]
+      className={`group flex flex-col justify-between items-start mobile:pt-5 largeMobile:pt-5  pt-10 transition-all duration-500 cursor-pointer
+       mobile:bg-white largeMobile:bg-white mobile:shadow-[10px_10px_#FFD60A] largeMobile:shadow-[10px_10px_#FFD60A]
       ${
         currentCard === heading
           ? "bg-white shadow-[10px_10px_#FFD60A]"
@@ -18,16 +19,16 @@ const CourseCard = ({ cardData, currentCard, setCurrentCard }) => {
     >
       <div className="px-8">
         <div
-          className={`text-2xl mobile:text-lg font-semibold mobile:text-richblack-900
+          className={`text-2xl mobile:text-lg largeMobile:text-lg font-semibold mobile:text-richblack-900
          ${
            currentCard === heading ? "text-richblack-900 " : "text-richblack-25 "
          } `}
         >
           {heading}
         </div>
-        <p className=" text-richblack-300 mt-5 mobile:my-2 mobile:text-base text-xl mb-5">{description}</p>
+        <p className=" text-richblack-300 mt-5 mobile:my-2 largeMobile:my-2 largeMobile:text-base mobile:text-base text-xl mb-5">{description}</p>
       </div>
-      <div className="w-full border-dashed mobile:mt-2 border-t-2 border-richblack-200 mt-10">
+      <div className="w-full border-dashed mobile:mt-2 largeMobile:mt-2 border-t-2 border-richblack-200 mt-10">
         {" "}
       </div>
       <div

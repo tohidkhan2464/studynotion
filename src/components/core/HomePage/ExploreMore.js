@@ -35,8 +35,8 @@ const ExploreMore = () => {
       </p>
 
       <div
-        className="flex flex-row mobile:flex-wrap mobile:rounded-xl mobile:mb-0 rounded-full mobile:justify-center 
-        w-fit mobile:bg-richblack-700 bg-richblack-800 my-5 mobile:my-3 border-1 border-richblack-100 p-1"
+        className="flex flex-row mobile:flex-wrap mobile:rounded-xl largeMobile:rounded-xl mobile:mb-0 rounded-full mobile:justify-center  largeMobile:justify-center
+        w-fit mobile:bg-richblack-700 largeMobile:flex-wrap bg-richblack-800 my-5 mobile:my-3 largeMobile:my-3 border-1 border-richblack-100 p-1"
       >
         {tabsName.map((element, index) => {
           return (
@@ -59,9 +59,9 @@ const ExploreMore = () => {
         })}
       </div>
 
-      <div className="h-[240px] mobile:h-[550px] "></div>
+      <div className="h-[240px] mobile:h-[550px] largeMobile:h-[560px] "></div>
 
-      <div className="absolute left-0  top-[50%] mobile:top-[30%]   flex flex-row mobile:flex-col  mobile:gap-y-5  gap-5 items-start justify-between w-full">
+      <div className="absolute left-0  top-[50%] mobile:top-[30%] largeMobile:top-[32%]   flex flex-row mobile:flex-col largeMobile:flex-col  mobile:gap-y-5 largeMobile:gap-y-5  gap-5 items-start justify-between w-full">
         {courses.map((element, index) => {
           return (
             <CourseCard

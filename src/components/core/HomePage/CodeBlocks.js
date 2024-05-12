@@ -16,15 +16,15 @@ const CodeBlocks = ({
   return (
     <div className="flex items-center justify-center">
       <div
-        className={`flex ${position} my-20 mobile:my-5 justify-between  mobile:gap-0 mobile:gap-y-5 gap-10`}
+        className={`flex ${position} my-20 mobile:my-5 largeMobile:my-5 justify-between  mobile:gap-0 mobile:gap-y-5 gap-10`}
       >
         {/* section1 */}
-        <div className="flex flex-col w-[50%] mobile:w-11/12  mobile:text-center mobile:items-center gap-8 mobile:gap-2 justify-center">
+        <div className="flex flex-col w-[50%] mobile:w-11/12 largeMobile:w-11/12 largeMobile:text-center mobile:text-center mobile:items-center gap-8 mobile:gap-2 justify-center">
           {heading}
 
           <div className=" text-richblack-300 font-bold  ">{subheading}</div>
 
-          <div className=" flex gap-7 mobile:mt-3 mt-7">
+          <div className=" flex gap-7 mobile:mt-3 largeMobile:mt-3 largeMobile:mx-auto mt-7">
             <CTAButton active={ctabtn1.active} linkto={ctabtn1.linkto}>
               <div className="flex gap-2 items-center">
                 {ctabtn1.btnText}
@@ -40,7 +40,7 @@ const CodeBlocks = ({
 
         {/* section 2 */}
         
-        <div className="flex relative z-10 flex-row justify-between h-fit text-md mobile:text-xs w-[50%] py-4 mobile:w-11/12 mobile:mx-auto code-border">
+        <div className="flex relative z-10 flex-row justify-between h-fit text-md mobile:text-xs w-[50%] py-4 mobile:w-11/12 largeMobile:w-11/12 largeMobile:mx-auto mobile:mx-auto code-border">
           <div
             className={`absolute -z-10 top-0 left-0 rounded-full mobile:text-xs blur-3xl opacity-50 ${backgroundGradient} mobile:w-[250px] mobile:h-[150px] h-[257px]  w-[397px]`}
           ></div>

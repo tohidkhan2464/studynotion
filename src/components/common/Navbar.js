@@ -53,9 +53,9 @@ const Navbar = () => {
           method: "GET",
           url: categories.CATEGORIES_API,
         });
-        console.log("Printing sublinks result", res);
+        // console.log("Printing sublinks result", res);
         setSubLinks(res?.data?.data);
-        console.log("SubLinks ", subLinks);
+        // console.log("SubLinks ", subLinks);
       } catch (error) {
         console.log("Could not fetch Categories.", error);
       }
@@ -71,7 +71,7 @@ const Navbar = () => {
     <div className="flex h-14 items-center justify-center bg-richblack-800 border-b-2 border-b-richblack-700">
       <div className="relative flex w-11/12 max-w-maxContent items-center justify-between">
         {/* Logo Image */}
-        <div className="hidden mobile:block text-richblack-5 transition-all duration-200">
+        <div className="hidden mobile:block largeMobile:block text-richblack-5 transition-all duration-200">
           {!isVisible ? (
             <RxHamburgerMenu onClick={() => setIsVisible(!isVisible)} />
           ) : (
@@ -82,7 +82,8 @@ const Navbar = () => {
           <img
             src={logo}
             alt="logo"
-            className="w-[160px] mobile:absolute mobile:top-1 mobile:left-6 h-[32px] mobile:w-[120px] mobile:h-[28px]"
+            className="w-[160px] mobile:absolute mobile:top-1 mobile:left-6 h-[32px] 
+            largeMobile:w-[120px] largeMobile:h-[28px] largeMobile:absolute largeMobile:top-1 largeMobile:left-6  mobile:w-[120px] mobile:h-[28px]"
             loading="lazy"
           />
         </Link>
@@ -92,15 +93,15 @@ const Navbar = () => {
           className={`${
             isVisible
               ? "block absolute top-[45px] rounded-xl bg-richblack-700 z-20 py-2 px-4 -left-5"
-              : "mobile:hidden desktop:block"
+              : "mobile:hidden desktop:block largeMobile:hidden"
           }`}
         >
-          <ul className="flex mobile:flex-col  text-richblack-25">
+          <ul className="flex mobile:flex-col largeMobile:flex-col  text-richblack-25">
             {NavbarLinks.map((links, index) => {
               return (
                 <li key={index}>
                   {links.title === "Catalog" ? (
-                    <div className="flex gap-1 mobile:hidden mx-3  items-center relative group">
+                    <div className="flex gap-1 mobile:hidden largeMobile:hidden mx-3  items-center relative group">
                       <p>{links.title}</p>
                       <IoIosArrowDropdown />
 
@@ -116,7 +117,7 @@ const Navbar = () => {
                           <>
                             {subLinks
                               ?.filter(
-                                (subLink) => subLink?.courses?.length > 0
+                                (subLink) => subLink?.courses.length !== 0
                               )
                               ?.map((subLink, i) => (
                                 <Link
@@ -138,7 +139,7 @@ const Navbar = () => {
                         )}
                       </div>
                     </div>
-                  ) : (token !== null && links.title === "All Courses") ? (
+                  ) : token !== null && links.title === "All Courses" ? (
                     <Link to={links?.path}>
                       <p
                         onClick={() => setIsVisible(false)}
@@ -146,7 +147,7 @@ const Navbar = () => {
                           matchRoute(links?.path)
                             ? "text-yellow-25"
                             : "text-richblack-25"
-                        } mobile:my-2 mx-3`}
+                        } mobile:my-2 largeMobile:my-3 mx-3`}
                       >
                         {links.title}
                       </p>
@@ -159,7 +160,7 @@ const Navbar = () => {
                           matchRoute(links?.path)
                             ? "text-yellow-25"
                             : "text-richblack-25"
-                        } mobile:my-2 mx-3`}
+                        } mobile:my-2 largeMobile:my-3 mx-3`}
                       >
                         {links.title}
                       </p>
@@ -172,7 +173,7 @@ const Navbar = () => {
         </nav>
 
         {/* Login - SignUp - Dashboard */}
-        <div className="flex gap-x-4 mobile:gap-x-2 items-center">
+        <div className="flex gap-x-4 mobile:gap-x-2 largeMobile:gap-x-3 items-center">
           {user && user.accountType !== "Instructor" && (
             <Link
               to="/dashboard/cart"

@@ -7,14 +7,13 @@ import { getAllCourses } from "../services/operations/courseDetailsAPI";
 
 const AllCourses = () => {
   const { loading } = useSelector((state) => state.profile);
+  const { token } = useSelector((state) => state.auth);
   const [catalogPageData, setCatalogPageData] = useState();
 
   useEffect(() => {
     const getAllCoursesDetails = async () => {
       try {
         const res = await getAllCourses();
-        // console.log("All courses", res);
-
         setCatalogPageData(res);
       } catch (error) {
         console.log(error);
@@ -35,7 +34,11 @@ const AllCourses = () => {
 
   return (
     <div className="text-richblack-5 bg-richblack-900">
-      <div className="py-[50px] pt-[50px] mobile:py-[20px] mobile:pt-[10px] w-11/12 max-w-maxContent mobile:max-w-screen mx-auto mobile:items-center">
+      <div
+        className={`py-[50px] pt-[50px] mobile:py-[20px] text-white w-11/12 ${
+          token === null ? "" : "desktop:ml-[20rem]"
+        } desktop:w-9/12 max-w-maxContent flex flex-col  mx-auto my-5 mobile:pt-[10px]  mobile:max-w-screen  mobile:items-center`}
+      >
         <div className=" mx-auto box-content w-full py-5 ">
           <div className="text-2xl font-bold text-richblack-5 desktop:text-4xl">
             All Available Courses
@@ -53,7 +56,7 @@ const AllCourses = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {token === null && <Footer />}
     </div>
   );
 };

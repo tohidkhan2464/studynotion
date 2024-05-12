@@ -69,7 +69,7 @@ const CourseDetailsCard = ({
     <div className=" bg-richblack-700 rounded-xl">
       <img
         src={course?.thumbnail}
-        className="rounded-t-xl w-full object-cover"
+        className="rounded-t-xl w-full object-contain"
         loading="lazy"
         alt={`Thumbnail of ${course?.courseName}`}
       />

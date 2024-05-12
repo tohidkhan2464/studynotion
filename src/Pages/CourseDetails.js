@@ -65,9 +65,9 @@ const CourseDetails = () => {
     setTotalNoOfLectures(lectures);
   }, [courseDetails]);
 
-  const handleBuyCourse = async () => {
+  const handleBuyCourse = () => {
     if (token) {
-      await buyCourse(token, [courseId], user, navigate, dispatch);
+      buyCourse(token, [courseId], user, navigate, dispatch);
       return;
     }
     setConfirmationModal({
@@ -95,7 +95,6 @@ const CourseDetails = () => {
       </div>
     );
   }
-
   return (
     <div className="text-richblack-5 bg-richblack-900">
       {/* Hero Section 1 */}
@@ -126,7 +125,7 @@ const CourseDetails = () => {
                 <span className="text-yellow-5">{avgReviewCount || 0}</span>
                 <RatingStars Review_Count={avgReviewCount} Star_Size={16} />
                 <span className="text-richblack-400">
-                  ({courseDetails?.ratingAndReview?.length || 0} Ratings)
+                  ({courseDetails?.ratingAndReviews?.length || 0} Ratings)
                 </span>
                 <span>
                   {courseDetails?.studentsEnrolled?.length || 0} Students
@@ -137,7 +136,7 @@ const CourseDetails = () => {
                 {courseDetails?.instructor?.lastName}
               </p>
               <p className="flex text-base mt-2 items-center gap-2">
-                Creates On {formattedDate(courseDetails?.createdAt)}
+                Created On {formattedDate(courseDetails?.createdAt)}
               </p>
             </div>
           </div>

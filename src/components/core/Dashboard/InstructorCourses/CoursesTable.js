@@ -15,6 +15,7 @@ import { HiCheckCircle } from "react-icons/hi2";
 import { FiTrash2 } from "react-icons/fi";
 import { HiPencil } from "react-icons/hi2";
 import { formattedDate } from "../../../../utils/dateformatter";
+import CalculateTotalDuration from "../../../../utils/calculateTotalDuration";
 
 export default function CoursesTable({ courses, setCourses }) {
   console.log("Courses in course Table", courses);
@@ -68,10 +69,10 @@ export default function CoursesTable({ courses, setCourses }) {
                 className={`flex gap-x-10 mobile:gap-x-12 border-b-richblack-500 border-b-[1px] p-8 mobile:p-4`}
               >
                 <td className="flex flex-row mobile:flex-col w-[70%] gap-x-4 mobile:gap-y-2 mobile:gap-x-0 mobile:items-start items-center">
-                  <div className="h-[9rem] w-[9rem] mobile:h-full mobile:w-full flex items-center justify-center p-2 mobile:p-0 rounded-xl ">
+                  <div className="h-[10rem] w-[16rem] mobile:h-full mobile:w-full flex items-center justify-center mobile:p-0 rounded-xl ">
                     <img
                       src={course?.thumbnail}
-                      className="rounded-xl h-full w-full object-cover"
+                      className="rounded-xl h-full w-full object-contain"
                       alt="thumbnail"
                     />
                   </div>
@@ -81,7 +82,7 @@ export default function CoursesTable({ courses, setCourses }) {
                     </p>
                     <p className="text-richblack-300 mobile:text-xs text-base ">
                       {course.courseDescription
-                        .split(" ")
+                        .split(/[;, ]/)
                         .slice(0, 15)
                         .join(" ") + "..."}
                     </p>
@@ -104,7 +105,9 @@ export default function CoursesTable({ courses, setCourses }) {
                   </div>
                 </td>
                 <td className="w-[10%] text-richblack-300 flex-col  mobile:text-sm text-center text-base font-medium flex items-center justify-center ">
-                  <span className="whitespace-nowrap">2hr 30min</span>
+                  <span className="whitespace-nowrap">
+                    {CalculateTotalDuration(course)}
+                  </span>
                   <span>Rs. {course.price}</span>
                 </td>
 

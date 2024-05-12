@@ -31,7 +31,7 @@ const timeline = [
 const TImeLineSection = () => {
   return (
     <div>
-      <div className="flex flex-row mobile:flex-col gap-16 items-center">
+      <div className="flex flex-row mobile:flex-col largeMobile:flex-col gap-16 items-center">
         <div className="w-[45%] mobile:w-full flex flex-col gap-5 ">
           {timeline.map((element, index) => {
             return (
@@ -52,7 +52,8 @@ const TImeLineSection = () => {
 
         <div className="relative shadow-blue-100">
           <div className=" relative z-20">
-            <div className=" absolute top-32 left-0 mobile:top-10 -z-[2] blur-3xl h-[250px] w-[630px] mobile:w-[300px] mobile:h-[100px] bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4]"></div>
+            <div className=" absolute top-32 left-0 mobile:top-10 -z-[2] blur-3xl h-[250px] w-[630px] 
+            mobile:w-[300px] mobile:h-[100px] largeMobile:w-[450px] largeMobile:h-[150px] bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4]"></div>
 
             <div>
               <img

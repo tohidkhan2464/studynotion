@@ -28,7 +28,6 @@ const Catalog = () => {
           category.name.split(" ").join("-").toLowerCase() === catalogName
       )[0]._id;
       setCategoryId(category_id);
-      // console.log("category id", category_id);
     };
     getCategories();
   }, [catalogName]);
@@ -36,9 +35,8 @@ const Catalog = () => {
   useEffect(() => {
     const getCategoryDetails = async () => {
       try {
-        // console.log("object catalog", categoryId);
         const res = await getCatalogPageData({ categoryId });
-        console.log("get catalog data", res);
+
         setCatalogPageData(res);
       } catch (error) {
         console.log(error);
@@ -56,6 +54,12 @@ const Catalog = () => {
       </div>
     );
   }
+  if (!loading && catalogPageData.length === 0)
+    return (
+      <div className="h-screen w-screen text-white flex mt-[150px] justify-center text-4xl">
+        No Courses found in this category.
+      </div>
+    );
 
   if (!loading && !catalogPageData.success) return <Error />;
 
@@ -116,11 +120,11 @@ const Catalog = () => {
         {/* Section 2 */}
         <div className=" mx-auto box-content w-full px-4 py-12">
           <p className="text-2xl font-bold text-richblack-5 desktop:text-4xl">
-            Top Courses in {catalogPageData.data?.selectedCategory?.name}
+            Top Courses in {catalogPageData?.data?.selectedCategory?.name}
           </p>
           <div className="py-8">
             <CourseSlider
-              courses={catalogPageData.data?.differentCategory?.courses}
+              courses={catalogPageData?.data?.differentCategory?.courses}
             />{" "}
           </div>
         </div>

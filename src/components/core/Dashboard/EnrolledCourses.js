@@ -3,37 +3,23 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getUserEnrolledCourses } from "../../../services/operations/profileAPI";
 import ProgressBar from "@ramonak/react-progress-bar";
-// import thumbnailImage from "../../../assets/thumbnail.jpeg";
-import { HiDotsVertical } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 const EnrolledCourses = () => {
   const { token } = useSelector((state) => state.auth);
-  const [enrolledCourses, setEnrolledCourses] = useState(null);
-
-  // const [totalDuration, setTotalDuration] = useState(0);
-  // const course = {
-  //   courseName: "Web Dev",
-  //   courseDescription: "A complete Web Dev course",
-  //   instructor: "Tk",
-  //   whatYouWillLearn: "You will learn about Web Dev",
-  //   price: "1000",
-  //   thumbnail: `${thumbnailImage}`,
-  //   category: "Dev",
-  //   totalDuration: "1hr 30 mins",
-  //   progressPercentage: "",
-  // };
+  const [courseData, setCourseData] = useState(null);
+  const navigate = useNavigate();
 
   const getEnrolledCourses = async () => {
     try {
       const response = await getUserEnrolledCourses(token);
-      setEnrolledCourses(response);
+      setCourseData(response);
     } catch (error) {
       console.log("Unable to fetch Enrolled courses");
     }
   };
   useEffect(() => {
     getEnrolledCourses();
-    // setEnrolledCourses(course);
   }, []);
 
   return (
@@ -41,57 +27,73 @@ const EnrolledCourses = () => {
       <div className="text-4xl mobile:text-2xl font-medium">
         Enrolled Courses
       </div>
-      {!enrolledCourses ? (
+      {!courseData ? (
         <div className="mt-[20rem] ml-[41rem] spinner"></div>
-      ) : !enrolledCourses.length ? (
+      ) : !courseData.length ? (
         <p className="text-center mt-[20%] text-4xl mobile:2xl font-semibold">
           You have not enrolled in any course yet
         </p>
       ) : (
         <div>
-          <div className="flex flex-row items-center bg-richblack-500 p-4 text-richblack-300 text-sm font-medium border-[1px] rounded-t-xl mt-5 border-richblack-500">
-            <p className="w-[50%] ">Course Name</p>
-            <p className="w-[25%] ">Durations</p>
-            <p className="w-[25%] ">Progress</p>
+          <div className="flex flex-row items-center bg-richblack-500 p-4 text-richblack-50 text-sm font-medium border-[1px] rounded-t-xl mt-5 border-richblack-500">
+            <p className="w-[60%] mobile:w-[50%] flex items-center justify-center">
+              Course Name
+            </p>
+            <p className="w-[20%] mobile:w-[25%] flex items-center justify-center">
+              Durations
+            </p>
+            <p className="w-[20%] mobile:w-[25%] flex items-center justify-center">
+              Progress
+            </p>
           </div>
 
           {/* Cards start */}
-          {enrolledCourses.map((course, index) => (
+          {courseData.map((course, index) => (
             <div
               key={index}
               className={`flex flex-row items-center  p-4 border-[1px] border-richblack-500 ${
                 index === -1 ? " rounded-b-xl" : "rounded-none"
               } `}
             >
-              <div className="flex flex-row w-[50%] gap-x-4 items-center">
+              <div
+                className="flex flex-row w-[60%] mobile:w-[50%] mobile:flex-col gap-x-4 items-center"
+                onClick={() => {
+                  navigate(
+                    `/view-course/${course?.courseDetails?._id}/section/${course?.courseDetails?.courseContent?.[0]?._id}/sub-section/${course?.courseDetails?.courseContent?.[0]?.subSections?.[0]?._id}`
+                  );
+                }}
+              >
                 <img
-                  src={course.thumbnail}
+                  src={course?.courseDetails?.thumbnail}
                   alt="course thumbnail"
-                  className="h-[3.5rem] w-[3.5rem]"
+                  className="h-[5rem] mobile:w-[90%] w-[6rem] object-contain rounded-lg"
                 />
-                <div className="flex flex-col gap-1 text-base">
-                  <p>{course.courseName}</p>
-                  <p className="text-richblack-300 ">
-                    {course.courseDescription}
+                <div className="flex flex-col mobile:mt-2 gap-1 text-base">
+                  <p>{course?.courseDetails?.courseName}</p>
+                  <p className="text-richblack-300 mobile:text-xs text-sm ">
+                    {course?.courseDetails?.courseDescription
+                      .split(/[;, ]/)
+                      .slice(0, 15)
+                      .join(" ") + "..."}
                   </p>
                 </div>
               </div>
-              <div className="w-[25%] text-base font-medium ">
-                {course?.timeDuration}
+              <div className="w-[20%] mobile:w-[25%] text-base font-medium flex items-center justify-center">
+                {course?.totalDuration}
               </div>
 
-              <div className=" w-[25%] flex flex-row gap-2 items-center">
-                <div className="w-[80%] flex flex-col gap-y-2">
-                  <p className=" text-sm font-semibold">
-                    Progress: {course.progressPercentage || 65}%
+              <div className=" w-[20%] mobile:w-[25%] flex flex-row gap-2 justify-center items-center">
+                <div className="w-[100%] flex flex-col gap-y-2">
+                  <p className=" text-sm font-semibold whitespace-nowrap mobile:text-xs">
+                    Progress: {course.courseProgress || 0}%
                   </p>
                   <ProgressBar
-                    completed={course.progressPercentage || 65}
+                    completed={course.courseProgress || 0}
                     height="8px"
                     isLabelVisible={false}
+                    className="mobile:h-[4px] h-[8px]"
                   />
                 </div>
-                <HiDotsVertical className="text-2xl" />
               </div>
             </div>
           ))}

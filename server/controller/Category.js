@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-keys */
 const Category = require("../models/Category");
 const Course = require("../models/Course");
 function getRandomInt(max) {
@@ -124,21 +125,15 @@ exports.categoryPageDetails = async (req, res) => {
       .populate({
         path: "courses",
         match: { status: "Published" },
-        populate: "ratingAndReviews",
-        populate: {
-          path: "instructor",
-        },
+        populate: [{ path: "ratingAndReviews" }, { path: "instructor" }],
       })
       .exec();
-
     // Handle the case when the category is not found
     if (!selectedCategory) {
-      return res
-        .status(404)
-        .json({
-          success: false,
-          message: "No courses found for the selected category.",
-        });
+      return res.status(404).json({
+        success: false,
+        message: "No courses found for the selected category.",
+      });
     }
 
     // Handle the case when there are no courses
@@ -161,9 +156,7 @@ exports.categoryPageDetails = async (req, res) => {
       .populate({
         path: "courses",
         match: { status: "Published" },
-        populate: {
-          path: "instructor",
-        },
+        populate: [{ path: "ratingAndReviews" }, { path: "instructor" }],
       })
       .exec();
 
@@ -172,9 +165,7 @@ exports.categoryPageDetails = async (req, res) => {
       .populate({
         path: "courses",
         match: { status: "Published" },
-        populate: {
-          path: "instructor",
-        },
+        populate: [{ path: "ratingAndReviews" }, { path: "instructor" }],
       })
       .exec();
 

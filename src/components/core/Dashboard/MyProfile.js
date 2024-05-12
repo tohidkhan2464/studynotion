@@ -23,31 +23,35 @@ const MyProfile = () => {
           <div className="flex flex-col mobile:items-center mobile:mt-5 items-start justify-center gap-y-4">
             <p className="text-xl font-semibold">
               {" "}
-              {user?.firstName + " " +  user?.lastName }
+              {user?.firstName + " " + user?.lastName}
             </p>
             <p className=" text-base text-richblack-300"> {user?.email} </p>
           </div>
         </div>
         <IconBtn
-            onclick={()=>{navigate("/dashboard/settings")}}
-            bgColor={true}
-            children={true}
-            textColor={true}
-            text={"Edit"}
-            customclasess={"flex flex-row-reverse mobile:mt-5 gap-2"}
-          >
-            {" "}
-            <img src={FaEdit} alt="edit icon" />
-          </IconBtn>
+          onclick={() => {
+            navigate("/dashboard/settings");
+          }}
+          bgColor={true}
+          children={true}
+          textColor={true}
+          text={"Edit"}
+          customclasess={"flex flex-row-reverse mobile:mt-5 gap-2"}
+        >
+          {" "}
+          <img src={FaEdit} alt="edit icon" />
+        </IconBtn>
       </div>
 
       {/* Section 2 */}
       <div className="flex flex-col mobile:items-center justify-between items-start mt-16 w-9/12 bg-richblack-800 p-6 rounded-lg border-[1px] border-richblack-700 z-0">
         <div className="flex flex-row mobile:flex-col mobile:items-center gap-y-6 w-full items-start justify-between">
           <p className="text-xl font-semibold">Personal Details</p>
-          
+
           <IconBtn
-            onclick={()=>{navigate("/dashboard/settings")}}
+            onclick={() => {
+              navigate("/dashboard/settings");
+            }}
             bgColor={true}
             children={true}
             textColor={true}
@@ -68,7 +72,9 @@ const MyProfile = () => {
         <div className="flex flex-row mobile:items-center mobile:flex-col gap-y-6 w-full items-start justify-between">
           <p className="text-xl font-semibold">Personal Details</p>
           <IconBtn
-            onclick={()=>{navigate("/dashboard/settings")}}
+            onclick={() => {
+              navigate("/dashboard/settings");
+            }}
             bgColor={true}
             children={true}
             textColor={true}

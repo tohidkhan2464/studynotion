@@ -140,7 +140,8 @@ module.exports = {
     },
     screens: {
       mobile: { max: "480px" },
-      tablet: { min: "481px", max: "768px" },
+      largeMobile: { min: "481px", max: "639px" },
+      tablet: { min: "640px", max: "768px" },
       ipad: { min: "769px", max: "1024px" },
       laptop: { min: "1025px", max: "1200px" },
       desktop: { min: "1201px", max: "1600px" },

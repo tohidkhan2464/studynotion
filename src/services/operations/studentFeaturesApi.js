@@ -1,10 +1,10 @@
 import { toast } from "react-hot-toast";
 import { studentEndpoints } from "../api";
 import { apiConnector } from "../apiConnector";
-import rzpLogo from "../../assets/razorpay-logo.png";
+import rzpLogo from "../../assets/Studynotion Logo 1.png";
 import { setPaymentLoading } from "../../slices/courseSlice";
 import { resetCart } from "../../slices/cartSlice";
-
+const RAZORPAY_KEY = "rzp_test_Y5saFssULUDwHJ";
 const {
   COURSE_PAYMENT_API,
   COURSE_VERIFY_API,
@@ -44,7 +44,6 @@ export async function buyCourse(
       toast.error("RazorPay SDK failed to load");
       return;
     }
-
     //initiate the order
     const orderResponse = await apiConnector({
       method: "POST",
@@ -56,11 +55,10 @@ export async function buyCourse(
     if (!orderResponse.data.success) {
       throw new Error(orderResponse.data.message);
     }
-    console.log("PRINTING orderResponse", orderResponse);
 
     //options
     const options = {
-      key: process.env.RAZORPAY_KEY,
+      key: RAZORPAY_KEY,
       currency: orderResponse.data.message.currency,
       amount: `${orderResponse.data.message.amount}`,
       order_id: orderResponse.data.message.id,
@@ -68,8 +66,48 @@ export async function buyCourse(
       description: "Thank You for Purchasing the Course",
       image: rzpLogo,
       prefill: {
-        name: `${userDetails.firstName}`,
+        name: `${userDetails.firstName} ${userDetails.lastName}`,
         email: userDetails.email,
+      },
+      config: {
+        display: {
+          blocks: {
+            utib: {
+              //name for Axis block
+              name: "Pay using Axis Bank",
+              instruments: [
+                {
+                  method: "card",
+                  issuers: ["UTIB"],
+                },
+                {
+                  method: "netbanking",
+                  banks: ["UTIB"],
+                },
+              ],
+            },
+            other: {
+              //  name for other block
+              name: "Other Payment modes",
+              instruments: [
+                {
+                  method: "card",
+                  issuers: ["ICIC"],
+                },
+                {
+                  method: "netbanking",
+                },
+                {
+                  method: "upi",
+                },
+              ],
+            },
+          },
+          sequence: ["block.utib", "block.other"],
+          preferences: {
+            show_default_blocks: true,
+          },
+        },
       },
       handler: function (response) {
         //send successful wala mail
@@ -86,7 +124,7 @@ export async function buyCourse(
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
     paymentObject.on("payment.failed", function (response) {
-      toast.error("oops, payment failed");
+      toast.error("Oops, Payment Failed");
       console.log(response.error);
     });
   } catch (error) {
@@ -120,14 +158,19 @@ async function verifyPayment(bodyData, token, navigate, dispatch) {
   const toastId = toast.loading("Verifying Payment....");
   dispatch(setPaymentLoading(true));
   try {
-    const response = await apiConnector("POST", COURSE_VERIFY_API, bodyData, {
-      Authorization: `Bearer ${token}`,
+    const response = await apiConnector({
+      method: "POST",
+      url: COURSE_VERIFY_API,
+      bodyData: bodyData,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     if (!response.data.success) {
       throw new Error(response.data.message);
     }
-    toast.success("payment Successful, ypou are addded to the course");
+    toast.success("Payment Successful, you are addded to the course");
     navigate("/dashboard/enrolled-courses");
     dispatch(resetCart());
   } catch (error) {

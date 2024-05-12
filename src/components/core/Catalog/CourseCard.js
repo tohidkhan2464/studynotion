@@ -5,9 +5,9 @@ import GetAvgRating from "../../../utils/avgRating";
 
 const CourseCard = ({ course, Height }) => {
   const [avgReviewCount, setAvgReviewCount] = useState(0);
-
+console.log("course card", course)
   useEffect(() => {
-    const count = GetAvgRating(course.ratingAndReviews);
+    const count = GetAvgRating(course?.ratingAndReviews);
     setAvgReviewCount(count);
   }, [course]);
 
@@ -18,7 +18,7 @@ const CourseCard = ({ course, Height }) => {
           <img
             src={course?.thumbnail}
             alt="Course Thumbnail"
-            className={`${Height} w-full rounded-xl object-cover`}
+            className={`${Height} w-full rounded-xl object-contain`}
           />
         </div>
         <div className="flex flex-col gap-2 px-1 py-3">
@@ -29,9 +29,9 @@ const CourseCard = ({ course, Height }) => {
           </p>
           <div className="flex items-center gap-2">
             <span className="text-yellow-5">{avgReviewCount || 0}</span>
-            <RatingStars Review_Count={avgReviewCount} Star_Size={20} />
+            <RatingStars Review_Count={avgReviewCount} Star_Size={16} />
             <span className="text-richblack-400">
-              {course?.ratingAndReview?.length} Ratings
+              ({course?.ratingAndReviews?.length || 0} Ratings)
             </span>
           </div>
           <p className="text-xl text-richblack-5">Rs. {course?.price}</p>
