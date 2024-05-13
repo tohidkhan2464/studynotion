@@ -56,17 +56,17 @@ const Home = () => {
           </CTAButton>
         </div>
 
-        <div className="mx-3 my-7 mobile:max-w-[350px] largeMobile:max-w-[650px] ">
+        <div className="mx-3 my-7 mobile:max-w-[320px] largeMobile:max-w-[650px] ">
           <div className=" relative z-20">
             <div className=" absolute top-5 left-0 -z-[2] blur-3xl h-[300px] w-[992px]
-             mobile:w-[300px] mobile:h-[150px] largeMobile:w-[450px] largeMobile:h-[200px] bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4]"></div>
+             mobile:w-[280px] mobile:h-[150px] largeMobile:w-[450px] largeMobile:h-[200px] bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4]"></div>
 
             <div>
               <video
                 muted
                 loop
                 autoPlay
-                className="shadow-[20px_20px_rgba(255,255,255)]"
+                className=" mobile:max-w-[300px] shadow-[20px_20px_rgba(255,255,255)]"
               >
                 <source src={banner} type="video/mp4" />
               </video>

@@ -8,8 +8,10 @@ import { ratingsEndpoints } from "../../services/api";
 import { apiConnector } from "../../services/apiConnector";
 import { Autoplay, FreeMode, Pagination } from "swiper/modules";
 import { FaStar } from "react-icons/fa";
+import useWindowDimensions from "../../hooks/getWindowSize";
 
 const ReviewSlider = () => {
+  const { height, width } = useWindowDimensions();
   const [reviews, setReviews] = useState([]);
   const truncateWords = 15;
 
@@ -26,15 +28,49 @@ const ReviewSlider = () => {
     fetchAllReviews();
   }, []);
   console.log("reviews", reviews);
+  const breakPoints = {
+    // when window width is >= 320px
+    200: {
+      slidesPerView: 1,
+      spaceBetween: 10,
+    },
+    480: {
+      slidesPerView: 1,
+      spaceBetween: 12,
+    },
+    // when window width is >= 480px
+    639: {
+      slidesPerView: 1,
+      spaceBetween: 12,
+    },
+    // when window width is >= 640px
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 16,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 20,
+    },
+    1200: {
+      slidesPerView: 4,
+      spaceBetween: 24,
+    },
+    1600: {
+      slidesPerView: 4,
+      spaceBetween: 24,
+    },
+  };
 
   return (
-    <div className=" text-white">
-      <div className="min-h-[190px] max-w-maxContent w-full my-10 mb-20">
+    <div className=" text-white mobile:max-w-[480px]  mobile:w-11/12">
+      <div className="min-h-[190px] max-w-maxContent mobile:w-[100%] my-10 mb-20">
         <Swiper
           slidesPerView={4}
           spaceBetween={24}
           loop={true}
           freeMode={true}
+          breakpoints={breakPoints}
           autoplay={{
             delay: 2500,
           }}

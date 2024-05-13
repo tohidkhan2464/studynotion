@@ -53,13 +53,13 @@ const TImeLineSection = () => {
         <div className="relative shadow-blue-100">
           <div className=" relative z-20">
             <div className=" absolute top-32 left-0 mobile:top-10 -z-[2] blur-3xl h-[250px] w-[630px] 
-            mobile:w-[300px] mobile:h-[100px] largeMobile:w-[450px] largeMobile:h-[150px] bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4]"></div>
+            mobile:w-[280px] mobile:h-[100px] largeMobile:w-[450px] largeMobile:h-[150px] bg-gradient-to-r from-[#9CECFB] via-[#65C7F7] to-[#0052D4]"></div>
 
             <div>
               <img
                 src={timelineImage}
                 alt="timeLine"
-                className=" object-cover mobile:w-[300px] h-fit shadow-[20px_20px_rgba(255,255,255)]"
+                className=" object-cover mobile:w-[280px] h-fit shadow-[20px_20px_rgba(255,255,255)]"
               />
             </div>
           </div>
