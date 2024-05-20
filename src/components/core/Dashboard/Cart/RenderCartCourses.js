@@ -1,9 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ReactStars from "react-stars";
-// import { render } from "react-dom";
-// import { FaStar, FaRegStar } from "react-icons/fa";
-// import thumbnailImage from "../../../../assets/thumbnail.jpeg";
 import trash from "../../../../assets/dashboard/fi-br-trash.svg";
 import IconBtn from "../../../common/IconBtn";
 import { removeFromCart } from "../../../../slices/cartSlice";

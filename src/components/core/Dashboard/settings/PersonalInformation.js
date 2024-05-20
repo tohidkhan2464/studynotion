@@ -21,7 +21,6 @@ const PersonalInformation = () => {
   } = useForm();
 
   const submitProfileForm = async (data) => {
-    console.log("Form data", data);
     try {
       dispatch(updateProfile(token, data));
     } catch (error) {

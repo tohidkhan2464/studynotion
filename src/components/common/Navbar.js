@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 import PiShoppingCartSimpleLight from "../../assets/Home_items/fi-rr-shopping-cart.svg";
 import ProfileDropDown from "../core/Auth/ProfileDropDown";
 import { categories } from "../../services/api";
-// import axios from 'axios'
 import { apiConnector } from "../../services/apiConnector";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
@@ -21,30 +20,6 @@ const Navbar = () => {
   const [loading, setLoading] = useState(false);
   const [subLinks, setSubLinks] = useState([]);
 
-  // const fetchSubLinks = async () => {
-  //   try {
-  //     // const url = "http://localhost:4000/api/v1/course/showAllCategories";
-  //     // const result = await fetch(url)
-  //     // .then((response) =>{
-  //     //   return response.json();
-  //     // }).then((data) => {
-  //     //   console.log("data", data);
-  //     // })
-  //     const result = await apiConnector({
-  //       method: "GET",
-  //       url: categories.CATEGORIES_API,
-  //     });
-
-  //     console.log("Printing sublinks result", result);
-  //     setSubLinks(result.data.data);
-
-  //     console.log("SubLinks ", subLinks);
-  //   } catch (error) {
-  //     console.log("Error ", error);
-  //     console.log("Could not fetch the category list");
-  //   }
-  // };
-
   useEffect(() => {
     (async () => {
       setLoading(true);
@@ -53,9 +28,7 @@ const Navbar = () => {
           method: "GET",
           url: categories.CATEGORIES_API,
         });
-        // console.log("Printing sublinks result", res);
         setSubLinks(res?.data?.data);
-        // console.log("SubLinks ", subLinks);
       } catch (error) {
         console.log("Could not fetch Categories.", error);
       }

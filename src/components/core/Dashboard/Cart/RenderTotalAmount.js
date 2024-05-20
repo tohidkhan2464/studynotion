@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, {useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import ConfirmationModal from "../components/common/ConfirmationModal";
 import { buyCourse } from "../../../../services/operations/studentFeaturesApi";
 import IconBtn from "../../../common/IconBtn";
 
@@ -14,12 +13,6 @@ const RenderTotalAmount = () => {
   const { user } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
   const { total, cart } = useSelector((state) => state.cart);
-
-  // const handleBuyCourse = () => {
-  //   const courses = cart.map((course) => course._id);
-  //   console.log("Bought these courses : ", courses);
-  //   // TODO: API INTEGRATION FOR PAYMENT
-  // };
 
   const handleBuyCourse = () => {
     const courses = cart.map((course) => course._id);

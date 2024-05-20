@@ -7,11 +7,8 @@ import ReactStars from "react-stars";
 import { ratingsEndpoints } from "../../services/api";
 import { apiConnector } from "../../services/apiConnector";
 import { Autoplay, FreeMode, Pagination } from "swiper/modules";
-import { FaStar } from "react-icons/fa";
-import useWindowDimensions from "../../hooks/getWindowSize";
 
 const ReviewSlider = () => {
-  const { height, width } = useWindowDimensions();
   const [reviews, setReviews] = useState([]);
   const truncateWords = 15;
 
@@ -27,9 +24,7 @@ const ReviewSlider = () => {
     };
     fetchAllReviews();
   }, []);
-  console.log("reviews", reviews);
   const breakPoints = {
-    // when window width is >= 320px
     200: {
       slidesPerView: 1,
       spaceBetween: 10,
@@ -38,12 +33,10 @@ const ReviewSlider = () => {
       slidesPerView: 1,
       spaceBetween: 12,
     },
-    // when window width is >= 480px
     639: {
       slidesPerView: 1,
       spaceBetween: 12,
     },
-    // when window width is >= 640px
     768: {
       slidesPerView: 2,
       spaceBetween: 16,

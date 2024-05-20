@@ -8,7 +8,6 @@ import { MdHistory } from "react-icons/md";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { GoArrowLeft } from "react-icons/go";
 import { sendOtp, signUp } from "../services/operations/authAPI";
-// import { resetPassword } from "../services/operations/authAPI";
 
 const VerifyEmail = () => {
   const [otp, setOtp] = useState("");

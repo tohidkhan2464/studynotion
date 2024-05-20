@@ -18,8 +18,6 @@ import { formattedDate } from "../../../../utils/dateformatter";
 import CalculateTotalDuration from "../../../../utils/calculateTotalDuration";
 
 export default function CoursesTable({ courses, setCourses }) {
-  console.log("Courses in course Table", courses);
-  // const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
   const [confirmationModal, setConfirmationModal] = useState(null);

@@ -55,10 +55,10 @@ const SignupForm = () => {
 
     if (password !== confirmPassword) {
       toast.error("Passwords Do Not Match");
-      // setFormData({
-      //   password: "",
-      //   confirmPassword: "",
-      // });
+      setFormData({
+        password: "",
+        confirmPassword: "",
+      });
       return;
     }
 
@@ -78,23 +78,21 @@ const SignupForm = () => {
       accountType,
     };
 
-    // Setting signup data to state
-    // To be used after otp verification
+    
     console.log("DATA ", data)
     dispatch(setSignupData(data));
     // Send OTP to user for verification
     dispatch(sendOtp(formData.email, navigate));
 
-    // Reset
-    // setFormData({
-    //   firstName: "",
-    //   lastName: "",
-    //   email: "",
-    //   password: "",
-    //   confirmPassword: "",
-    //   contactNumber:"",
-    // });
-    // setAccountType("student");
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      contactNumber:"",
+    });
+    setAccountType("student");
   }
 
   

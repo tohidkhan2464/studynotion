@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 const PublishCourse = () => {
   const { register, handleSubmit, setValue, getValues } = useForm();
 
-  //   const [editSectionName, setEditSectionName] = useState(false);
   const { course } = useSelector((state) => state.course);
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();

@@ -10,17 +10,11 @@ import LearningLanguageSection from "../components/core/HomePage/LearningLanguag
 import InstructorSection from "../components/core/HomePage/InstructorSection";
 import Footer from "../components/common/Footer";
 import ExploreMore from "../components/core/HomePage/ExploreMore";
-import useWindowDimensions from "../hooks/getWindowSize";
 import ReviewSlider from "../components/common/ReviewSlider";
 
 const Home = () => {
-  const { height, width } = useWindowDimensions();
   return (
-    // TODO: MAtch the syling with original page
     <div className=" mobile:w-full">
-      <div className="text-white">
-        width: {width} ~ height: {height}
-      </div>
       {/* Section 1 */}
       <div className=" relative mx-auto flex flex-col max-w-maxContent w-11/12  items-center justify-between text-white">
         <Link to={"/signup"}>

@@ -18,8 +18,6 @@ const CourseDetailsCard = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  //   console.log("Course user", user);
-
   const handleAddToCart = () => {
     if (user?.accountType === ACCOUNT_TYPE.INSTRUCTOR) {
       toast.error("You are an Intructor, You can't buy a course.");

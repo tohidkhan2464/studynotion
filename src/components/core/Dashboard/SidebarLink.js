@@ -1,12 +1,10 @@
 import React from "react";
 import * as Icons from "react-icons/vsc";
 import { NavLink, useLocation, matchPath } from "react-router-dom";
-// import { useDispatch } from "react-redux";
 
 const SidebarLink = ({ link, iconName, onClick }) => {
   const Icon = Icons[iconName];
   const location = useLocation();
-  // const dispatch = useDispatch();
 
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname);

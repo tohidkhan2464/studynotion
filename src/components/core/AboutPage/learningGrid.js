@@ -67,7 +67,6 @@ const LearningGrid = () => {
                     {" "}
                   {card.highlighText}
                   </span>
-                  {/* <HighlightText text={card.highlighText} /> */}
                 </div>
                 <p className="font-medium text-richblack-300">{card.description}</p>
                 <div className="w-fit mt-6 mobile:mt-3 ">
