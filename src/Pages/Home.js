@@ -15,6 +15,7 @@ import ReviewSlider from "../components/common/ReviewSlider";
 const Home = () => {
   return (
     <div className=" mobile:w-full">
+     
       {/* Section 1 */}
       <div className=" relative mx-auto flex flex-col max-w-maxContent w-11/12  items-center justify-between text-white">
         <Link to={"/signup"}>
