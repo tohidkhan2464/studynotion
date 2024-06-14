@@ -25,7 +25,6 @@ exports.contactUsController = async (req, res) => {
         html: `${message}`,
     });
 
-    console.log("Info -> ", info);
     return info;
 
   } catch (err) {

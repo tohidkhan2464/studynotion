@@ -24,7 +24,6 @@ const PersonalInformation = () => {
     try {
       dispatch(updateProfile(token, data));
     } catch (error) {
-      console.log("ERROR MESSAGE ", error.message);
     }
   };
 

@@ -34,7 +34,9 @@ export function sendOtp(email, navigate) {
       toast.success("OTP Sent Successfully");
       navigate("/verify-email");
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Check Your mail and try again.");
+      toast.error(
+        error?.response?.data?.message || "Check Your mail and try again."
+      );
     }
     dispatch(setLoading(false));
     toast.dismiss(toastId);
@@ -54,7 +56,6 @@ export function login(email, password, navigate) {
           password,
         },
       });
-
 
       if (!response.data.success) {
         throw new Error(response.data.message);
@@ -107,7 +108,6 @@ export function signUp(
         },
       });
 
-
       if (!response.data.success) {
         throw new Error(response.data.message);
       }
@@ -144,7 +144,6 @@ export function getPasswordResetToken(email, setEmailSent) {
         bodyData: { email },
       });
 
-
       if (!response.data.success) {
         throw new Error(response.data.message);
       }
@@ -152,7 +151,7 @@ export function getPasswordResetToken(email, setEmailSent) {
       toast.success("Reset Email Sent");
       setEmailSent(true);
     } catch (error) {
-      toast.error(error)
+      toast.error(error);
     }
 
     dispatch(setLoading(false));
@@ -168,7 +167,6 @@ export function resetPassword(password, confirmPassword, token) {
         url: RESETPASSWORD_API,
         bodyData: { password, confirmPassword, token },
       });
-
 
       if (!response.data.success) {
         throw new Error(response.data.message);

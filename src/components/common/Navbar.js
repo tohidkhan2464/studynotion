@@ -30,7 +30,6 @@ const Navbar = () => {
         });
         setSubLinks(res?.data?.data);
       } catch (error) {
-        console.log("Could not fetch Categories.", error);
       }
       setLoading(false);
     })();

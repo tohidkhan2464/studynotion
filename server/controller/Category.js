@@ -59,63 +59,6 @@ exports.showAllCategories = async (req, res) => {
   }
 };
 
-// categoryPageDetails
-// exports.categoryPageDetails = async (req, res) => {
-//   try {
-//     // get categoryId
-//     const { categoryId } = req.body;
-//     console.log("req", req.body);
-//     console.log("Category id", categoryId);
-//     // get corresponding courses of category
-//     const selectedCategory = await Category.findById(categoryId)
-//       .populate("courses")
-//       .exec();
-
-//     // validation
-//     if (!selectedCategory) {
-//       return res.status(404).json({
-//         success: false,
-//         message: "Data not ffdsasdfgfdsasdffound.",
-//       });
-//     }
-
-//     // get courses for different categories
-//     const differentCategories = await Category.find({
-//       _id: { $ne: categoryId },
-//     })
-//       .populate("courses")
-//       .exec();
-
-//     // get top selling courses
-//     // // TODO : Do top selling courses on your own
-//     const topSellingCourses = await Course.aggregate([
-//       {
-//         $group: {
-//           _id: null,
-//           totalEnrolledStudents: { $sum: { $size: "$studentsEnrolled" } },
-//         },
-//       },
-//       { $sort: { totalEnrolledStudents: -1 } },
-//     ]);
-
-//     // return response
-//     return res.status(200).json({
-//       success: true,
-//       message: "Category data fetch successfully.",
-//       data: {
-//         selectedCategory,
-//         differentCategories,
-//         topSellingCourses,
-//       },
-//     });
-//   } catch (err) {
-//     console.log(err);
-//     return res.status(500).josn({
-//       success: false,
-//       message: err.message,
-//     });
-//   }
-// };
 
 exports.categoryPageDetails = async (req, res) => {
   try {
@@ -243,9 +186,6 @@ exports.updateCategory = async (req, res) => {
       { new: true }
     );
 
-    // categoryDetails.name = name;
-    // categoryDetails.description = description;
-    // await categoryDetails.save();
 
     // return response
     return res.status(200).json({

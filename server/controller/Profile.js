@@ -10,7 +10,6 @@ const { convertSecondsToDuration } = require("../utils/secToDuration");
 exports.updateProfile = async (req, res) => {
   try {
     // fetch data
-    console.log("Request body ", req.body);
     const {
       firstName,
       lastName,
@@ -23,13 +22,6 @@ exports.updateProfile = async (req, res) => {
     // get userId
     const id = req.user.id;
 
-    // validation
-    // if (!contactNumber || !gender || !id) {
-    //     return res.status(400).json({
-    //         success: false,
-    //         message: "All fields are required.",
-    //     });
-    // }
 
     // find profile
     const userDetails = await User.findById(id);
@@ -182,12 +174,9 @@ exports.getUserDetails = async (req, res) => {
 exports.updateDisplayPicture = async (req, res) => {
   try {
     const userId = req.user.id;
-    // console.log("UserId -> ", userId);
-    // console.log("Type of userId -> ", typeof (userId));
-    // console.log("Request ", req)
+
+    
     const profilePicture = req.files.displayPicture;
-    // console.log("Profile", profilePicture)
-    // console.log("Profile type", profilePicture.name)
 
     const supportedTypes = ["jpg", "jpeg", "png"];
     const fileType = profilePicture.name.split(".")[-1];
@@ -198,19 +187,16 @@ exports.updateDisplayPicture = async (req, res) => {
         message: "File type not Supperted",
       });
     }
-    // console.log("Type of profile picture -> ", typeof (profilePicture));
-
-    // console.log("Profile picture", profilePicture);
 
     const response = await uploadImageToCloudinary(
       profilePicture,
       "StudyNotion"
     );
-    // console.log("response -> ", response);
+
     const userDetails = await User.findByIdAndUpdate(userId);
     userDetails.image = response.secure_url;
     await userDetails.save();
-    // console.log("User Details -> ", userDetails);
+
     const updatedUserDetails = await User.findById(userId).populate(
       "additionalDetails"
     );
@@ -244,7 +230,7 @@ exports.getEnrolledCourses = async (req, res) => {
     }
 
     const courses = userDetails.courses;
-    console.log("courses ->", courses);
+
     let data = [];
 
     for (const course_id of courses) {
@@ -295,7 +281,6 @@ exports.getEnrolledCourses = async (req, res) => {
       });
     }
 
-    // console.log("courseDetails ->", courseDetails);
     return res.status(200).json({
       success: true,
       message: "Courses fetched successfully",

@@ -8,18 +8,13 @@ require("dotenv").config();
 // create subsection
 exports.createSubSection = async (req, res) => {
   try {
-    // console.log("req body", req.body.formData);
 
+    
     // fetch data from req.body
     const { sectionId, title, description } = req.body;
+
     // extract file/video
-    // const video = videoUrl;
-    // console.log("sectionId", sectionId);
-    // console.log("title", title);
-    // console.log("timeDuration", timeDuration);
-    // console.log("description", description);
     const video = req.files.video;
-    // console.log("videoUrl", video);
 
     // validation
     if (!sectionId || !title || !description || !video) {
@@ -34,7 +29,7 @@ exports.createSubSection = async (req, res) => {
       video,
       process.env.FOLDER_NAME
     );
-    // console.log("upload respone -> ", uploadDetails);
+
     // create the subsection
     const subsectionDetails = await SubSection.create({
       title: title,
@@ -51,8 +46,6 @@ exports.createSubSection = async (req, res) => {
     )
       .populate("subSections")
       .exec();
-
-    // // TODO :  log updated section here, after adding populate query
 
     // return response
     return res.status(200).json({
@@ -71,67 +64,6 @@ exports.createSubSection = async (req, res) => {
   }
 };
 
-// exports.editCourse = async (req, res) => {
-//   try {
-//     const { courseId } = req.body;
-//     const updates = req.body;
-//     const course = await Course.findById(courseId);
-//     if (!course) {
-//       return res.status(404).json({ error: "Course not found" });
-//     }
-
-//     // If Thumbnail Image is found, update it
-//     if (req.files) {
-//       const thumbnail = req.files.thumbnailImage;
-//       const thumbnailImage = await uploadImageToCloudinary(
-//         thumbnail,
-//         process.env.FOLDER_NAME
-//       );
-//       course.thumbnail = thumbnailImage.secure_url;
-//     }
-
-//     // Update only the fields that are present in the request body
-//     for (const key in updates) {
-//       if (updates.hasOwnProperty(key)) {
-//         if (key === "tag" || key === "instructions") {
-//           course[key] = JSON.parse(updates[key]);
-//         } else {
-//           course[key] = updates[key];
-//         }
-//       }
-//     }
-
-//     await course.save(); // save the course;
-
-//     const updatedCourse = await Course.findOne({ _id: courseId })
-//       .populate({
-//         path: "instructor",
-//         populate: {
-//           path: "additionalDetails",
-//         },
-//       })
-//       .populate("category")
-//       .populate("ratingAndReviews")
-//       .populate({
-//         path: "courseContent",
-//         populate: {
-//           path: "subSections",
-//         },
-//       })
-//       .exec();
-//     res.json({
-//       success: true,
-//       message: "Course updated successfully",
-//       data: updatedCourse,
-//     });
-//   } catch (error) {
-//     res.status(500).json({
-//       success: false,
-//       message: "Internal server error",
-//       error: error.message,
-//     });
-//   }
-// };
 
 // updateSubSection
 exports.updateSubSection = async (req, res) => {

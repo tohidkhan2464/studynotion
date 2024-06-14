@@ -30,7 +30,6 @@ const SignupForm = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   function changeHandler(event) {
-
     setFormData((prevData) => ({
       ...prevData,
       [event.target.name]: event.target.value,
@@ -42,7 +41,7 @@ const SignupForm = () => {
     //   setValidation(true)
     // }
   }
-  const {  password, confirmPassword } = formData;
+  const { password, confirmPassword } = formData;
 
   // const uppercaseRegExp = /(?=.*?[A-Z])/;
   // const lowercaseRegExp = /(?=.*?[a-z])/;
@@ -78,24 +77,20 @@ const SignupForm = () => {
       accountType,
     };
 
-    
-    console.log("DATA ", data)
     dispatch(setSignupData(data));
     // Send OTP to user for verification
     dispatch(sendOtp(formData.email, navigate));
 
     setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
+      // firstName: "",
+      // lastName: "",
+      // email: "",
+      // password: "",
       confirmPassword: "",
-      contactNumber:"",
+      contactNumber: "",
     });
-    setAccountType("student");
+    setAccountType(ACCOUNT_TYPE.STUDENT);
   }
-
-  
 
   return (
     <div className="text-richblack-5 mb-5 ">
@@ -199,7 +194,9 @@ const SignupForm = () => {
                 >
                   {countryCodes.map((element, index) => {
                     return (
-                      <option className="h-8 w-max " key={index}>{element.dial_code}</option>
+                      <option className="h-8 w-max " key={index}>
+                        {element.dial_code}
+                      </option>
                     );
                   })}
                 </select>
@@ -276,11 +273,11 @@ const SignupForm = () => {
           </label>
         </div>
         <button
-        type="submit"
-        className="mt-2 w-full rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-semibold text-richblack-900 transition-all duration-200 hover:-translate-y-1"
-      >
-        Sign Up
-      </button>
+          type="submit"
+          className="mt-2 w-full rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-semibold text-richblack-900 transition-all duration-200 hover:-translate-y-1"
+        >
+          Sign Up
+        </button>
       </form>
     </div>
   );

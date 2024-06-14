@@ -21,7 +21,6 @@ const UpdatePassword = () => {
     try {
       dispatch(updatePassword(token, data));
     } catch (error) {
-      console.log("ERROR MESSAGE ", error.message);
     }
   };
 

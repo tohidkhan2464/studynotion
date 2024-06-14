@@ -37,10 +37,9 @@ exports.createRating = async (req, res) => {
 
         // // TODO : Find mistake between line no. 40 to 50
         // update course with this rating
-        const updatedCourseDetails = await Course.findByIdAndUpdate(
+        await Course.findByIdAndUpdate(
             { _id: courseId }, { $push: { ratingAndReviews: ratingReview._id, } }, { new: true }
         );
-        console.log(updatedCourseDetails);
 
         // return response
         return res.status(200).json({

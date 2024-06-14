@@ -27,10 +27,8 @@ export async function getUserEnrolledCourses(token) {
       throw new Error(response.data.message);
     }
 
-    // console.log("response", response);
 
     result = response?.data?.data;
-    // console.log("result", result)
   } catch (error) {
     toast.error("Could not get Enrolled Courses.");
   }
@@ -79,11 +77,9 @@ export async function getInstructorData(token) {
     if (!response.data.success) {
       throw new Error(response.data.message);
     }
-    // console.log("GET_INSTRUCTOR_DATA_API response", response);
     result = response.data.courses;
   } catch (error) {
     toast.error("Could not get Enrolled Courses.");
-    // console.log("GET_INSTRUCTOR_DATA_API ERROR", error);
   }
   toast.dismiss(toastId);
   return result;

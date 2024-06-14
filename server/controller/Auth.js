@@ -33,7 +33,6 @@ exports.sendOTP = async (req, res) => {
       lowerCaseAlphabets: false,
       digits: true,
     });
-    // console.log("OTP generated : ", otp);
 
     // is otp unique
     let result = await OTP.findOne({ otp: otp });
@@ -49,8 +48,7 @@ exports.sendOTP = async (req, res) => {
     const otpPayload = { email, otp };
 
     // create an entry in DB for OTP
-    const otpBody = await OTP.create(otpPayload);
-    // console.log("otpbody -> ", otpBody);
+    await OTP.create(otpPayload);
 
     // return success response
     res.status(200).json({
@@ -97,8 +95,6 @@ exports.signUp = async (req, res) => {
         message: "All fields are required",
       });
     }
-    // console.log("Password", password);
-    // console.log("Confirm Password", confirmPassword);
     // match password with confirm password
     if (password !== confirmPassword) {
       return res.status(403).json({
@@ -119,10 +115,7 @@ exports.signUp = async (req, res) => {
 
     // find most recent otp stored for user
     const recentOtp = await OTP.find({ email }).sort({ createdAt: -1 });
-    // console.log("Recent OTP -> ", recentOtp);
 
-    // console.log("otp -> ", otp);
-    // console.log("recentOtp.otp -> ", recentOtp[0].otp);
     // validation of otp
     if (recentOtp.length === 0) {
       // OTP not found
@@ -205,7 +198,7 @@ exports.login = async (req, res) => {
       user.token = token;
       user.password = undefined;
       const options = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
-      // console.log("Token in login controller", token);
+
       // create cookie and send respond
       res.cookie("token", token, options).status(200).json({
         success: true,
@@ -233,7 +226,7 @@ exports.changePassword = async (req, res) => {
   try {
     // get data from req.body
     const userId = req.user.id;
-    // console.log("Req body in change password", req.body);
+
     const { currentPassword, newPassword } = req.body.currentPassword;
 
     // get oldPassword, newPassword, confirmPassword
@@ -255,7 +248,7 @@ exports.changePassword = async (req, res) => {
 
     const saltround = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(newPassword, saltround);
-    // console.log("hashed Password ->", hashedPassword);
+
     // update pass in DB
     user.password = hashedPassword;
     await user.save();

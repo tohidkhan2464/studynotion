@@ -16,7 +16,6 @@ const CourseProgress = require("../models/CourseProgress");
 exports.capturePayment = async (req, res) => {
   const { courses } = req.body;
   const userId = req.user.id;
-  console.log("courses in backend", courses);
   if (courses.length === 0) {
     return res.json({ success: false, message: "Please provide Course Id" });
   }
@@ -26,7 +25,6 @@ exports.capturePayment = async (req, res) => {
     let course;
     try {
       course = await Course.findById(course_id);
-      console.log("course", course)
       if (!course) {
         return res
           .status(200)
@@ -41,7 +39,6 @@ exports.capturePayment = async (req, res) => {
       }
 
       totalAmount += course.price;
-      console.log("total amount", totalAmount)
     } catch (error) {
       console.log(error);
       return res.status(500).json({ success: false, message: error.message });
@@ -136,7 +133,7 @@ const enrollStudents = async (courses, userId, res) => {
       );
 
       ///Send mail to the Student;
-      const emailResponse = await mailSender(
+      await mailSender(
         enrollStudents.email,
         `Successfully Enrolled into ${enrolledCourse.courseName}`,
         courseEnrollmentEmail(

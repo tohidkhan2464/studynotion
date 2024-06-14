@@ -25,12 +25,12 @@ const mailSender = async (email, title, body) => {
             html: `${body}`,
         });
 
-        // console.log("Info -> ", info);
+
         return info;
 
     } catch (err) {
         console.log(err.message);
-        console.log("can't Send the mail.")
+
     }
 };
 

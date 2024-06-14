@@ -23,7 +23,6 @@ const VerifyEmail = () => {
     contactNumber,
     accountType,
   } = signupData;
-  console.log("SignUP Data ", signupData);
   useEffect(() => {
     if (!signupData) {
       navigate("/signup");
